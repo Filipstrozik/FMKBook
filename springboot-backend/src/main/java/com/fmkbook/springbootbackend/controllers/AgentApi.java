@@ -26,9 +26,28 @@ public class AgentApi {
         return new ResponseEntity<>(agentList, HttpStatus.OK);
     }
 
-    @PostMapping()
+    @GetMapping("/{id}")
+    public ResponseEntity<Agent> getAgent(@RequestParam("id") Integer id) {
+        Agent agent = this.agentService.findAgentById(id);
+        return new ResponseEntity<>(agent, HttpStatus.OK);
+    }
+
+    @PostMapping
     public ResponseEntity<Agent> addAgent(@RequestBody Agent agent) {
         Agent newAgent = agentService.addAgent(agent);
         return new ResponseEntity<>(newAgent, HttpStatus.CREATED);
+    }
+
+    //TODO this does not work
+    @PutMapping
+    public ResponseEntity<Agent> updateAgent(@RequestBody Agent agent) {
+        Agent updateAgent = agentService.updateAgent(agent);
+        return new ResponseEntity<>(updateAgent, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteAgent (@PathVariable("id") Integer id) {
+        agentService.deleteAgent(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
