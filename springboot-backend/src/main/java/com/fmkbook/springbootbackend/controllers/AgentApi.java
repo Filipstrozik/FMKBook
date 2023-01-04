@@ -27,7 +27,7 @@ public class AgentApi {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Agent> getAgent(@RequestParam("id") Integer id) {
+    public ResponseEntity<Agent> getAgent(@PathVariable("id") Integer id) {
         Agent agent = this.agentService.findAgentById(id);
         return new ResponseEntity<>(agent, HttpStatus.OK);
     }
