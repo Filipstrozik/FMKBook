@@ -23,7 +23,7 @@ public class Rezerwacja {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "SEANSIDSEANSU", nullable = false)
-    private Sean seansidseansu;
+    private Seans seansidseansu;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "SPOSOBPLATNOSCINAZWAMETODY", nullable = false)
@@ -48,11 +48,11 @@ public class Rezerwacja {
         this.sposobplatnoscinazwametody = sposobplatnoscinazwametody;
     }
 
-    public Sean getSeansidseansu() {
+    public Seans getSeansidseansu() {
         return seansidseansu;
     }
 
-    public void setSeansidseansu(Sean seansidseansu) {
+    public void setSeansidseansu(Seans seansidseansu) {
         this.seansidseansu = seansidseansu;
     }
 
