@@ -9,12 +9,19 @@ export class BuyAbonamentListComponent implements OnInit {
 
 
   typyAbonamentu: TypAbonamentu[] = [
-    { id: 0, time: "6mies", price: 120},
-    { id: 1, time: "3mies", price: 150}
+    { id: 0, time: "6 miesięcy", price: 120},
+    { id: 1, time: "3 miesiące", price: 150},
+    { id: 2, time: "1 miesiąc", price: 180}
   ];
   constructor() { }
 
   ngOnInit(): void {
+  }
+  statusClass = 'not-active';
+  selectedType?: TypAbonamentu;
+  onSelect(typ: TypAbonamentu): void {
+    this.selectedType = typ;
+    this.statusClass = 'active';
   }
 
 }
