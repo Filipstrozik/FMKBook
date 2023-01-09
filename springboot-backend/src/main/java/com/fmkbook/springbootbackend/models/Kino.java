@@ -18,7 +18,7 @@ public class Kino {
     private String adres;
 
     @OneToMany(mappedBy = "kinoidkina")
-    private Set<Sean> seans = new LinkedHashSet<>();
+    private Set<Seans> seans = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "kinoidkina")
     private Set<Sala> salas = new LinkedHashSet<>();
@@ -31,11 +31,11 @@ public class Kino {
         this.salas = salas;
     }
 
-    public Set<Sean> getSeans() {
+    public Set<Seans> getSeans() {
         return seans;
     }
 
-    public void setSeans(Set<Sean> seans) {
+    public void setSeans(Set<Seans> seans) {
         this.seans = seans;
     }
 

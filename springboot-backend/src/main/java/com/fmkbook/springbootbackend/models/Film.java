@@ -21,13 +21,13 @@ public class Film {
     private Integer dlugosc;
 
     @OneToMany(mappedBy = "filmidfilmu")
-    private Set<Sean> seans = new LinkedHashSet<>();
+    private Set<Seans> seans = new LinkedHashSet<>();
 
-    public Set<Sean> getSeans() {
+    public Set<Seans> getSeans() {
         return seans;
     }
 
-    public void setSeans(Set<Sean> seans) {
+    public void setSeans(Set<Seans> seans) {
         this.seans = seans;
     }
 

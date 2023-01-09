@@ -1,0 +1,19 @@
+<h1>zakupienie abonamentu</h1>
+<h3>wybierz plan czasowy</h3>
+
+<ul>
+  <li *ngFor="let typ of typyAbonamentu">
+    <button type="badge">
+      <p class="name">{{typ.time}}</p>
+      <p class="name">{{typ.price}}</p>
+    </button>
+  </li>
+</ul>
+
+
+<button type="button">
+  <p>wybierz</p>
+</button>
+
+
+
