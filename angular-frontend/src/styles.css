@@ -36,3 +36,24 @@
   font-family: "SansSerif", sans-serif;
   padding-left: 2rem;
 }
+
+.view-title {
+  color: #634CF3;
+  font-family: "SansSerif", sans-serif;
+}
+
+
+.choose{
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  background-color: dodgerblue;
+  bottom: 50px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/*this below make it more responsive*/
+p {
+  font-size: 6vw;
+}

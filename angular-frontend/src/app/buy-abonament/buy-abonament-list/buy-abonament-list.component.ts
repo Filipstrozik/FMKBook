@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-buy-abonament-list',
@@ -13,7 +14,7 @@ export class BuyAbonamentListComponent implements OnInit {
     { id: 1, time: "3 miesiące", price: 150},
     { id: 2, time: "1 miesiąc", price: 180}
   ];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +23,10 @@ export class BuyAbonamentListComponent implements OnInit {
   onSelect(typ: TypAbonamentu): void {
     this.selectedType = typ;
     this.statusClass = 'active';
+  }
+
+  navigateToDetails() {
+    this.router.navigate(['abonamentDetails']);
   }
 
 }

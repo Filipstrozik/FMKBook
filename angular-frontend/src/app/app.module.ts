@@ -14,6 +14,7 @@ import { MenuComponent } from './menu/menu.component';
 import { InviteUserComponent } from './invite-friend/invite-user/invite-user.component';
 import { SuccessSentComponent } from './invite-friend/success-sent/success-sent.component';
 import { InviteInformComponent } from './invite-friend/invite-inform/invite-inform.component';
+import { BuyAbonamentDetailsComponent } from './buy-abonament/buy-abonament-details/buy-abonament-details.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -24,6 +25,8 @@ const routes: Routes = [
   { path: 'inviteUser', component: InviteUserComponent},
   { path: 'successSent', component: SuccessSentComponent},
   { path: 'info', component: InviteInformComponent},
+  {path: 'abonamentList', component: BuyAbonamentListComponent},
+  {path: 'abonamentDetails' , component: BuyAbonamentDetailsComponent}
 ];
 
 @NgModule({
@@ -40,7 +43,8 @@ const routes: Routes = [
     MenuComponent,
     InviteUserComponent,
     SuccessSentComponent,
-    InviteInformComponent
+    InviteInformComponent,
+    BuyAbonamentDetailsComponent
   ],
   imports: [
     BrowserModule,
