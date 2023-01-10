@@ -16,4 +16,11 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['addCode']);
   }
 
+  inviteFriend() {
+    this.router.navigate(['inviteUser']);
+  }
+
+  info() {
+    this.router.navigate(['info']);
+  }
 }
