@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 
 import { AppComponent } from './app.component';
-import { BuyAbonamentListComponent } from './buy-abonament-list/buy-abonament-list.component';
+import { BuyAbonamentListComponent } from './buy-abonament/buy-abonament-list/buy-abonament-list.component';
 import { AddCodeUserComponent } from './discount-code-user/add-code-user/add-code-user.component';
 import { InvalidCodeUserComponent } from './discount-code-user/invalid-code-user/invalid-code-user.component';
 import { CancelAddCodeComponent } from './discount-code-user/cancel-add-code/cancel-add-code.component';

@@ -23,4 +23,5 @@ export class MenuComponent implements OnInit {
   info() {
     this.router.navigate(['info']);
   }
+
 }
