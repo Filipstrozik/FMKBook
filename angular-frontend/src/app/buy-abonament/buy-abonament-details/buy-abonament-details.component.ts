@@ -24,7 +24,6 @@ export class BuyAbonamentDetailsComponent implements OnInit {
 
   }
 
-
   ngOnInit(): void {
   }
 
