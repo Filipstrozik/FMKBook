@@ -45,11 +45,12 @@
 .view-title {
   color: #634CF3;
   font-family: "SansSerif", sans-serif;
+  padding-left: 1rem;
 }
 
 
 .choose{
-  border-radius: 10px;
+  border-radius: 20px;
   width: 150px;
   height: 50px;
   background-color: dodgerblue;
@@ -62,3 +63,24 @@
 p {
   font-size: 6vw;
 }
+
+.badge {
+  display: inline-block;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #634CF3;
+  line-height: 1em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+.name {
+  align-self: center;
+}
+
+
+button.selected {
+  background-color: #634CF3;
+  color: white;
+}
+

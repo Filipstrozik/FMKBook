@@ -10,9 +10,9 @@ export class BuyAbonamentListComponent implements OnInit {
 
 
   typyAbonamentu: TypAbonamentu[] = [
-    { id: 0, time: "6 miesięcy", price: 120},
-    { id: 1, time: "3 miesiące", price: 150},
-    { id: 2, time: "1 miesiąc", price: 180}
+    { id: 10, time: "6 miesięcy", price: 120},
+    { id: 11, time: "3 miesiące", price: 150},
+    { id: 12, time: "1 miesiąc", price: 180}
   ];
   constructor(private router: Router) { }
 
@@ -26,7 +26,7 @@ export class BuyAbonamentListComponent implements OnInit {
   }
 
   navigateToDetails() {
-    this.router.navigate(['abonamentDetails']);
+    this.router.navigate(['abonamentDetails', this.selectedType?.id]);
   }
 
   back() {

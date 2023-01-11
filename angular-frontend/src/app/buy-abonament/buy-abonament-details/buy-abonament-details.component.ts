@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {TypAbonamentu} from "../buy-abonament-list/buy-abonament-list.component";
 
 @Component({
   selector: 'app-buy-abonament-details',
@@ -7,8 +8,21 @@ import {Router} from "@angular/router";
   styleUrls: ['./buy-abonament-details.component.css']
 })
 export class BuyAbonamentDetailsComponent implements OnInit {
+  typyAbonamentu: TypAbonamentu[] = [
+    { id: 10, time: "6 miesięcy", price: 120},
+    { id: 11, time: "3 miesiące", price: 150},
+    { id: 12, time: "1 miesiąc", price: 180}
+  ];
 
-  constructor(private router: Router) { }
+
+  selectedType: TypAbonamentu;
+  constructor(private router: Router, private route: ActivatedRoute) {
+    console.log(this.route.snapshot.paramMap.get('id'));
+    let id: number = parseInt(<string>this.route.snapshot.paramMap.get('id'));
+
+      this.selectedType = this.typyAbonamentu.find(t => t.id == id)!
+
+  }
 
   ngOnInit(): void {
   }
