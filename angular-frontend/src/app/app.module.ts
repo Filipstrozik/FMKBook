@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'successSent', component: SuccessSentComponent},
   { path: 'info', component: InviteInformComponent},
   {path: 'abonamentList', component: BuyAbonamentListComponent},
-  {path: 'abonamentDetails' , component: BuyAbonamentDetailsComponent}
+  {path: 'abonamentDetails/:id' , component: BuyAbonamentDetailsComponent}
 ];
 
 @NgModule({
