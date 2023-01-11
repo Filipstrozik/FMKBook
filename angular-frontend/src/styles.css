@@ -10,6 +10,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.back-btn {
+  position: absolute;
+  padding-left: 2rem;
+}
 .backOrAccept{
   border-radius: 10px;
   width: 150px;

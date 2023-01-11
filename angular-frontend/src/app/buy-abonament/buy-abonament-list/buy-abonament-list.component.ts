@@ -29,6 +29,10 @@ export class BuyAbonamentListComponent implements OnInit {
     this.router.navigate(['abonamentDetails']);
   }
 
+  back() {
+    this.router.navigate(['']);
+  }
+
 }
 
 export interface TypAbonamentu {
