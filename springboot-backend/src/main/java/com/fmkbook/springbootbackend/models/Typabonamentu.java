@@ -17,7 +17,7 @@ public class Typabonamentu {
     @Column(name = "OPIS")
     private String opis;
 
-    @OneToMany(mappedBy = "typabonamentucolumn")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "typabonamentucolumn")
     private Set<Abonament> abonaments = new LinkedHashSet<>();
 
     public Set<Abonament> getAbonaments() {
