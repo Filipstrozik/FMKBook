@@ -23,7 +23,6 @@ export class MenuComponent implements OnInit {
   info() {
     this.router.navigate(['info']);
   }
-
   buyAbonament(){
     this.router.navigate(['abonamentList'])
   }
