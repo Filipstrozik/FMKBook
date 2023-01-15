@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {TypAbonamentu} from "../buy-abonament-list/buy-abonament-list.component";
+import {TypAbonamentu} from "../../typ-abonamentu.model";
 
 @Component({
   selector: 'app-buy-abonament-details',
@@ -9,9 +9,9 @@ import {TypAbonamentu} from "../buy-abonament-list/buy-abonament-list.component"
 })
 export class BuyAbonamentDetailsComponent implements OnInit {
   typyAbonamentu: TypAbonamentu[] = [
-    { id: 10, time: "6 miesięcy", price: 120},
-    { id: 11, time: "3 miesiące", price: 150},
-    { id: 12, time: "1 miesiąc", price: 180}
+    { id: 10, opis: "6 miesięcy", cena: 120},
+    { id: 11, opis: "3 miesiące", cena: 150},
+    { id: 12, opis: "1 miesiąc", cena: 180}
   ];
 
 

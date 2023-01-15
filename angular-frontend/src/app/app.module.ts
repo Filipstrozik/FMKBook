@@ -17,6 +17,8 @@ import { BuyAbonamentDetailsComponent } from './buy-abonament/buy-abonament-deta
 import { BuyAbonamentConfirmedComponent } from './buy-abonament/buy-abonament-confirmed/buy-abonament-confirmed.component';
 import { BuyAbonamentCancelledComponent } from './buy-abonament/buy-abonament-cancelled/buy-abonament-cancelled.component';
 import { HttpClientModule} from "@angular/common/http";
+import {TypAbonamentu} from "./typ-abonamentu.model";
+import {TypAbonamentuService} from "./services/typ-abonamentu/typ-abonamentu.service";
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -54,11 +56,11 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
   ],
   exports:
     [RouterModule],
-  providers: [],
+  providers: [TypAbonamentuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

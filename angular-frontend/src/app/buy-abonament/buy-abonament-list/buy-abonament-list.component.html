@@ -10,14 +10,14 @@
       <button [class.selected]="typ === selectedType"
         type="button" class="list-group-item"
       (click)="onSelect(typ)">
-        <p class="name">{{typ.time}}</p>
-        <p class="name">{{typ.price}}</p>
+        <p class="name">{{typ.opis}}</p>
+        <p class="name">{{typ.cena}}</p>
       </button>
     </li>
   </ul>
 
   <div *ngIf="selectedType">
-    <p> selected: {{selectedType.time}} </p>
+    <p> selected: {{selectedType.cena}} </p>
     <div>id: {{selectedType.id}}</div>
   </div>
 
