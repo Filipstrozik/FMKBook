@@ -2,6 +2,7 @@ package com.fmkbook.springbootbackend.controllers;
 
 
 import com.fmkbook.springbootbackend.models.Abonament;
+import com.fmkbook.springbootbackend.models.Rabat;
 import com.fmkbook.springbootbackend.services.AbonamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,10 +40,14 @@ public class AbonamentApi {
     }
 
     //TODO this does not work
-    @PutMapping
-    public ResponseEntity<Abonament> updateAbonament(@RequestBody Abonament abonament) {
-        Abonament updatedAbonament = abonamentService.updateAbonament(abonament);
-        return new ResponseEntity<>(updatedAbonament, HttpStatus.OK);
+    @CrossOrigin
+    @PutMapping()
+    public ResponseEntity<Abonament> updateAbonament(@RequestParam("idUser") Integer idUser, @RequestParam("idRabatu") Integer idTypAbonamentu) {
+        Abonament abonament = this.abonamentService.updateAbonament(idUser, idTypAbonamentu);
+        if(abonament != null){
+            return new ResponseEntity<>(abonament, HttpStatus.OK);
+        }
+        return new ResponseEntity<>( HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/{id}")

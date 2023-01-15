@@ -6,6 +6,7 @@ import com.fmkbook.springbootbackend.models.Rabat;
 import com.fmkbook.springbootbackend.models.Uzytkownik;
 import com.fmkbook.springbootbackend.repositories.RabatRepository;
 import com.fmkbook.springbootbackend.repositories.UzytkownikRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,6 +20,7 @@ public class RabatService {
     private final RabatRepository rabatRepository;
     private final UzytkownikRepository uzytkownikRepository;
 
+    @Autowired
     public RabatService(RabatRepository rabatRepository, UzytkownikRepository uzytkownikRepository) {
         this.rabatRepository = rabatRepository;
         this.uzytkownikRepository = uzytkownikRepository;
