@@ -1,7 +1,4 @@
-h1 {
-  color: #634CF3;
-  font-family: "SansSerif", sans-serif;
-}
+
 
 .badge {
   display: inline-block;
@@ -16,3 +13,18 @@ h1 {
 .name {
   align-self: center;
 }
+
+li > button {
+  border-radius: 20px;
+}
+
+button {
+  border-radius: 20px;
+}
+
+button.selected {
+  background-color: #634CF3;
+  color: white;
+}
+
+
