@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {RabatService} from "../../services/rabat/rabat.service";
 
 
 @Component({
@@ -9,17 +10,22 @@ import {Router} from "@angular/router";
 })
 export class AddCodeUserComponent implements OnInit {
   code = '';
-  constructor(private router: Router) { }
+  idUser = 1;
+  hidden = 'none';
+
+  constructor(private router: Router, private rabatService: RabatService) {
+  }
 
   ngOnInit(): void {
   }
+
   add() {
-    if(this.code!=''){
-      this.router.navigate(['successCode']);
-    }
-    else{
-      this.router.navigate(['invalidCode']);
-    }
+
+    this.rabatService.updateRabat(this.idUser, this.code).subscribe(data => {
+
+      this.router.navigate(['successCode', this.code]);
+    });
+    this.hidden = 'block'
   }
 
   cancel() {
