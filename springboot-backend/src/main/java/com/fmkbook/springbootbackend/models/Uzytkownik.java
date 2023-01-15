@@ -20,10 +20,10 @@ public class Uzytkownik {
     @Column(name = "EMAIL", length = 50)
     private String email;
 
-    @OneToMany(mappedBy = "uzytkownikiduzytkownika")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "uzytkownikiduzytkownika")
     private Set<Rabat> rabats = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "uzytkownikiduzytkownika")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "uzytkownikiduzytkownika")
     private Set<Rezerwacja> rezerwacjas = new LinkedHashSet<>();
 
     public Set<Rezerwacja> getRezerwacjas() {

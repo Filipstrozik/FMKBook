@@ -10,7 +10,7 @@ public class Rabat {
     @Id
     @Column(name = "KODRABATOWY", nullable = false, length = 20)
     private String id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "UZYTKOWNIKIDUZYTKOWNIKA")
     private Uzytkownik uzytkownikiduzytkownika;
 
