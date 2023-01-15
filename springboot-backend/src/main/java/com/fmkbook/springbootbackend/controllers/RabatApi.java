@@ -40,11 +40,12 @@ public class RabatApi {
         return new ResponseEntity<>(newRabat, HttpStatus.CREATED);
     }
 
-    //TODO this does not work
+    @CrossOrigin
     @PutMapping()
     public ResponseEntity<Rabat> updateRabat(@RequestParam("idUser") Integer idUser, @RequestParam("idRabatu") String idRabatu) {
-        if(rabatService.updateRabat(idUser, idRabatu)){
-            return new ResponseEntity<>( HttpStatus.OK);
+        Rabat rabat = rabatService.updateRabat(idUser, idRabatu);
+        if(rabat != null){
+            return new ResponseEntity<>(rabat, HttpStatus.OK);
         }
         return new ResponseEntity<>( HttpStatus.NOT_FOUND);
     }
