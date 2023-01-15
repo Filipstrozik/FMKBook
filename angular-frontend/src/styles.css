@@ -10,9 +10,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.back-btn {
+  position: absolute;
+  padding-left: 2rem;
+}
+
 .backOrAccept{
   border-radius: 10px;
-  width: 150px;
+  width: auto;
   height: 30px;
   background-color: rebeccapurple;
   bottom: 90px;
@@ -31,8 +37,62 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.notification{
+  width: 200px;
+  height: auto;
+}
+
 .title {
   color: dodgerblue;
   font-family: "SansSerif", sans-serif;
   padding-left: 2rem;
 }
+
+.view-title {
+  color: #634CF3;
+  font-family: "SansSerif", sans-serif;
+  padding-left: 1rem;
+}
+
+.vertical-align {
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose{
+  border-radius: 20px;
+  width: auto;
+  height: 50px;
+  background-color: dodgerblue;
+  bottom: 50px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/*this below make it more responsive*/
+p {
+  font-size: 3rem;
+}
+
+.badge {
+  display: inline-block;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #634CF3;
+  line-height: 1em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+.name {
+  align-self: center;
+}
+
+
+button.selected {
+  background-color: #634CF3;
+  color: white;
+}
+

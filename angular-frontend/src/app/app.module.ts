@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 
 import { AppComponent } from './app.component';
-import { BuyAbonamentListComponent } from './buy-abonament-list/buy-abonament-list.component';
+import { BuyAbonamentListComponent } from './buy-abonament/buy-abonament-list/buy-abonament-list.component';
 import { AddCodeUserComponent } from './discount-code-user/add-code-user/add-code-user.component';
 import { InvalidCodeUserComponent } from './discount-code-user/invalid-code-user/invalid-code-user.component';
 import { CancelAddCodeComponent } from './discount-code-user/cancel-add-code/cancel-add-code.component';
@@ -14,6 +14,9 @@ import { MenuComponent } from './menu/menu.component';
 import { InviteUserComponent } from './invite-friend/invite-user/invite-user.component';
 import { SuccessSentComponent } from './invite-friend/success-sent/success-sent.component';
 import { InviteInformComponent } from './invite-friend/invite-inform/invite-inform.component';
+import { BuyAbonamentDetailsComponent } from './buy-abonament/buy-abonament-details/buy-abonament-details.component';
+import { BuyAbonamentConfirmedComponent } from './buy-abonament/buy-abonament-confirmed/buy-abonament-confirmed.component';
+import { BuyAbonamentCancelledComponent } from './buy-abonament/buy-abonament-cancelled/buy-abonament-cancelled.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -24,6 +27,10 @@ const routes: Routes = [
   { path: 'inviteUser', component: InviteUserComponent},
   { path: 'successSent', component: SuccessSentComponent},
   { path: 'info', component: InviteInformComponent},
+  {path: 'abonamentList', component: BuyAbonamentListComponent},
+  {path: 'abonamentDetails/:id' , component: BuyAbonamentDetailsComponent},
+  {path: 'buyAbonamentConfirmed' , component: BuyAbonamentConfirmedComponent},
+  {path: 'buyAbonamentCancelled' , component: BuyAbonamentCancelledComponent},
 ];
 
 @NgModule({
@@ -40,7 +47,10 @@ const routes: Routes = [
     MenuComponent,
     InviteUserComponent,
     SuccessSentComponent,
-    InviteInformComponent
+    InviteInformComponent,
+    BuyAbonamentDetailsComponent,
+    BuyAbonamentConfirmedComponent,
+    BuyAbonamentCancelledComponent
   ],
   imports: [
     BrowserModule,
