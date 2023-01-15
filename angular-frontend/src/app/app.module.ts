@@ -15,6 +15,8 @@ import { InviteUserComponent } from './invite-friend/invite-user/invite-user.com
 import { SuccessSentComponent } from './invite-friend/success-sent/success-sent.component';
 import { InviteInformComponent } from './invite-friend/invite-inform/invite-inform.component';
 import { BuyAbonamentDetailsComponent } from './buy-abonament/buy-abonament-details/buy-abonament-details.component';
+import { BuyAbonamentConfirmedComponent } from './buy-abonament/buy-abonament-confirmed/buy-abonament-confirmed.component';
+import { BuyAbonamentCancelledComponent } from './buy-abonament/buy-abonament-cancelled/buy-abonament-cancelled.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -26,7 +28,9 @@ const routes: Routes = [
   { path: 'successSent', component: SuccessSentComponent},
   { path: 'info', component: InviteInformComponent},
   {path: 'abonamentList', component: BuyAbonamentListComponent},
-  {path: 'abonamentDetails/:id' , component: BuyAbonamentDetailsComponent}
+  {path: 'abonamentDetails/:id' , component: BuyAbonamentDetailsComponent},
+  {path: 'buyAbonamentConfirmed' , component: BuyAbonamentConfirmedComponent},
+  {path: 'buyAbonamentCancelled' , component: BuyAbonamentCancelledComponent},
 ];
 
 @NgModule({
@@ -44,7 +48,9 @@ const routes: Routes = [
     InviteUserComponent,
     SuccessSentComponent,
     InviteInformComponent,
-    BuyAbonamentDetailsComponent
+    BuyAbonamentDetailsComponent,
+    BuyAbonamentConfirmedComponent,
+    BuyAbonamentCancelledComponent
   ],
   imports: [
     BrowserModule,

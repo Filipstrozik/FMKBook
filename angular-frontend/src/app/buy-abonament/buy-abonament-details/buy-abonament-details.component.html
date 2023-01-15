@@ -1,6 +1,6 @@
 <h1 class="text-left view-title">zakupienie</h1>
 <h1 class="text-left view-title">abonamentu</h1>
-<span (click)="back()" class="back-btn">
+<span (click)="cancel()" class="back-btn">
   <p><</p>
 </span>
 <h3 class="text-center">szczegóły abonamentu</h3>
@@ -21,8 +21,8 @@
 </body>
 
 <footer class="text-center" >
-  <button type="submit" class="choose btn btn-primary">
-    <p>wybierz</p>
+  <button (click)="confirm()" type="submit" class="choose btn btn-primary">
+    <p>dokonaj zakupu</p>
   </button>
 </footer>
 
