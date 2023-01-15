@@ -17,7 +17,7 @@ public class Rabat {
     @Column(name = "WYSOKOSCRABATU", nullable = false)
     private Double wysokoscrabatu;
 
-    @OneToMany(mappedBy = "rabatkodrabatowy")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "rabatkodrabatowy")
     private Set<Rezerwacja> rezerwacjas = new LinkedHashSet<>();
 
     public Set<Rezerwacja> getRezerwacjas() {
