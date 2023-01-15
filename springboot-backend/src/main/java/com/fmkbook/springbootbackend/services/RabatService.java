@@ -32,15 +32,15 @@ public class RabatService {
         return this.rabatRepository.findAll();
     }
 
-    public boolean updateRabat(Integer idUser, String idRabatu) {
+    public Rabat updateRabat(Integer idUser, String idRabatu) {
         Optional<Rabat> rabat = rabatRepository.findRabatById(idRabatu);
         Optional<Uzytkownik> uzytkownik = uzytkownikRepository.findUzytkownikById(idUser);
         if (rabat.isPresent() && uzytkownik.isPresent() && rabat.get().getUzytkownikiduzytkownika() == null) {
             rabat.get().setUzytkownikiduzytkownika(uzytkownik.get());
             rabatRepository.save(rabat.get());
-            return true;
+            return rabat.get();
         }
-        return false;
+        return null;
     }
 
     public Rabat findRabatById(String code) {
