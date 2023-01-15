@@ -28,7 +28,11 @@ export class BuyAbonamentDetailsComponent implements OnInit {
   }
 
 
-  back() {
-    this.router.navigate(['']);
+  cancel() {
+    this.router.navigate(['/buyAbonamentCancelled']);
+  }
+
+  confirm() {
+    this.router.navigate(['/buyAbonamentConfirmed']);
   }
 }

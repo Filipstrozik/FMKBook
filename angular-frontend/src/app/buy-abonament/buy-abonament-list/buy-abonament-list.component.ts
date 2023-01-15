@@ -29,9 +29,10 @@ export class BuyAbonamentListComponent implements OnInit {
     this.router.navigate(['abonamentDetails', this.selectedType?.id]);
   }
 
-  back() {
-    this.router.navigate(['']);
+  cancel() {
+    this.router.navigate(['/buyAbonamentCancelled']);
   }
+
 
 }
 

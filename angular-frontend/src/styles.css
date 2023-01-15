@@ -15,9 +15,10 @@
   position: absolute;
   padding-left: 2rem;
 }
+
 .backOrAccept{
   border-radius: 10px;
-  width: 150px;
+  width: auto;
   height: 30px;
   background-color: rebeccapurple;
   bottom: 90px;
@@ -36,6 +37,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.notification{
+  width: 200px;
+  height: auto;
+}
+
 .title {
   color: dodgerblue;
   font-family: "SansSerif", sans-serif;
@@ -48,10 +55,16 @@
   padding-left: 1rem;
 }
 
+.vertical-align {
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .choose{
   border-radius: 20px;
-  width: 150px;
+  width: auto;
   height: 50px;
   background-color: dodgerblue;
   bottom: 50px;
@@ -61,7 +74,7 @@
 }
 /*this below make it more responsive*/
 p {
-  font-size: 6vw;
+  font-size: 3rem;
 }
 
 .badge {
