@@ -19,6 +19,8 @@ import { BuyAbonamentCancelledComponent } from './buy-abonament/buy-abonament-ca
 import { HttpClientModule} from "@angular/common/http";
 import {UserIdService} from "./services/userId/user-id.service";
 import {NotificationService} from "./services/notification/notification.service";
+import {TypAbonamentu} from "./typ-abonamentu.model";
+import {TypAbonamentuService} from "./services/typ-abonamentu/typ-abonamentu.service";
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -56,11 +58,11 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
   ],
   exports:
     [RouterModule],
-  providers: [UserIdService, NotificationService],
+  providers: [TypAbonamentuService, UserIdService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
