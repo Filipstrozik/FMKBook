@@ -17,6 +17,8 @@ import { BuyAbonamentDetailsComponent } from './buy-abonament/buy-abonament-deta
 import { BuyAbonamentConfirmedComponent } from './buy-abonament/buy-abonament-confirmed/buy-abonament-confirmed.component';
 import { BuyAbonamentCancelledComponent } from './buy-abonament/buy-abonament-cancelled/buy-abonament-cancelled.component';
 import { HttpClientModule} from "@angular/common/http";
+import {UserIdService} from "./services/userId/user-id.service";
+import {NotificationService} from "./services/notification/notification.service";
 import {TypAbonamentu} from "./typ-abonamentu.model";
 import {TypAbonamentuService} from "./services/typ-abonamentu/typ-abonamentu.service";
 
@@ -28,10 +30,10 @@ const routes: Routes = [
   { path: 'inviteUser', component: InviteUserComponent},
   { path: 'successSent', component: SuccessSentComponent},
   { path: 'info', component: InviteInformComponent},
-  {path: 'abonamentList', component: BuyAbonamentListComponent},
-  {path: 'abonamentDetails/:id' , component: BuyAbonamentDetailsComponent},
-  {path: 'buyAbonamentConfirmed' , component: BuyAbonamentConfirmedComponent},
-  {path: 'buyAbonamentCancelled' , component: BuyAbonamentCancelledComponent},
+  { path: 'abonamentList', component: BuyAbonamentListComponent},
+  { path: 'abonamentDetails/:id' , component: BuyAbonamentDetailsComponent},
+  { path: 'buyAbonamentConfirmed' , component: BuyAbonamentConfirmedComponent},
+  { path: 'buyAbonamentCancelled' , component: BuyAbonamentCancelledComponent},
 ];
 
 @NgModule({
@@ -60,7 +62,7 @@ const routes: Routes = [
   ],
   exports:
     [RouterModule],
-  providers: [TypAbonamentuService],
+  providers: [TypAbonamentuService, UserIdService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

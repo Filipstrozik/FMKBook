@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {RabatService} from "../../services/rabat/rabat.service";
+import {FriendService} from "../../services/friend/friend.service";
+import {UserIdService} from "../../services/userId/user-id.service";
 
 @Component({
   selector: 'app-invite-user',
@@ -8,12 +11,19 @@ import {Router} from "@angular/router";
 })
 export class InviteUserComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private friendService: FriendService,
+              private userIdService: UserIdService) { }
   nr = ''
   ngOnInit(): void {
   }
   add() {
-    this.router.navigate(['successSent']);
+    let userId = this.userIdService.getNumber()
+    console.log(userId)
+    this.friendService.sendSms(userId, this.nr).subscribe(data => {
+
+      this.router.navigate(['successSent']);
+    });
+
   }
 
   cancel() {
