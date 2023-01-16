@@ -18,4 +18,8 @@ export class TypAbonamentuService {
   getTypAbonamentuList(): Observable<TypAbonamentu[]> {
     return this.http.get<TypAbonamentu[]>(this.baseUrl);
   }
+
+  getTypAbonamentu(id: number): Observable<TypAbonamentu> {
+    return this.http.get<TypAbonamentu>(`${this.baseUrl}/${id}`);
+  }
 }

@@ -12,9 +12,6 @@ export class BuyAbonamentListComponent implements OnInit {
 
 
   typyAbonamentu: TypAbonamentu[] = [
-    // { id: 10, opis: "6 miesięcy", cena: 120},
-    // { id: 11, opis: "3 miesiące", cena: 150},
-    // { id: 12, opis: "1 miesiąc", cena: 180}
   ];
   constructor(private router: Router, private typAbonamentuService: TypAbonamentuService) { }
 
@@ -36,6 +33,8 @@ export class BuyAbonamentListComponent implements OnInit {
     this.statusClass = 'active';
   }
 
+  //delete later
+  idUser: number = 1;
   navigateToDetails() {
     this.router.navigate(['abonamentDetails', this.selectedType?.id]);
   }
