@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {RabatService} from "../../services/rabat/rabat.service";
+import {UserIdService} from "../../services/userId/user-id.service";
 
 
 @Component({
@@ -10,18 +11,20 @@ import {RabatService} from "../../services/rabat/rabat.service";
 })
 export class AddCodeUserComponent implements OnInit {
   code = '';
-  idUser = 1;
   hidden = 'none';
 
-  constructor(private router: Router, private rabatService: RabatService) {
+  constructor(private router: Router,
+              private rabatService: RabatService,
+              private userIdService: UserIdService) {
   }
 
   ngOnInit(): void {
   }
 
   add() {
-
-    this.rabatService.updateRabat(this.idUser, this.code).subscribe(data => {
+    let userId = this.userIdService.getNumber()
+    console.log(this.userIdService.getNumber())
+    this.rabatService.updateRabat(userId, this.code).subscribe(data => {
 
       this.router.navigate(['successCode', this.code]);
     });
