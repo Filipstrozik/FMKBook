@@ -3,26 +3,30 @@ package com.fmkbook.springbootbackend.models;
 import javax.persistence.*;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "SEANS")
 public class Seans {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "IDSEANSU", nullable = false)
     private Integer id;
 
-    @Column(name = "\"DATA\"", nullable = false)
+    //tylko dzien
+    @Column(name = "DATA", nullable = false)
     private LocalDate data;
-
+    //godzina
     @Column(name = "CZAS", nullable = false)
-    private Instant czas;
+    private LocalTime czas;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "KINOIDKINA", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "KINOIDKINA", nullable = true)
     private Kino kinoidkina;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FILMIDFILMU", nullable = false)
+//    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "FILMIDFILMU", nullable = true)
     private Film filmidfilmu;
 
     @Column(name = "CENASEANSU", nullable = false)
@@ -52,11 +56,11 @@ public class Seans {
         this.kinoidkina = kinoidkina;
     }
 
-    public Instant getCzas() {
+    public LocalTime getCzas() {
         return czas;
     }
 
-    public void setCzas(Instant czas) {
+    public void setCzas(LocalTime czas) {
         this.czas = czas;
     }
 

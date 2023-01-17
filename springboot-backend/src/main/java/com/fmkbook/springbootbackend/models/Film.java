@@ -1,13 +1,17 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "FILM")
+@JsonIgnoreProperties(value = {"seans"})
 public class Film {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "IDFILMU", nullable = false)
     private Integer id;
 
@@ -21,7 +25,7 @@ public class Film {
     private Integer dlugosc;
 
     @OneToMany(mappedBy = "filmidfilmu")
-    private Set<Seans> seans = new LinkedHashSet<>();
+    private Set<Seans> seans;
 
     public Set<Seans> getSeans() {
         return seans;
