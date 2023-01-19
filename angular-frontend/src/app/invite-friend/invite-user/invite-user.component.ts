@@ -19,6 +19,7 @@ export class InviteUserComponent implements OnInit {
   add() {
     let userId = this.userIdService.getNumber()
     console.log(userId)
+    console.log(this.nr)
     this.friendService.sendSms(userId, this.nr).subscribe(data => {
 
       this.router.navigate(['successSent']);

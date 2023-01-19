@@ -16,7 +16,10 @@ export class MenuComponent implements OnInit {
   discountCode() {
     this.router.navigate(['addCode']);
   }
-
+  user1() {
+    this.userIdService.setNumber(1);
+    console.log(this.userIdService.getNumber())
+  }
   user2() {
     this.userIdService.setNumber(2);
     console.log(this.userIdService.getNumber())

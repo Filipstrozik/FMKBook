@@ -1,6 +1,7 @@
 package com.fmkbook.springbootbackend.controllers;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fmkbook.springbootbackend.models.Rabat;
 import com.fmkbook.springbootbackend.services.RabatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class RabatApi {
         this.rabatService = rabatService;
     }
 
+
     @GetMapping
     public ResponseEntity<List<Rabat>> getAllRabats () {
         List<Rabat> rabatList = this.rabatService.findAllRabats();
@@ -35,8 +37,8 @@ public class RabatApi {
     }
 
     @PostMapping
-    public ResponseEntity<Rabat> addRabat(@RequestBody Rabat rabat) {
-        Rabat newRabat = rabatService.addRabat(rabat);
+    public ResponseEntity<Rabat> addRabat(@RequestParam("idUser") Optional<Integer> idUser, @RequestParam("discount") Double discount) {
+        Rabat newRabat = rabatService.addRabat(discount,idUser);
         return new ResponseEntity<>(newRabat, HttpStatus.CREATED);
     }
 

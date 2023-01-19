@@ -20,7 +20,9 @@ h3 {
   bottom: 55%;
   transform: translate(-50%, -50%);
 }
-
+p{
+  font-size: 2rem;
+}
 h2 {
   font-size: 20px;
   color: #634CF3;

@@ -5,3 +5,13 @@ h2 {
   text-align: center;
   margin-top: 40px;
 }
+h3 {
+  font-size: 30px;
+  color: black;
+  font-family: "SansSerif", sans-serif;
+  text-align: center;
+  margin-top: 40px;
+}
+p{
+  font-size: 2rem;
+}

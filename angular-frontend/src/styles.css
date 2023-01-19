@@ -2,7 +2,7 @@
 
 .cancel{
   border-radius: 10px;
-  width: 150px;
+  width: 250px;
   height: 30px;
   background-color: deeppink;
   bottom: 90px;
@@ -18,9 +18,9 @@
 
 .backOrAccept{
   border-radius: 10px;
-  width: auto;
+  width: 250px;
   height: 30px;
-  background-color: rebeccapurple;
+  background-color: mediumpurple;
   bottom: 90px;
   position: fixed;
   left: 50%;
@@ -29,7 +29,7 @@
 
 .add{
   border-radius: 10px;
-  width: 150px;
+  width: 250px;
   height: 30px;
   background-color: mediumspringgreen;
   bottom: 50px;
