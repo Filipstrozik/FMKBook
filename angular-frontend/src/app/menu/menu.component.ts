@@ -20,6 +20,7 @@ export class MenuComponent implements OnInit {
     this.userIdService.setNumber(1);
     console.log(this.userIdService.getNumber())
   }
+
   user2() {
     this.userIdService.setNumber(2);
     console.log(this.userIdService.getNumber())

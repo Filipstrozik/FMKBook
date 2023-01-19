@@ -6,7 +6,8 @@ import javax.persistence.*;
 @Table(name = "ABONAMENT")
 public class Abonament {
     @Id
-    @Column(name = "IDABONAMENTU", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "IDABONAMENTU",unique=true, nullable = false)
     private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TYPABONAMENTUCOLUMN")

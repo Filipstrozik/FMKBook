@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {TypAbonamentu} from "../../typ-abonamentu.model";
+import {TypAbonamentuService} from "../../services/typ-abonamentu/typ-abonamentu.service";
 
 @Component({
   selector: 'app-buy-abonament-details',
@@ -9,22 +10,26 @@ import {TypAbonamentu} from "../../typ-abonamentu.model";
 })
 export class BuyAbonamentDetailsComponent implements OnInit {
   typyAbonamentu: TypAbonamentu[] = [
-    { id: 10, opis: "6 miesięcy", cena: 120},
-    { id: 11, opis: "3 miesiące", cena: 150},
-    { id: 12, opis: "1 miesiąc", cena: 180}
   ];
 
 
-  selectedType: TypAbonamentu;
-  constructor(private router: Router, private route: ActivatedRoute) {
+  selectedType!: TypAbonamentu;
+
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private typAbonamentService: TypAbonamentuService) {
     console.log(this.route.snapshot.paramMap.get('id'));
     let id: number = parseInt(<string>this.route.snapshot.paramMap.get('id'));
 
-      this.selectedType = this.typyAbonamentu.find(t => t.id == id)!
+      // this.selectedType = this.typyAbonamentu.find(t => t.id == id)!
+      this.typAbonamentService.getTypAbonamentu(id).subscribe(data => {
+        this.selectedType = data;
+      });
 
   }
 
   ngOnInit(): void {
+
   }
 
 
@@ -33,6 +38,6 @@ export class BuyAbonamentDetailsComponent implements OnInit {
   }
 
   confirm() {
-    this.router.navigate(['/buyAbonamentConfirmed']);
+    this.router.navigate(['/buyAbonamentConfirmed', {idUser: 1, idTypAbonamentu: this.selectedType.id}]);
   }
 }
