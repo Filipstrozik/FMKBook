@@ -1,5 +1,8 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -7,6 +10,7 @@ import java.time.LocalTime;
 
 @Entity
 @Table(name = "SEANS")
+@JsonIgnoreProperties(value = {"kinoidkina", "agent"})
 public class Seans {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
