@@ -1,11 +1,14 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "TYPABONAMENTU")
+@JsonIgnoreProperties(value = {"abonaments"})
 public class Typabonamentu {
     @Id
     @Column(name = "IDTYPABONAMENTU", nullable = false)

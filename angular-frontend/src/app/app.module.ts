@@ -22,6 +22,8 @@ import {NotificationService} from "./services/notification/notification.service"
 import {TypAbonamentu} from "./typ-abonamentu.model";
 import {TypAbonamentuService} from "./services/typ-abonamentu/typ-abonamentu.service";
 import { ReflinkComponent } from './reflink/reflink/reflink.component';
+import { FilmListComponent } from './reservation/film-list/film-list.component';
+import { FilmDetailComponent } from './reservation/film-detail/film-detail.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -36,6 +38,8 @@ const routes: Routes = [
   { path: 'buyAbonamentConfirmed' , component: BuyAbonamentConfirmedComponent},
   { path: 'buyAbonamentCancelled' , component: BuyAbonamentCancelledComponent},
   { path: 'reflink' , component: ReflinkComponent},
+  { path: 'reservationFilms', component: FilmListComponent},
+  { path: 'reservationFilms/:id', component: FilmDetailComponent},
 ];
 
 @NgModule({
@@ -55,7 +59,9 @@ const routes: Routes = [
     BuyAbonamentDetailsComponent,
     BuyAbonamentConfirmedComponent,
     BuyAbonamentCancelledComponent,
-    ReflinkComponent
+    ReflinkComponent,
+    FilmListComponent,
+    FilmDetailComponent
   ],
   imports: [
     BrowserModule,
