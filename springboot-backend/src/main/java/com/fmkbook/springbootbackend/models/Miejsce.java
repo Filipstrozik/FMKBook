@@ -1,13 +1,17 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "MIEJSCE")
+@JsonIgnoreProperties(value = {"bilets"})
 public class Miejsce {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "IDMIEJSCA", nullable = false)
     private Integer id;
 
@@ -17,12 +21,12 @@ public class Miejsce {
     @Column(name = "KOLUMNA", nullable = false, length = 100)
     private String kolumna;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "SALAIDSALI", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "SALAIDSALI", nullable = true)
     private Sala salaidsali;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "TYPMIEJSCANAZWATYPUMIEJSCA", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "TYPMIEJSCANAZWATYPUMIEJSCA", nullable = true)
     private Typmiejsca typmiejscanazwatypumiejsca;
 
     @OneToMany(mappedBy = "miejsceidmiejsca")
