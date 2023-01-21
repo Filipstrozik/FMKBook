@@ -1,13 +1,17 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "SALA")
+@JsonIgnoreProperties(value = {"miejsces"})
 public class Sala {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "IDSALI", nullable = false)
     private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)

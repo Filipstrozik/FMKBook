@@ -1,23 +1,29 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "KINO")
+@JsonIgnoreProperties(value = {"seans", "salas"})
 public class Kino {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "IDKINA", nullable = false)
     private Integer id;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "AGENTIDAGENTA")
+    @JoinColumn(name = "AGENTIDAGENTA", nullable = true)
     private Agent agentidagenta;
 
     @Column(name = "ADRES", nullable = false)
     private String adres;
 
-    @OneToMany(mappedBy = "kinoidkina")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY ,mappedBy = "kinoidkina")
     private Set<Seans> seans = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "kinoidkina")

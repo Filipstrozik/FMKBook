@@ -6,22 +6,23 @@ import javax.persistence.*;
 @Table(name = "BILET")
 public class Bilet {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "IDBILETU", nullable = false)
     private Integer id;
 
     @Column(name = "CENABILETU")
     private Double cenabiletu;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "REZERWACJAIDREZERWACJI", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "REZERWACJAIDREZERWACJI", nullable = true)
     private Rezerwacja rezerwacjaidrezerwacji;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "MIEJSCEIDMIEJSCA", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "MIEJSCEIDMIEJSCA", nullable = true)
     private Miejsce miejsceidmiejsca;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "TYPBILETUNAZWATYPUBILETU", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "TYPBILETUNAZWATYPUBILETU", nullable = true)
     private Typbiletu typbiletunazwatypubiletu;
 
     public Typbiletu getTypbiletunazwatypubiletu() {
