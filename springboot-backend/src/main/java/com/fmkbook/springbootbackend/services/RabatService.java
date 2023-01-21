@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Service
@@ -26,7 +27,15 @@ public class RabatService {
         this.uzytkownikRepository = uzytkownikRepository;
     }
 
-    public Rabat addRabat(Rabat rabat) {
+    public Rabat addRabat(Double discount, Optional<Integer> idUser) {
+        Rabat rabat = new Rabat();
+        rabat.setWysokoscrabatu(discount);
+        rabat.setId(UUID.randomUUID().toString().replaceAll("-", "").substring(0,10));
+        if(idUser.isPresent()){
+            Optional<Uzytkownik> uzytkownik = uzytkownikRepository.findUzytkownikById(idUser.get());
+            uzytkownik.ifPresent(rabat::setUzytkownikiduzytkownika);
+        }
+
         return this.rabatRepository.save(rabat);
     }
 

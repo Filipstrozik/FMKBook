@@ -1,0 +1,17 @@
+.menu{
+  display: block;
+  height: 100vh;
+}
+
+button{
+  width: 50%;
+  height: 10vh;
+}
+p{
+  font-size: 2rem;
+}
+
+.menu-button{
+  color:black;
+  height: 20vh;
+}

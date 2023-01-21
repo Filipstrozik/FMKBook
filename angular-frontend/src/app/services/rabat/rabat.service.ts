@@ -18,4 +18,13 @@ export class RabatService {
     return this.http.put(`${this.url}?idUser=${idUser}&idRabatu=${idRabatu}`,{params});
 
   }
+  sentPost(idUser:number, discount: number):Observable<any>{
+    const params = new HttpParams()
+      .set('idUser', +idUser)
+      .set('discount', discount);
+
+    console.log("wysylam dla"+idUser)
+    return this.http.post(`${this.url}?idUser=${idUser}&discount=${discount}`,{params});
+
+  }
 }
