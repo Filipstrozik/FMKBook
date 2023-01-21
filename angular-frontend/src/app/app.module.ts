@@ -21,6 +21,7 @@ import {UserIdService} from "./services/userId/user-id.service";
 import {NotificationService} from "./services/notification/notification.service";
 import {TypAbonamentu} from "./typ-abonamentu.model";
 import {TypAbonamentuService} from "./services/typ-abonamentu/typ-abonamentu.service";
+import { ReflinkComponent } from './reflink/reflink/reflink.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'abonamentDetails/:id' , component: BuyAbonamentDetailsComponent},
   { path: 'buyAbonamentConfirmed' , component: BuyAbonamentConfirmedComponent},
   { path: 'buyAbonamentCancelled' , component: BuyAbonamentCancelledComponent},
+  { path: 'reflink' , component: ReflinkComponent},
 ];
 
 @NgModule({
@@ -52,7 +54,8 @@ const routes: Routes = [
     InviteInformComponent,
     BuyAbonamentDetailsComponent,
     BuyAbonamentConfirmedComponent,
-    BuyAbonamentCancelledComponent
+    BuyAbonamentCancelledComponent,
+    ReflinkComponent
   ],
   imports: [
     BrowserModule,

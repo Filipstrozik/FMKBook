@@ -10,3 +10,13 @@ input {
   bottom: 35%;
   transform: translate(-50%, -50%);
 }
+h3 {
+  font-size: 30px;
+  color: black;
+  font-family: "SansSerif", sans-serif;
+  text-align: center;
+  margin-top: 70px;
+}
+p{
+  font-size: 2rem;
+}

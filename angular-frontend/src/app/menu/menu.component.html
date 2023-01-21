@@ -1,4 +1,7 @@
-<p>menu works!</p>
+<p>MENU</p>
+<button (click)="user1()"  >
+  <p>User1</p>
+</button>
 <button (click)="user2()"  >
   <p>User2</p>
 </button>
@@ -8,20 +11,24 @@
 <button (click)="user4()"  >
   <p>User4</p>
 </button>
+<div class="menu">
+
+  <button class="menu-button" (click)="discountCode()"  >
+    <p>Add discount code</p>
+  </button>
+
+  <button class="menu-button" (click)="inviteFriend()"  >
+    <p>Invite Friend</p>
+  </button>
+
+  <button class="menu-button" (click)="info()"  >
+    <p>Info</p>
+  </button>
+
+  <button class="menu-button" (click)="buyAbonament()">
+    <a routerLink="/abonamentList"><p>Buy Abonament</p></a>
+  </button>
 
 
-<button (click)="discountCode()"  >
-  <p>DISCOUNT CODE</p>
-</button>
+</div>
 
-<button (click)="inviteFriend()"  >
-  <p>Invite Friend</p>
-</button>
-
-<button (click)="info()"  >
-  <p>Info</p>
-</button>
-
-<button (click)="buyAbonament()">
-  <a routerLink="/abonamentList"><p>Buy Abonament</p></a>
-</button>
