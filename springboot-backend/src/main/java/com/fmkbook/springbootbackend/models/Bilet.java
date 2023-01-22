@@ -11,13 +11,13 @@ public class Bilet {
     private Integer id;
 
     @Column(name = "CENABILETU")
-    private Double cenabiletu;
+    private Double cenabiletu = 11.99;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "REZERWACJAIDREZERWACJI", nullable = true)
     private Rezerwacja rezerwacjaidrezerwacji;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "MIEJSCEIDMIEJSCA", nullable = true)
     private Miejsce miejsceidmiejsca;
 

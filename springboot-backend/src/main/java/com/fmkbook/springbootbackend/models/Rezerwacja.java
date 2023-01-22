@@ -14,7 +14,8 @@ public class Rezerwacja {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "IDREZERWACJI", nullable = false)
     private Integer id;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "UZYTKOWNIKIDUZYTKOWNIKA")
     private Uzytkownik uzytkownikiduzytkownika;
 
@@ -25,7 +26,7 @@ public class Rezerwacja {
     @Column(name = "CENAREZERWACJI")
     private Double cenarezerwacji;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "SEANSIDSEANSU", nullable = true)
     private Seans seansidseansu;
 

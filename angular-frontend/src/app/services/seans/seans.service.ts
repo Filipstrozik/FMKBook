@@ -20,6 +20,10 @@ export class SeansService {
     return this.http.get<Seans>(`${this.apiURL}/${id}`);
   }
 
+  getSeansByFilmId(id: number): Observable<Seans[]> {
+    return this.http.get<Seans[]>(`${this.apiURL}/film/${id}`);
+  }
+
   createSeans(seans: Seans): Observable<Seans> {
     return this.http.post<Seans>(this.apiURL, seans);
   }

@@ -10,19 +10,28 @@
 
 
 <ul class="list-group">
-  <li class="list-group list-unstyled flex-column text-center" >
-    <p>{{film.tytul}} </p>
+  <li *ngIf="film" class="list-group list-unstyled flex-column text-center" >
+    <p >{{film.tytul}} </p>
     <p>{{film.gatunek}}</p>
     <p>{{film.dlugosc}}</p>
   </li>
 </ul>
 
+<ul class="list-group">
+  <li *ngFor="let seans of seansList" class="list-group list-group-item-info flex-column text-center" >
+    <button type="button" class="list-group-item"  (click)="onSelect(seans.id)">
+      <p class="name" >{{seans.czas}}</p>
+      <p class="name">{{seans.cenaseansu}}</p>
+    </button>
+  </li>
+
+</ul>
 
 </body>
 
 <footer class="text-center" >
-  <button  type="submit" class="choose btn btn-primary">
-    <p>dokonaj zakupu</p>
-  </button>
+<!--  <button  type="submit" class="choose btn btn-primary">-->
+<!--    <p>dokonaj zakupu</p>-->
+<!--  </button>-->
 </footer>
 

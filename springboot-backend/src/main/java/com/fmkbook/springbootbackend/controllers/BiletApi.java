@@ -32,9 +32,21 @@ public class BiletApi {
         return new ResponseEntity<>(bilet.get(), HttpStatus.OK);
     }
 
+//    @GetMapping("/sala/{id}")
+//    public ResponseEntity<List<Bilet>> getAllBilets(@PathVariable Integer salaId) {
+//        return new ResponseEntity<>(biletService.getAllBiletsInSala(salaId), HttpStatus.OK);
+//    }
+
     @PostMapping
     public ResponseEntity<Bilet> addBilet(@RequestBody Bilet bilet) {
         return new ResponseEntity<>(biletService.addBilet(bilet), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/more")
+    public ResponseEntity<Bilet> addBiletWithParams(@RequestBody Bilet bilet,
+                                                    @RequestParam("miejsce") Integer miejsceId,
+                                                    @RequestParam("rezerwacja") Integer rezerwacjaId ) {
+        return new ResponseEntity<>(biletService.addBiletWithRezerwacjaAndMiejsce(bilet, miejsceId, rezerwacjaId), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

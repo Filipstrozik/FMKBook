@@ -12,12 +12,22 @@ public class MiejsceService {
 
     private final MiejsceRepository miejsceRepository;
 
+
     public MiejsceService(MiejsceRepository miejsceRepository) {
         this.miejsceRepository = miejsceRepository;
     }
 
     public List<Miejsce> getAllMiejsces() {
         return miejsceRepository.findAll();
+    }
+
+    public List<Miejsce> getAvailableMiejsce(Integer seansId) {
+        return miejsceRepository.findFreeMiejsceBySeans(seansId);
+    }
+
+    public List<Miejsce> getAllMiejscesInSala(Integer salaId) {
+
+        return miejsceRepository.findAllBySalaidsaliId(salaId);
     }
 
     public Optional<Miejsce> getMiejsceById(Integer id) {

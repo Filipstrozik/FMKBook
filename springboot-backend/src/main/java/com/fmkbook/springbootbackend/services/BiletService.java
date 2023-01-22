@@ -1,7 +1,12 @@
 package com.fmkbook.springbootbackend.services;
 
 import com.fmkbook.springbootbackend.models.Bilet;
+import com.fmkbook.springbootbackend.models.Miejsce;
+import com.fmkbook.springbootbackend.models.Rezerwacja;
 import com.fmkbook.springbootbackend.repositories.BiletRepository;
+import com.fmkbook.springbootbackend.repositories.MiejsceRepository;
+import com.fmkbook.springbootbackend.repositories.RezerwacjaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,13 +16,51 @@ import java.util.Optional;
 public class BiletService {
 
     private final BiletRepository biletRepository;
+    private final RezerwacjaRepository rezerwacjaRepository;
+    private final MiejsceRepository miejsceRepository;
 
-    public BiletService(BiletRepository biletRepository) {
+    @Autowired
+    public BiletService(BiletRepository biletRepository,
+                        RezerwacjaRepository rezerwacjaRepository,
+                        MiejsceRepository miejsceRepository) {
         this.biletRepository = biletRepository;
+        this.rezerwacjaRepository = rezerwacjaRepository;
+        this.miejsceRepository = miejsceRepository;
     }
 
     public List<Bilet> getAllBilets() {
         return biletRepository.findAll();
+    }
+
+    public List<Bilet> getAllBiletsInRezerwacja(Integer rezerwacjaId) {
+        Optional<Rezerwacja> rezerwacja = this.rezerwacjaRepository.findById(rezerwacjaId);
+        if (rezerwacja.isEmpty()) {
+            return null;
+        }
+
+        return biletRepository.findAll();
+    }
+
+    public Bilet addBiletWithRezerwacjaAndMiejsce(Bilet bilet, Integer miejsceId, Integer rezererwacjaId) {
+        Optional<Rezerwacja> foundRezerwacja = this.rezerwacjaRepository.findById(rezererwacjaId);
+        if (foundRezerwacja.isEmpty()) {
+            return null;
+        }
+        Optional<Miejsce> foundMiejsce = this.miejsceRepository.findById(miejsceId);
+        if (foundMiejsce.isEmpty()) {
+            return null;
+        }
+        //update sum
+        System.out.println(bilet.getCenabiletu());
+        System.out.println(foundRezerwacja.get().getCenarezerwacji());
+        foundRezerwacja.get().setCenarezerwacji(foundRezerwacja.get().getCenarezerwacji() + bilet.getCenabiletu());
+        System.out.println(foundRezerwacja.get().getCenarezerwacji());
+        this.rezerwacjaRepository.save(foundRezerwacja.get());
+
+        bilet.setRezerwacjaidrezerwacji(foundRezerwacja.get());
+        bilet.setMiejsceidmiejsca(foundMiejsce.get());
+        return this.biletRepository.save(bilet);
+
     }
 
     public Optional<Bilet> getBiletById(Integer id) {

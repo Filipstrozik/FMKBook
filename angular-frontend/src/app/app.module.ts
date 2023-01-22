@@ -24,6 +24,7 @@ import {TypAbonamentuService} from "./services/typ-abonamentu/typ-abonamentu.ser
 import { ReflinkComponent } from './reflink/reflink/reflink.component';
 import { FilmListComponent } from './reservation/film-list/film-list.component';
 import { FilmDetailComponent } from './reservation/film-detail/film-detail.component';
+import { SalaMiejscaComponent } from './reservation/sala-miejsca/sala-miejsca.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'reflink' , component: ReflinkComponent},
   { path: 'reservationFilms', component: FilmListComponent},
   { path: 'reservationFilms/:id', component: FilmDetailComponent},
+  { path: 'seansMiejsca/:id', component: SalaMiejscaComponent},
 ];
 
 @NgModule({
@@ -61,7 +63,8 @@ const routes: Routes = [
     BuyAbonamentCancelledComponent,
     ReflinkComponent,
     FilmListComponent,
-    FilmDetailComponent
+    FilmDetailComponent,
+    SalaMiejscaComponent
   ],
   imports: [
     BrowserModule,

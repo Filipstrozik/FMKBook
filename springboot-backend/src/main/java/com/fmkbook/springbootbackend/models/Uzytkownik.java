@@ -1,6 +1,7 @@
 package com.fmkbook.springbootbackend.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -12,6 +13,7 @@ import java.util.Set;
         property = "id")
 @Entity
 @Table(name = "UZYTKOWNIK")
+@JsonIgnoreProperties(value = {"rabats", "rezerwacjas"})
 public class Uzytkownik {
     @Id
     @Column(name = "IDUZYTKOWNIKA", nullable = false)
@@ -27,10 +29,10 @@ public class Uzytkownik {
     private String email;
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "uzytkownikiduzytkownika")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "uzytkownikiduzytkownika")
     private Set<Rabat> rabats = new LinkedHashSet<>();
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "uzytkownikiduzytkownika")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "uzytkownikiduzytkownika")
     private Set<Rezerwacja> rezerwacjas = new LinkedHashSet<>();
 
     public Set<Rezerwacja> getRezerwacjas() {

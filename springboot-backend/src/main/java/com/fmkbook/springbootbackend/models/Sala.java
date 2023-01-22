@@ -14,7 +14,7 @@ public class Sala {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "IDSALI", nullable = false)
     private Integer id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "KINOIDKINA")
     private Kino kinoidkina;
 
