@@ -12,7 +12,7 @@ import java.util.Set;
 @JsonIgnoreProperties(value = {"seans", "salas", "agentidagenta"})
 public class Kino {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "IDKINA", nullable = false)
     private Integer id;
     @OneToOne(fetch = FetchType.LAZY)
