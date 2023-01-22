@@ -21,7 +21,7 @@ public class Miejsce {
     @Column(name = "KOLUMNA", nullable = false, length = 100)
     private String kolumna;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "SALAIDSALI", nullable = true)
     private Sala salaidsali;
 

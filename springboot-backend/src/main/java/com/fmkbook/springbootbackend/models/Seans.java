@@ -2,6 +2,7 @@ package com.fmkbook.springbootbackend.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Proxy;
+import org.hibernate.mapping.Join;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -36,6 +37,18 @@ public class Seans {
 
     @Column(name = "CENASEANSU", nullable = false)
     private Double cenaseansu;
+
+    @ManyToOne
+    @JoinColumn()
+    private Sala sala;
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
 
     public Double getCenaseansu() {
         return cenaseansu;

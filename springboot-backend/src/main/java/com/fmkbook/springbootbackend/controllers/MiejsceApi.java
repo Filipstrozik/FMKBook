@@ -29,6 +29,18 @@ public class MiejsceApi {
         return miejsce.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/sala/{salaId}")
+    public ResponseEntity<List<Miejsce>> getAllMiejscesInSala(@PathVariable Integer salaId) {
+        return new ResponseEntity<>(miejsceService.getAllMiejscesInSala(salaId), HttpStatus.OK);
+    }
+
+    @GetMapping("/seans/{seansId}")
+    public ResponseEntity<List<Miejsce>> getAvailableMiejsceInSeans(@PathVariable Integer seansId) {
+        return new ResponseEntity<>(miejsceService.getAvailableMiejsce(seansId), HttpStatus.OK);
+    }
+
+
+
     @PostMapping
     public ResponseEntity<Miejsce> addMiejsce(@RequestBody Miejsce miejsce) {
         return new ResponseEntity<>(miejsceService.addMiejsce(miejsce), HttpStatus.CREATED);
