@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 @Entity
 @Table(name = "SEANS")
-@JsonIgnoreProperties(value = {"kinoidkina", "agent"})
+@JsonIgnoreProperties(value = {"agent"})
 public class Seans {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,8 @@ public class Seans {
     @Column(name = "CZAS", nullable = false)
     private LocalTime czas;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+//    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(optional = true)
     @JoinColumn(name = "KINOIDKINA", nullable = true)
     private Kino kinoidkina;
 
