@@ -7,7 +7,7 @@ import {Miejsce} from "../../miejsce.model";
 })
 export class MiejsceService {
 
-  private baseUrl = 'http://localhost:8080/bilet';
+  private baseUrl = 'http://localhost:8080/miejsce';
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,10 @@ export class MiejsceService {
 
   getMiejsce(id: number) {
     return this.http.get<Miejsce>(`${this.baseUrl}/${id}`);
+  }
+
+  getMiejscaBySeans(id: number) {
+    return this.http.get<Miejsce[]>(`${this.baseUrl}/seans/${id}`);
   }
 
   createMiejsce(miejsce: Miejsce) {

@@ -1,0 +1,11 @@
+<p>sala-miejsca works!</p>
+<div *ngIf="miejscaList">
+  <h3>Seat Map</h3>
+  <table class="table table-bordered">
+    <tr *ngFor="let row of rows">
+      <td *ngFor="let seat of miejscaList" [class.reserved]="seat.bilets?.size > 0">
+        {{ seat.rzad + seat.kolumna }}
+      </td>
+    </tr>
+  </table>
+</div>
