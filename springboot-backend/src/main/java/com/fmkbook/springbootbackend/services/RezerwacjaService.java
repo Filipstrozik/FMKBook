@@ -1,7 +1,8 @@
 package com.fmkbook.springbootbackend.services;
 
-import com.fmkbook.springbootbackend.models.Bilet;
+import com.fmkbook.springbootbackend.models.Rabat;
 import com.fmkbook.springbootbackend.models.Rezerwacja;
+import com.fmkbook.springbootbackend.repositories.RabatRepository;
 import com.fmkbook.springbootbackend.repositories.RezerwacjaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,12 @@ import java.util.Optional;
 @Service
 public class RezerwacjaService {
     private final RezerwacjaRepository rezerwacjaRepository;
+    private final RabatRepository rabatRepository;
 
     @Autowired
-    public RezerwacjaService(RezerwacjaRepository rezerwacjaRepository) {
+    public RezerwacjaService(RezerwacjaRepository rezerwacjaRepository, RabatRepository rabatRepository) {
         this.rezerwacjaRepository = rezerwacjaRepository;
+        this.rabatRepository = rabatRepository;
     }
 
     public List<Rezerwacja> getAllRezerwacjas() {
@@ -47,5 +50,20 @@ public class RezerwacjaService {
 
     public void deleteRezerwacja(Integer id) {
         rezerwacjaRepository.deleteById(id);
+    }
+
+    public Rezerwacja setRabat(Integer idRez, String idRabatu) {
+        Rezerwacja currentRezerwacja = rezerwacjaRepository.findById(idRez).orElse(null);
+        if (currentRezerwacja != null) {
+            Optional<Rabat> rabat = rabatRepository.findRabatById(idRabatu);
+            if(rabat.isPresent() && currentRezerwacja.getRabatkodrabatowy()==null){
+                currentRezerwacja.setRabatkodrabatowy(rabat.get());
+                Double price = currentRezerwacja.getCenarezerwacji();
+                Double discount = rabat.get().getWysokoscrabatu();
+                currentRezerwacja.setCenarezerwacji(price - (price*discount/100));
+                return rezerwacjaRepository.save(currentRezerwacja);
+            }
+        }
+        return currentRezerwacja;
     }
 }
