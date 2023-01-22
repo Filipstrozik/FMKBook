@@ -1,13 +1,17 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "REZERWACJA")
+@JsonIgnoreProperties(value = {"bilets"})
 public class Rezerwacja {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "IDREZERWACJI", nullable = false)
     private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -21,12 +25,12 @@ public class Rezerwacja {
     @Column(name = "CENAREZERWACJI")
     private Double cenarezerwacji;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "SEANSIDSEANSU", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "SEANSIDSEANSU", nullable = true)
     private Seans seansidseansu;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "SPOSOBPLATNOSCINAZWAMETODY", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "SPOSOBPLATNOSCINAZWAMETODY", nullable = true)
     private Sposobplatnosci sposobplatnoscinazwametody;
 
     @OneToMany(mappedBy = "rezerwacjaidrezerwacji")

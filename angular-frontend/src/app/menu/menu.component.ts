@@ -42,6 +42,10 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['info']);
   }
   buyAbonament(){
-    this.router.navigate(['abonamentList'])
+    this.router.navigate(['abonamentList']);
+  }
+
+  makeReservation() {
+    this.router.navigate(['reservationFilms']);
   }
 }
