@@ -18,8 +18,8 @@ public class Seans {
     private Integer id;
 
     //tylko dzien
-    @Column(name = "DATA", nullable = false)
-    private LocalDate data;
+    //@Column(name = "DATA", nullable = true)
+    //private LocalDate data;
     //godzina
     @Column(name = "CZAS", nullable = false)
     private LocalTime czas;
@@ -68,13 +68,13 @@ public class Seans {
         this.czas = czas;
     }
 
-    public LocalDate getData() {
-        return data;
-    }
+    //public LocalDate getData() {
+    //    return data;
+    //}
 
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
+    //public void setData(LocalDate data) {
+    //    this.data = data;
+    //}
 
     public Integer getId() {
         return id;

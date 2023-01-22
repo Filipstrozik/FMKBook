@@ -50,6 +50,16 @@ public class RezerwacjaApi {
         return new ResponseEntity<>(rezerwacjaService.updateRezerwacja(id,rezerwacja), HttpStatus.OK);
     }
 
+    @PutMapping()
+    public ResponseEntity<Rezerwacja> setRabatToReservation(@RequestParam("idRez") Integer idRez, @RequestParam("idRabatu") String idRabatu) {
+        Optional<Rezerwacja> currentRezerwacja = rezerwacjaService.getRezerwacjaById(idRez);
+        if (currentRezerwacja.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        rezerwacjaService.setRabat(idRez,idRabatu);
+        return new ResponseEntity<>( HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         rezerwacjaService.deleteRezerwacja(id);
