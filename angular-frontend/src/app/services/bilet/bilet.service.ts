@@ -32,6 +32,18 @@ export class BiletService {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
+  setBiletTyp(id: number, typ: string): Observable<Bilet> {
+    const emptyBilet: Bilet = Object.create(null);
+    const params = new HttpParams().set('typ', typ);
+    return this.http.put<Bilet>(`${this.baseUrl}/typ/${id}`, {}, {params});
+  }
+
+  setBiletMiejsceTyp(id: number, typ: string): Observable<Bilet> {
+    const emptyBilet: Bilet = Object.create(null);
+    const params = new HttpParams().set('typ', typ);
+    return this.http.put<Bilet>(`${this.baseUrl}/miejsce/${id}`, {} ,{params});
+  }
+
   deleteBilet(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }

@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {MiejsceService} from "../../services/miejsce/miejsce.service";
 import {SeansService} from "../../services/seans/seans.service";
 import {Miejsce} from "../../miejsce.model";
@@ -26,6 +26,9 @@ export class SalaMiejscaComponent implements OnInit {
   film!: Film;
   bilety: Bilet[] = [];
   sumaRezerwacji: number;
+
+  @ViewChild("selectMiejsceTyp") selectMiejsceTyp:ElementRef;
+  @ViewChild("selectBiletType") selectBiletTyp:ElementRef;
 
 
   constructor(private miejsceService: MiejsceService,
@@ -106,8 +109,28 @@ export class SalaMiejscaComponent implements OnInit {
     console.log(`Selected type of ticket: ${typBiletu}`);
   }
 
-  doSomething() {
-    console.log('change!');
+  async setBiletTyp(bilet: Bilet) {
+    console.log(bilet);
+    console.log(this.selectBiletTyp.nativeElement.value);
+    const typ: string = this.selectBiletTyp.nativeElement.value;
+    const res = await this.biletService.setBiletTyp(bilet.id, typ).subscribe();
+
+  }
+
+  async setMiejsceTyp(bilet: Bilet) {
+    console.log(bilet);
+    console.log(this.selectMiejsceTyp.nativeElement.value);
+    const typ: string = this.selectMiejsceTyp.nativeElement.value;
+    const res = await this.biletService.setBiletMiejsceTyp(bilet.id, typ).subscribe(
+      data => {
+        let index = this.bilety.findIndex(b => b.id === bilet.id);
+        if(index > -1){
+          console.log('znaleziono! zmieniam cene');
+          this.bilety[index].cenabiletu = data.cenabiletu;
+        }
+      }
+    );
+    this.selectMiejsceTyp.nativeElement.value = typ;
   }
 
 }

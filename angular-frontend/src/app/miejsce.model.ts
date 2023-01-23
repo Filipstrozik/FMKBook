@@ -6,6 +6,5 @@ export interface Miejsce {
   rzad: string;
   kolumna: string;
   salaidsali?: Sala;
-  // typmiejscanazwatypumiejsca?: Typmiejsca;
   bilets?: Set<Bilet>;
 }

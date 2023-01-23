@@ -58,26 +58,27 @@
 
 <div *ngIf="!displayMap">
   <table  class="container table">
-    <thead class="thead-light">
+    <thead>
     <tr class="row">
       <th >miejsce</th>
-      <th >typ miejsca</th>
       <th >typ biletu</th>
+      <th >typ miejsca</th>
       <th >cena</th>
     </tr>
     </thead>
     <tr class="row" *ngFor="let bilet of bilety">
       <td>{{bilet.miejsceidmiejsca.rzad}}, {{bilet.miejsceidmiejsca.kolumna}}</td>
       <td>
-        <select ngModel (ngModelChange)="doSomething()" >
-          <option value="vip">VIP</option>
-          <option value="standard">standard</option>
+        <select (change)="setBiletTyp(bilet)" #selectBiletType >
+          <option value="normalny">normalny</option>
+          <option value="ulgowy">ulgowy</option>
+          <option value="grupowy">grupowy</option>
         </select>
       </td>
       <td>
-        <select>
-          <option value="ulgowy">Ulgowy</option>
-          <option value="normalny">Normalny</option>
+        <select (change)="setMiejsceTyp(bilet)"  #selectMiejsceTyp>
+          <option value="standard">standard</option>
+          <option value="VIP">VIP</option>
         </select>
       </td>
       <td>{{bilet.cenabiletu}}</td>
