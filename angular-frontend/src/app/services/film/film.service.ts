@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class FilmService {
-
+  selectedFilm: Film;
   constructor(private http: HttpClient) { }
 
   private baseUrl = 'http://localhost:8080/film';
@@ -30,5 +30,13 @@ export class FilmService {
 
   deleteFilm(id: number) {
     return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  getSelectedFilm(){
+    return this.selectedFilm;
+  }
+
+  setSelectedFilm(film: Film){
+    this.selectedFilm = film;
   }
 }

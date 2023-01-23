@@ -24,7 +24,7 @@ public class Rezerwacja {
     private Rabat rabatkodrabatowy;
 
     @Column(name = "CENAREZERWACJI")
-    private Double cenarezerwacji;
+    private Double cenarezerwacji = 0.0;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "SEANSIDSEANSU", nullable = true)

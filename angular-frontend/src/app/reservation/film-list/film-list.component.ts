@@ -23,6 +23,10 @@ export class FilmListComponent implements OnInit {
   }
 
   onSelect(index: number) {
+    const foundFilm = this.films.find(f => f.id === index);
+    if(foundFilm){
+      this.filmService.setSelectedFilm(foundFilm);
+    }
     this.router.navigate(['reservationFilms', index]);
   }
 

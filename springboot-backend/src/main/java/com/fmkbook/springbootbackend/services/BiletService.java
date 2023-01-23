@@ -37,8 +37,7 @@ public class BiletService {
         if (rezerwacja.isEmpty()) {
             return null;
         }
-
-        return biletRepository.findAll();
+        return biletRepository.findAllByRezerwacjaidrezerwacjiId(rezerwacja.get().getId());
     }
 
     public Bilet addBiletWithRezerwacjaAndMiejsce(Bilet bilet, Integer miejsceId, Integer rezererwacjaId) {

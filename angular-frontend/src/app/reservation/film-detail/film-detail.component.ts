@@ -33,6 +33,6 @@ export class FilmDetailComponent implements OnInit {
   }
 
   onSelect(index: number) {
-    this.router.navigate(['seansMiejsca', index]);
+    this.router.navigate(['seansMiejsca', index], {state: {film: this.film}});
   }
 }

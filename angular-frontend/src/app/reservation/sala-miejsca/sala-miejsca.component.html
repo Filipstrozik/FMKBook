@@ -1,11 +1,87 @@
-<p>sala-miejsca works!</p>
-<div *ngIf="miejscaList">
-  <h3>Seat Map</h3>
-  <table class="table table-bordered">
+<h1 class="text-left view-title">składanie</h1>
+<h1 class="text-left view-title">rezerwacji</h1>
+<span class="back-btn">
+  <p><</p>
+</span>
+<h3 class="text-center">wybór miejsc</h3>
+<div *ngIf="displayMap">
+  <h3>Ekran</h3>
+  <ul class="list-group">
+    <li *ngFor="let seat of miejscaList" class="list-group list-unstyled flex-column text-center" (click)="toggleColor($event)" >
+      <button (click)="onSelectSeat(seat.id)">
+        <h5>{{seat.rzad}}</h5>
+        <h5>{{seat.kolumna}}</h5>
+      </button>
+    </li>
+  </ul>
+
+  <table>
     <tr *ngFor="let row of rows">
-      <td *ngFor="let seat of miejscaList" [class.reserved]="seat.bilets?.size > 0">
-        {{ seat.rzad + seat.kolumna }}
+      <p>{{row}}</p>
+      <td *ngFor="let seat of row">
+        <button type="button" (click)="onSelectSeat(seat.id)">
+          <p>{{seat.kolumna}}</p>
+        </button>
       </td>
     </tr>
   </table>
 </div>
+<table class="container">
+  <div class="list-group row">
+    <div class="col-3">
+      <h4>{{film.tytul}}</h4>
+      <h6>{{film.dlugosc}}</h6>
+    </div>
+</div>
+
+
+<!--<table *ngIf="!displayMap" class="container">-->
+<!--  <tr class="col-3">-->
+<!--    <td class="list-group">-->
+<!--      <li class="list-group-item">miejsce</li>-->
+<!--      <li class="list-group-item">ulgowy</li>-->
+<!--      <li class="list-group-item">normalny</li>-->
+<!--      <li class="list-group-item">cena</li>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--  <li class="list-group row justify-content-center" *ngFor="let bilet of bilety">-->
+<!--    <div class="col-3">-->
+<!--      <ul class="list-group">-->
+<!--        <li class="list-group-item">{{bilet.miejsceidmiejsca.id}}</li>-->
+<!--        <li class="list-group-item">ulgowy</li>-->
+<!--        <li class="list-group-item">normalny</li>-->
+<!--        <li class="list-group-item">{{bilet.cenabiletu}}</li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--</table>-->
+
+
+  <table *ngIf="!displayMap" class="container">
+    <tr class="col-3">
+      <div class="list-group">
+        <td class="list-group-item">miejsce</td>
+        <td class="list-group-item">ulgowy</td>
+        <td class="list-group-item">normalny</td>
+        <td class="list-group-item">cena</td>
+      </div>
+    </tr>
+    <tr *ngFor="let bilet of bilety">
+      <td class="list-group-item">{{bilet.miejsceidmiejsca.id}}</td>
+      <td class="list-group-item">ulgowy</td>
+      <td class="list-group-item">normalny</td>
+      <td class="list-group-item">{{bilet.cenabiletu}}</td>
+    </tr>
+    <tr>
+      <td>Sum</td>
+      <td>---</td>
+    </tr>
+  </table>
+
+  <h3 *ngIf="rezerwacja">{{rezerwacja.id}}</h3>
+
+<footer class="text-center" >
+    <button (click)="confirm()"
+            type="submit" class="choose btn btn-primary ">
+      <p>zatwiedź</p>
+    </button>
+</footer>

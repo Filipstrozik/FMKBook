@@ -2,8 +2,12 @@ package com.fmkbook.springbootbackend.services;
 
 import com.fmkbook.springbootbackend.models.Rabat;
 import com.fmkbook.springbootbackend.models.Rezerwacja;
+import com.fmkbook.springbootbackend.models.Seans;
+import com.fmkbook.springbootbackend.models.Uzytkownik;
 import com.fmkbook.springbootbackend.repositories.RabatRepository;
 import com.fmkbook.springbootbackend.repositories.RezerwacjaRepository;
+import com.fmkbook.springbootbackend.repositories.SeansRepository;
+import com.fmkbook.springbootbackend.repositories.UzytkownikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +18,15 @@ import java.util.Optional;
 public class RezerwacjaService {
     private final RezerwacjaRepository rezerwacjaRepository;
     private final RabatRepository rabatRepository;
+    private final UzytkownikRepository uzytkownikRepository;
+    private final SeansRepository seansRepository;
 
-    @Autowired
-    public RezerwacjaService(RezerwacjaRepository rezerwacjaRepository, RabatRepository rabatRepository) {
+
+    public RezerwacjaService(RezerwacjaRepository rezerwacjaRepository, RabatRepository rabatRepository, UzytkownikRepository uzytkownikRepository, SeansRepository seansRepository) {
         this.rezerwacjaRepository = rezerwacjaRepository;
         this.rabatRepository = rabatRepository;
+        this.uzytkownikRepository = uzytkownikRepository;
+        this.seansRepository = seansRepository;
     }
 
     public List<Rezerwacja> getAllRezerwacjas() {
@@ -32,6 +40,22 @@ public class RezerwacjaService {
     public Rezerwacja createRezerwacja(Rezerwacja rezerwacja) {
         return rezerwacjaRepository.save(rezerwacja);
     }
+
+    public Rezerwacja createRezerwacjaWithUser(Rezerwacja rezerwacja, Integer userId, Integer seansId) {
+        Optional<Uzytkownik> foundUser = this.uzytkownikRepository.findUzytkownikById(userId);
+        if (foundUser.isEmpty()){
+            return null;
+        }
+        Optional<Seans> foundSeans = this.seansRepository.findById(seansId);
+        if (foundSeans.isEmpty()){
+            return null;
+        }
+
+        rezerwacja.setSeansidseansu(foundSeans.get());
+        rezerwacja.setUzytkownikiduzytkownika(foundUser.get());
+        return rezerwacjaRepository.save(rezerwacja);
+    }
+
 
     public Rezerwacja updateRezerwacja(Integer id, Rezerwacja rezerwacja) {
         Rezerwacja currentRezerwacja = rezerwacjaRepository.findById(id).orElse(null);

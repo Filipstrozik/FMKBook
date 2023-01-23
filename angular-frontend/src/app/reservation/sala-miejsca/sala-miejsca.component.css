@@ -1,0 +1,21 @@
+.clicked {
+  background-color: purple;
+}
+
+
+.list-group {
+  display: flex;
+  justify-content: center;
+}
+
+.list-unstyled {
+  list-style: none;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
+}
