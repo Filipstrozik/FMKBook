@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {MiejsceService} from "../../services/miejsce/miejsce.service";
 import {SeansService} from "../../services/seans/seans.service";
 import {Miejsce} from "../../miejsce.model";
@@ -25,6 +25,7 @@ export class SalaMiejscaComponent implements OnInit {
   displayMap = true;
   film!: Film;
   bilety: Bilet[] = [];
+  sumaRezerwacji: number;
 
 
   constructor(private miejsceService: MiejsceService,
@@ -80,13 +81,33 @@ export class SalaMiejscaComponent implements OnInit {
       this.biletService.createBiletForMiejsceAndRezerwacja(miejsce.id, this.rezerwacja.id).subscribe(
         data => {
           this.bilety.push(data);
+          this.sumaRezerwacji += data.cenabiletu;
         }
       );
     }
-
-    console.log(this.bilety);
+    this.rezerwacjaService.getReservationById(this.rezerwacja.id).subscribe(
+      data => {
+        this.rezerwacja = data;
+        this.sumaRezerwacji = this.rezerwacja.cenarezerwacji;
+      }
+    );
+    console.log(this.sumaRezerwacji);
     this.displayMap = false;
 
+
+  }
+
+  onChange(value){
+    console.log(value);
+  }
+
+  logSelectedOptions(typMiejsca: string, typBiletu: string) {
+    console.log(`Selected type of seat: ${typMiejsca}`);
+    console.log(`Selected type of ticket: ${typBiletu}`);
+  }
+
+  doSomething() {
+    console.log('change!');
   }
 
 }

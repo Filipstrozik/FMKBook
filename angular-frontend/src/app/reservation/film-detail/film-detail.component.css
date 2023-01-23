@@ -1,0 +1,9 @@
+p {
+  font-size: 20px;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}

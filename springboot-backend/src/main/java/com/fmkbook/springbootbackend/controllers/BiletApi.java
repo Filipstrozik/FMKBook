@@ -46,13 +46,15 @@ public class BiletApi {
     public ResponseEntity<Bilet> addBilet(@RequestBody Bilet bilet) {
         return new ResponseEntity<>(biletService.addBilet(bilet), HttpStatus.CREATED);
     }
-
+    //TODO test this method
     @PostMapping("/more")
     public ResponseEntity<Bilet> addBiletWithParams(@RequestBody Bilet bilet,
                                                     @RequestParam("miejsce") Integer miejsceId,
                                                     @RequestParam("rezerwacja") Integer rezerwacjaId ) {
         return new ResponseEntity<>(biletService.addBiletWithRezerwacjaAndMiejsce(bilet, miejsceId, rezerwacjaId), HttpStatus.CREATED);
     }
+
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Bilet> updateBilet(@PathVariable Integer id, @RequestBody Bilet bilet) {

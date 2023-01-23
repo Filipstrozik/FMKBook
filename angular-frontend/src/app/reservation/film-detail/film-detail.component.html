@@ -11,17 +11,32 @@
 
 <ul class="list-group">
   <li *ngIf="film" class="list-group list-unstyled flex-column text-center" >
-    <p >{{film.tytul}} </p>
-    <p>{{film.gatunek}}</p>
-    <p>{{film.dlugosc}}</p>
+    <div class="row">
+      <div class="col-xs-1 col-xs-offset-1">
+        <img [src]="film.imagePath" style="height: 200px">
+      </div>
+      <div class="col-xs-3 col-xs-offset-3">
+        <p >{{film.tytul}}</p>
+        <p>{{film.gatunek}}</p>
+        <p>{{film.dlugosc}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <p>{{film.opis}}</p>
+      </div>
+    </div>
+
+
+
   </li>
 </ul>
 
-<ul class="list-group">
-  <li *ngFor="let seans of seansList" class="list-group list-group-item-info flex-column text-center" >
-    <button type="button" class="list-group-item"  (click)="onSelect(seans.id)">
+<ul class="list-group flex-wrap">
+  <li *ngFor="let seans of seansList" class="list-group list-unstyled flex-column text-center" >
+    <button type="button" (click)="onSelect(seans.id)">
       <p class="name" >{{seans.czas}}</p>
-      <p class="name">{{seans.cenaseansu}}</p>
+      <p class="name">{{seans.cenaseansu}} zł</p>
     </button>
   </li>
 

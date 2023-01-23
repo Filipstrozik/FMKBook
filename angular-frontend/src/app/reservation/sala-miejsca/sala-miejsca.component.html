@@ -5,7 +5,7 @@
 </span>
 <h3 class="text-center">wybór miejsc</h3>
 <div *ngIf="displayMap">
-  <h3>Ekran</h3>
+  <h5 class="text-center">Ekran</h5>
   <ul class="list-group">
     <li *ngFor="let seat of miejscaList" class="list-group list-unstyled flex-column text-center" (click)="toggleColor($event)" >
       <button (click)="onSelectSeat(seat.id)">
@@ -56,28 +56,37 @@
 <!--</table>-->
 
 
-  <table *ngIf="!displayMap" class="container">
-    <tr class="col-3">
-      <div class="list-group">
-        <td class="list-group-item">miejsce</td>
-        <td class="list-group-item">ulgowy</td>
-        <td class="list-group-item">normalny</td>
-        <td class="list-group-item">cena</td>
-      </div>
+<div *ngIf="!displayMap">
+  <table  class="container table">
+    <thead class="thead-light">
+    <tr class="row">
+      <th >miejsce</th>
+      <th >typ miejsca</th>
+      <th >typ biletu</th>
+      <th >cena</th>
     </tr>
-    <tr *ngFor="let bilet of bilety">
-      <td class="list-group-item">{{bilet.miejsceidmiejsca.id}}</td>
-      <td class="list-group-item">ulgowy</td>
-      <td class="list-group-item">normalny</td>
-      <td class="list-group-item">{{bilet.cenabiletu}}</td>
-    </tr>
-    <tr>
-      <td>Sum</td>
-      <td>---</td>
+    </thead>
+    <tr class="row" *ngFor="let bilet of bilety">
+      <td>{{bilet.miejsceidmiejsca.rzad}}, {{bilet.miejsceidmiejsca.kolumna}}</td>
+      <td>
+        <select ngModel (ngModelChange)="doSomething()" >
+          <option value="vip">VIP</option>
+          <option value="standard">standard</option>
+        </select>
+      </td>
+      <td>
+        <select>
+          <option value="ulgowy">Ulgowy</option>
+          <option value="normalny">Normalny</option>
+        </select>
+      </td>
+      <td>{{bilet.cenabiletu}}</td>
     </tr>
   </table>
-
+  <button >Log Selected Options</button>
   <h3 *ngIf="rezerwacja">{{rezerwacja.id}}</h3>
+  <h3 *ngIf="sumaRezerwacji">Suma: {{sumaRezerwacji}}</h3>
+</div>
 
 <footer class="text-center" >
     <button (click)="confirm()"

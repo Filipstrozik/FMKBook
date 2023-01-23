@@ -28,7 +28,7 @@ export class ReservationService {
   }
 
   getReservationById(id: number) {
-    return this.http.get(this.baseUrl + 'rezerwacja/' + id);
+    return this.http.get<Rezerwacja>(this.baseUrl + 'rezerwacja/' + id);
   }
 
   updateReservation(id: number, reservation: Rezerwacja) {
