@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class AbonamentService {
     private final AbonamentRepository abonamentRepository;
     private final UzytkownikRepository uzytkownikRepository;

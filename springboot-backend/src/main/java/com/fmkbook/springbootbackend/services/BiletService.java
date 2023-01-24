@@ -8,6 +8,7 @@ import com.fmkbook.springbootbackend.repositories.MiejsceRepository;
 import com.fmkbook.springbootbackend.repositories.RezerwacjaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,8 +42,8 @@ public class BiletService {
     }
 
     public Bilet addBiletWithRezerwacjaAndMiejsce(Bilet bilet, Integer miejsceId, Integer rezererwacjaId) {
-        Optional<Rezerwacja> foundRezerwacja = this.rezerwacjaRepository.findById(rezererwacjaId);
-        if (foundRezerwacja.isEmpty()) {
+        Rezerwacja foundRezerwacja = rezerwacjaRepository.findById(rezererwacjaId).orElse(null);
+        if (foundRezerwacja == null) {
             return null;
         }
         Optional<Miejsce> foundMiejsce = this.miejsceRepository.findById(miejsceId);
@@ -50,12 +51,13 @@ public class BiletService {
             return null;
         }
         //update sum
-        foundRezerwacja.get().setCenarezerwacji(foundRezerwacja.get().getCenarezerwacji() + bilet.getCenabiletu());
+//
+//        foundRezerwacja.setCenarezerwacji(foundRezerwacja.getCenarezerwacji() + bilet.getCenabiletu());
+//        this.rezerwacjaRepository.save(foundRezerwacja);
 
-        this.rezerwacjaRepository.save(foundRezerwacja.get());
-
-        bilet.setRezerwacjaidrezerwacji(foundRezerwacja.get());
+        bilet.setRezerwacjaidrezerwacji(foundRezerwacja);
         bilet.setMiejsceidmiejsca(foundMiejsce.get());
+
         return this.biletRepository.save(bilet);
     }
 

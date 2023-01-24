@@ -47,14 +47,14 @@
     <tr class="row" *ngFor="let bilet of bilety; let i = index">
       <td>{{bilet.miejsceidmiejsca.rzad}}, {{bilet.miejsceidmiejsca.kolumna}}</td>
       <td>
-        <select (change)="setBiletTyp(bilet, $event)" #selectBiletType name="key_{{i}}" [(ngModel)]="bilet.typbiletunazwatypubiletu">
+        <select (change)="setBiletTyp(bilet, $event)">
           <option value="normalny">normalny</option>
           <option value="ulgowy">ulgowy</option>
           <option value="grupowy">grupowy</option>
         </select>
       </td>
       <td>
-        <select (change)="setMiejsceTyp(bilet)"  #selectMiejsceTyp>
+        <select (change)="setMiejsceTyp(bilet, $event)">
           <option value="standard">standard</option>
           <option value="VIP">VIP</option>
         </select>

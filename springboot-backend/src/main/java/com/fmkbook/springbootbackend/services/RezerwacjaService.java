@@ -1,15 +1,10 @@
 package com.fmkbook.springbootbackend.services;
 
-import com.fmkbook.springbootbackend.models.Rabat;
-import com.fmkbook.springbootbackend.models.Rezerwacja;
-import com.fmkbook.springbootbackend.models.Seans;
-import com.fmkbook.springbootbackend.models.Uzytkownik;
-import com.fmkbook.springbootbackend.repositories.RabatRepository;
-import com.fmkbook.springbootbackend.repositories.RezerwacjaRepository;
-import com.fmkbook.springbootbackend.repositories.SeansRepository;
-import com.fmkbook.springbootbackend.repositories.UzytkownikRepository;
+import com.fmkbook.springbootbackend.models.*;
+import com.fmkbook.springbootbackend.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,13 +15,15 @@ public class RezerwacjaService {
     private final RabatRepository rabatRepository;
     private final UzytkownikRepository uzytkownikRepository;
     private final SeansRepository seansRepository;
+    private final BiletRepository biletRepository;
 
-
-    public RezerwacjaService(RezerwacjaRepository rezerwacjaRepository, RabatRepository rabatRepository, UzytkownikRepository uzytkownikRepository, SeansRepository seansRepository) {
+    @Autowired
+    public RezerwacjaService(RezerwacjaRepository rezerwacjaRepository, RabatRepository rabatRepository, UzytkownikRepository uzytkownikRepository, SeansRepository seansRepository, BiletRepository biletRepository) {
         this.rezerwacjaRepository = rezerwacjaRepository;
         this.rabatRepository = rabatRepository;
         this.uzytkownikRepository = uzytkownikRepository;
         this.seansRepository = seansRepository;
+        this.biletRepository = biletRepository;
     }
 
     public List<Rezerwacja> getAllRezerwacjas() {
@@ -34,7 +31,19 @@ public class RezerwacjaService {
     }
 
     public Optional<Rezerwacja> getRezerwacjaById(Integer id) {
-        return rezerwacjaRepository.findById(id);
+        Optional<Rezerwacja> rezerwacja = this.rezerwacjaRepository.findById(id);
+        if(rezerwacja.isEmpty()){
+            return Optional.empty();
+        }
+        List<Bilet> bilety = this.biletRepository.findAllByRezerwacjaidrezerwacjiId(id);
+        Double sum = 0.0;
+        for( Bilet bilet: bilety){
+            sum += bilet.getCenabiletu();
+        }
+        rezerwacja.get().setCenarezerwacji(sum);
+        this.rezerwacjaRepository.save(rezerwacja.get());
+
+        return rezerwacja;
     }
 
     public Rezerwacja createRezerwacja(Rezerwacja rezerwacja) {

@@ -10,6 +10,7 @@ import {Film} from "../../film.model";
 import {FilmService} from "../../services/film/film.service";
 import {BiletService} from "../../services/bilet/bilet.service";
 import {Bilet} from "../../bilet.model";
+import {debounceTime, delay} from "rxjs";
 
 @Component({
   selector: 'app-sala-miejsca',
@@ -26,11 +27,6 @@ export class SalaMiejscaComponent implements OnInit {
   film!: Film;
   bilety: Bilet[] = [];
   sumaRezerwacji: number;
-
-  @ViewChild("selectMiejsceTyp") selectMiejsceTyp:ElementRef;
-  @ViewChild("selectBiletType") selectBiletTyp:ElementRef;
-
-
 
 
   constructor(private miejsceService: MiejsceService,
@@ -53,13 +49,15 @@ export class SalaMiejscaComponent implements OnInit {
         return acc;
       }, []);
       console.log(this.rows);
-    })
+    });
 
     this.rezerwacjaService.createReservationForUserAndSeans(this.userService.getNumber(), this.seansId).subscribe(
       data => {
         this.rezerwacja = data;
+        console.log('rezerwacja 1');
+        console.log(this.rezerwacja);
       }
-    )
+    );
     this.selectedMiejsca = [];
 
   }
@@ -83,33 +81,23 @@ export class SalaMiejscaComponent implements OnInit {
 
   confirm() {
     for (const miejsce of this.selectedMiejsca) {
-      this.biletService.createBiletForMiejsceAndRezerwacja(miejsce.id, this.rezerwacja.id).subscribe(
-        data => {
+
+      this.biletService.createBiletForMiejsceAndRezerwacja(miejsce.id, this.rezerwacja.id)
+        .pipe(delay(5000))
+        .subscribe(data => {
           this.bilety.push(data);
-          this.sumaRezerwacji += data.cenabiletu;
-        }
-      );
+        });
     }
-    this.rezerwacjaService.getReservationById(this.rezerwacja.id).subscribe(
-      data => {
+
+    this.rezerwacjaService.getReservationById(this.rezerwacja.id)
+      .subscribe(data => {
         this.rezerwacja = data;
-        this.sumaRezerwacji = this.rezerwacja.cenarezerwacji;
-      }
-    );
-    console.log(this.sumaRezerwacji);
+        console.log(this.rezerwacja);
+      });
+
     this.displayMap = false;
-
-
   }
 
-  onChange(value){
-    console.log(value);
-  }
-
-  logSelectedOptions(typMiejsca: string, typBiletu: string) {
-    console.log(`Selected type of seat: ${typMiejsca}`);
-    console.log(`Selected type of ticket: ${typBiletu}`);
-  }
 
   async setBiletTyp(bilet: Bilet, event: any) {
     console.log(event.target.value);
@@ -123,11 +111,12 @@ export class SalaMiejscaComponent implements OnInit {
         }
       }
     );
-
+    await this.updateRezerwacja()
   }
 
-  async setMiejsceTyp(bilet: Bilet) {
-    const typ: string = this.selectMiejsceTyp.nativeElement.value;
+  async setMiejsceTyp(bilet: Bilet, event: any) {
+    console.log(event.target.value);
+    const typ: string = event.target.value;
     const res = await this.biletService.setBiletMiejsceTyp(bilet.id, typ).subscribe(
       data => {
         let index = this.bilety.findIndex(b => b.id === bilet.id);
@@ -135,6 +124,17 @@ export class SalaMiejscaComponent implements OnInit {
           this.bilety[index].cenabiletu = data.cenabiletu;
           console.log(data);
         }
+      }
+    );
+    await this.updateRezerwacja();
+  }
+
+  async updateRezerwacja(){
+    const res = await this.rezerwacjaService.getReservationById(this.rezerwacja.id).subscribe(
+      data => {
+        console.log(data);
+        this.rezerwacja = data;
+        this.sumaRezerwacji = this.rezerwacja.cenarezerwacji;
       }
     );
   }
