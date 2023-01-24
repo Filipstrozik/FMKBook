@@ -31,6 +31,8 @@ export class SalaMiejscaComponent implements OnInit {
   @ViewChild("selectBiletType") selectBiletTyp:ElementRef;
 
 
+
+
   constructor(private miejsceService: MiejsceService,
               private seansService: SeansService,
               private route: ActivatedRoute,
@@ -109,28 +111,32 @@ export class SalaMiejscaComponent implements OnInit {
     console.log(`Selected type of ticket: ${typBiletu}`);
   }
 
-  async setBiletTyp(bilet: Bilet) {
-    console.log(bilet);
-    console.log(this.selectBiletTyp.nativeElement.value);
-    const typ: string = this.selectBiletTyp.nativeElement.value;
-    const res = await this.biletService.setBiletTyp(bilet.id, typ).subscribe();
+  async setBiletTyp(bilet: Bilet, event: any) {
+    console.log(event.target.value);
+    const typ: string = event.target.value;
+    const res = await this.biletService.setBiletTyp(bilet.id, typ).subscribe(
+      data => {
+        let index = this.bilety.findIndex(b => b.id === bilet.id);
+        if(index > -1){
+          this.bilety[index].cenabiletu = data.cenabiletu;
+          console.log(data);
+        }
+      }
+    );
 
   }
 
   async setMiejsceTyp(bilet: Bilet) {
-    console.log(bilet);
-    console.log(this.selectMiejsceTyp.nativeElement.value);
     const typ: string = this.selectMiejsceTyp.nativeElement.value;
     const res = await this.biletService.setBiletMiejsceTyp(bilet.id, typ).subscribe(
       data => {
         let index = this.bilety.findIndex(b => b.id === bilet.id);
         if(index > -1){
-          console.log('znaleziono! zmieniam cene');
           this.bilety[index].cenabiletu = data.cenabiletu;
+          console.log(data);
         }
       }
     );
-    this.selectMiejsceTyp.nativeElement.value = typ;
   }
 
 }

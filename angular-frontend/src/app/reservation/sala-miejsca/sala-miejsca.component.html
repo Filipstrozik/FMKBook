@@ -34,28 +34,6 @@
     </div>
 </div>
 
-
-<!--<table *ngIf="!displayMap" class="container">-->
-<!--  <tr class="col-3">-->
-<!--    <td class="list-group">-->
-<!--      <li class="list-group-item">miejsce</li>-->
-<!--      <li class="list-group-item">ulgowy</li>-->
-<!--      <li class="list-group-item">normalny</li>-->
-<!--      <li class="list-group-item">cena</li>-->
-<!--    </td>-->
-<!--  </tr>-->
-<!--  <li class="list-group row justify-content-center" *ngFor="let bilet of bilety">-->
-<!--    <div class="col-3">-->
-<!--      <ul class="list-group">-->
-<!--        <li class="list-group-item">{{bilet.miejsceidmiejsca.id}}</li>-->
-<!--        <li class="list-group-item">ulgowy</li>-->
-<!--        <li class="list-group-item">normalny</li>-->
-<!--        <li class="list-group-item">{{bilet.cenabiletu}}</li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--</table>-->
-
-
 <div *ngIf="!displayMap">
   <table  class="container table">
     <thead>
@@ -66,10 +44,10 @@
       <th >cena</th>
     </tr>
     </thead>
-    <tr class="row" *ngFor="let bilet of bilety">
+    <tr class="row" *ngFor="let bilet of bilety; let i = index">
       <td>{{bilet.miejsceidmiejsca.rzad}}, {{bilet.miejsceidmiejsca.kolumna}}</td>
       <td>
-        <select (change)="setBiletTyp(bilet)" #selectBiletType >
+        <select (change)="setBiletTyp(bilet, $event)" #selectBiletType name="key_{{i}}" [(ngModel)]="bilet.typbiletunazwatypubiletu">
           <option value="normalny">normalny</option>
           <option value="ulgowy">ulgowy</option>
           <option value="grupowy">grupowy</option>
