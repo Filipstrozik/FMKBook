@@ -1,0 +1,25 @@
+h1 {
+  margin-bottom: 50px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.button-container {
+  text-align: center;
+}
+
+button {
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+input {
+  background-color: mediumpurple;
+  border-radius: 20px;
+}
+
