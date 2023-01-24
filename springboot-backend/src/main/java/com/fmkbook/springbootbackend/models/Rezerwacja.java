@@ -16,8 +16,6 @@ public class Rezerwacja {
 
     public Rezerwacja(Integer id, Sposobplatnosci sposobplatnoscinazwametody) {
         this.id = id;
-        this.cenarezerwacji = cenarezerwacji;
-        this.seansidseansu = seansidseansu;
         this.sposobplatnoscinazwametody = sposobplatnoscinazwametody;
     }
 

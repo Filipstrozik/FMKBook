@@ -1,12 +1,8 @@
 package com.fmkbook.springbootbackend.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Proxy;
-import org.hibernate.mapping.Join;
 
 import javax.persistence.*;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
@@ -17,21 +13,11 @@ public class Seans {
     public Seans() {
     }
 
-    public Seans(Integer id, LocalDate data, LocalTime czas, Double cenaseansu) {
-        this.id = id;
-        this.data = data;
-        this.czas = czas;
-        this.cenaseansu = cenaseansu;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "IDSEANSU", nullable = false)
     private Integer id;
 
-    //tylko dzien
-    //@Column(name = "DATA", nullable = true)
-    //private LocalDate data;
     //godzina
     @Column(name = "CZAS", nullable = false)
     private LocalTime czas;
