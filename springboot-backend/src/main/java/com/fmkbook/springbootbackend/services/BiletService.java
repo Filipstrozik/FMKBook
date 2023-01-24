@@ -50,16 +50,13 @@ public class BiletService {
             return null;
         }
         //update sum
-        System.out.println(bilet.getCenabiletu());
-        System.out.println(foundRezerwacja.get().getCenarezerwacji());
         foundRezerwacja.get().setCenarezerwacji(foundRezerwacja.get().getCenarezerwacji() + bilet.getCenabiletu());
-        System.out.println(foundRezerwacja.get().getCenarezerwacji());
+
         this.rezerwacjaRepository.save(foundRezerwacja.get());
 
         bilet.setRezerwacjaidrezerwacji(foundRezerwacja.get());
         bilet.setMiejsceidmiejsca(foundMiejsce.get());
         return this.biletRepository.save(bilet);
-
     }
 
     public Optional<Bilet> getBiletById(Integer id) {
