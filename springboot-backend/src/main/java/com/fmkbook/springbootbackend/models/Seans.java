@@ -13,6 +13,17 @@ import java.time.LocalTime;
 @Table(name = "SEANS")
 @JsonIgnoreProperties(value = {"agent"})
 public class Seans {
+
+    public Seans() {
+    }
+
+    public Seans(Integer id, LocalDate data, LocalTime czas, Double cenaseansu) {
+        this.id = id;
+        this.data = data;
+        this.czas = czas;
+        this.cenaseansu = cenaseansu;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "IDSEANSU", nullable = false)

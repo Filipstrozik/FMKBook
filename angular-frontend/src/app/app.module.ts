@@ -25,6 +25,8 @@ import { ReflinkComponent } from './reflink/reflink/reflink.component';
 import { FilmListComponent } from './reservation/film-list/film-list.component';
 import { FilmDetailComponent } from './reservation/film-detail/film-detail.component';
 import { SalaMiejscaComponent } from './reservation/sala-miejsca/sala-miejsca.component';
+import { ShowMetricsComponent } from './generate-metrics/show-metrics/show-metrics.component';
+import { FilterMetricsComponent } from './generate-metrics/filter-metrics/filter-metrics.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -42,6 +44,8 @@ const routes: Routes = [
   { path: 'reservationFilms', component: FilmListComponent},
   { path: 'reservationFilms/:id', component: FilmDetailComponent},
   { path: 'seansMiejsca/:id', component: SalaMiejscaComponent},
+  { path: 'generateMetrics' , component: FilterMetricsComponent},
+  { path: 'results' , component: ShowMetricsComponent},
 ];
 
 @NgModule({
@@ -64,7 +68,9 @@ const routes: Routes = [
     ReflinkComponent,
     FilmListComponent,
     FilmDetailComponent,
-    SalaMiejscaComponent
+    SalaMiejscaComponent,
+    FilterMetricsComponent,
+    ShowMetricsComponent
   ],
   imports: [
     BrowserModule,

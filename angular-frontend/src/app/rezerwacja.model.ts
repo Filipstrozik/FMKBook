@@ -2,6 +2,7 @@ import {Seans} from "./seans.model";
 import {Bilet} from "./bilet.model";
 import {Uzytkownik} from "./uzytkownik.model";
 import {Rabat} from "./rabat.model";
+import {SposobPlatnosci} from "./sposob-platnosci.model";
 
 export interface Rezerwacja {
   id: number;
@@ -9,6 +10,6 @@ export interface Rezerwacja {
   rabatkodrabatowy: Rabat;
   cenarezerwacji: number;
   seansidseansu: Seans;
-  // sposobplatnoscinazwametody: Sposobplatnosci;
+  sposobplatnoscinazwametody: SposobPlatnosci;
   bilets?: Bilet[];
 }

@@ -7,6 +7,14 @@ import java.util.Set;
 @Entity
 @Table(name = "SPOSOBPLATNOSCI")
 public class Sposobplatnosci {
+
+    public Sposobplatnosci() {
+    }
+
+    public Sposobplatnosci(String id) {
+        this.id = id;
+    }
+
     @Id
     @Column(name = "NAZWAMETODY", nullable = false, length = 50)
     private String id;

@@ -10,6 +10,17 @@ import java.util.Set;
 @Table(name = "REZERWACJA")
 @JsonIgnoreProperties(value = {"bilets"})
 public class Rezerwacja {
+
+    public Rezerwacja() {
+    }
+
+    public Rezerwacja(Integer id, Sposobplatnosci sposobplatnoscinazwametody) {
+        this.id = id;
+        this.cenarezerwacji = cenarezerwacji;
+        this.seansidseansu = seansidseansu;
+        this.sposobplatnoscinazwametody = sposobplatnoscinazwametody;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "IDREZERWACJI", nullable = false)
