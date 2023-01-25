@@ -31,4 +31,8 @@ export class FilmListComponent implements OnInit {
     this.router.navigate(['reservationFilms', index]);
   }
 
+  cancel() {
+    this.router.navigate(['']);
+  }
+
 }

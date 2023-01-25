@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class IpServiceService {
 
-  private _ip: string = '10.182.36.179';
+  private _ip: string = '192.168.0.80';
   constructor() { }
 
 

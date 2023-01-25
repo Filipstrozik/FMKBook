@@ -1,13 +1,13 @@
 <h1 class="text-left view-title">składanie</h1>
 <h1 class="text-left view-title">rezerwacji</h1>
-<span class="back-btn">
+<span class="back-btn" (click)="cancel()">
   <p><</p>
 </span>
 <h3 class="text-center">wybór miejsc</h3>
 <div *ngIf="displayMap">
   <h5 class="text-center">Ekran</h5>
   <hr>
-  <ul class="list-group" style="flex-basis: 15%">
+  <ul class="list-group" style="flex-basis: 10%; flex-wrap: wrap">
     <li *ngFor="let seat of miejscaList" class="list-unstyled flex-column text-center"   (click)="toggleColor($event)" >
       <button (click)="onSelectSeat(seat.id)">
         <h5>{{seat.rzad}}</h5>
@@ -16,26 +16,26 @@
     </li>
   </ul>
 
-  <table>
-    <tr *ngFor="let row of rows">
-      <p>{{row}}</p>
-      <td *ngFor="let seat of row" style="flex-basis: 31%;">
-        <button type="button" (click)="onSelectSeat(seat.id)">
-          <p>{{seat.kolumna}}</p>
-        </button>
-      </td>
-    </tr>
-  </table>
+<!--  <table>-->
+<!--    <tr *ngFor="let row of rows">-->
+<!--      <p>{{row}}</p>-->
+<!--      <td *ngFor="let seat of row" style="flex-basis: 15%;">-->
+<!--        <button type="button" (click)="onSelectSeat(seat.id)">-->
+<!--          <p>{{seat.kolumna}}</p>-->
+<!--        </button>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </table>-->
 </div>
-<table class="container">
+<div class="container" style="background-color: #634CF3; border-radius: 20px">
   <div class="row">
-    <div class="col">
+    <div class="col-xs-4">
       <img [src]="film.imagePath" style="height: 100px">
     </div>
-    <div class="col">
+    <div class="col-xs-5 col-xs-offset-1">
       <h3>{{film.tytul}}</h3>
       <h5>{{film.gatunek}}</h5>
-      <h6>{{film.dlugosc}}</h6>
+      <h6>{{film.dlugosc}} minut</h6>
     </div>
 </div>
 <hr>
@@ -74,11 +74,11 @@
 
 <footer class="text-center" >
     <button (click)="confirm()"
-            type="submit" class="choose btn btn-primary " *ngIf="displayMap">
+            type="submit" class="choose btn" *ngIf="displayMap">
       <p>zatwiedź</p>
     </button>
   <button (click)="confirmReservation()"
-          type="submit" class="choose btn btn-primary " *ngIf="isConfirmed">
+          type="submit" class="choose btn" *ngIf="isConfirmed">
     <p>potwierdź</p>
   </button>
 </footer>
