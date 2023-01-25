@@ -1,5 +1,7 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -20,6 +22,7 @@ public class Sposobplatnosci {
     private String id;
 
     @OneToMany(mappedBy = "sposobplatnoscinazwametody")
+    @JsonIgnore
     private Set<Rezerwacja> rezerwacjas = new LinkedHashSet<>();
 
     public Set<Rezerwacja> getRezerwacjas() {

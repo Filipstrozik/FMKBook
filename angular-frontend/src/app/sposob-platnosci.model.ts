@@ -1,3 +1,3 @@
 export class SposobPlatnosci {
-  public sposobplatnoscinazwametody!: string;
+  public id!: string;
 }

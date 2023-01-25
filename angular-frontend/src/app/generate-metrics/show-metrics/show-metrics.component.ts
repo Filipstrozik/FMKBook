@@ -6,6 +6,8 @@ import * as FileSaver from 'file-saver';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Rezerwacja} from "../../rezerwacja.model";
+import {ReservationService} from "../../services/reservation/reservation.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-show-metrics',
@@ -14,44 +16,54 @@ import {Rezerwacja} from "../../rezerwacja.model";
 })
 export class ShowMetricsComponent implements OnInit {
 
+  queryParams: any;
   public chart: any;
-  private data: Rezerwacja[] = [];
-  private baseUrl: string;
+  reservations: Rezerwacja[];
+  private data: string[] = []
+  constructor(private reservationService: ReservationService, private route: ActivatedRoute) {
 
-  constructor(private http: HttpClient) {
-    this.baseUrl = 'http://localhost:8080/rezerwacja';
   }
 
-  ngOnInit(): void {
-    this.getRezerwacja()
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.queryParams = params;
+      console.log(this.queryParams)
+    });
 
-    console.log(this.data[0])
+    this.reservationService.getReservationsByDate(this.queryParams['startDate'], this.queryParams['endDate']).subscribe(reservations => {
+      this.reservations = reservations;
 
-    this.createChart()
-  }
-
-  private getRezerwacja() {
-    this.getRezerwacjaRequest().subscribe( (data: Rezerwacja[]) => {
-        this.data = data
+      for (let reservation of this.reservations) {
+        this.data.push(reservation.sposobplatnoscinazwametody.id)
       }
-    )
+
+      console.log(this.data)
+
+      let count = this.data.reduce(function(acc, curr) {
+        if (acc[curr]) {
+          acc[curr]++;
+        } else {
+          acc[curr] = 1;
+        }
+        return acc;
+      }, {});
+
+      console.log(count)
+
+      this.createChart(count)
+    });
   }
 
-  getRezerwacjaRequest(): Observable<Rezerwacja[]> {
-    return this.http.get<Rezerwacja[]>(this.baseUrl);
-  }
-
-  createChart(){
+  createChart(count: any){
 
     this.chart = new Chart("chart", {
       type: 'bar',
       data: {
-        labels: [ 'karta', 'blik', 'apple pay', 'google pay', 'paypal' ],
+        labels: Object.keys(count),
         datasets: [
           {
             label: "Liczba rezerwacji",
-            data: ['467','576', '572', '79', '92',
-              '574', '573', '576'],
+            data: Object.values(count),
             backgroundColor: 'blue'
           }
         ]

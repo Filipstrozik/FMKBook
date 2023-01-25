@@ -1,14 +1,22 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "SEANS")
 @JsonIgnoreProperties(value = {"agent"})
 public class Seans {
+
+    public Seans(LocalDate data, Double cenaseansu, LocalTime czas) {
+        this.data = data;
+        this.cenaseansu = cenaseansu;
+        this.czas = czas;
+    }
 
     public Seans() {
     }
@@ -19,8 +27,13 @@ public class Seans {
     private Integer id;
 
     //godzina
-    @Column(name = "CZAS", nullable = false)
+    @Column(name = "CZAS", nullable = true)
+    @JsonIgnore
     private LocalTime czas;
+
+    //godzina
+    @Column(name = "DATA", nullable = true)
+    private LocalDate data;
 
 //    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @ManyToOne(optional = true)
@@ -79,13 +92,13 @@ public class Seans {
         this.czas = czas;
     }
 
-    //public LocalDate getData() {
-    //    return data;
-    //}
+    public LocalDate getData() {
+        return data;
+    }
 
-    //public void setData(LocalDate data) {
-    //    this.data = data;
-    //}
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
 
     public Integer getId() {
         return id;

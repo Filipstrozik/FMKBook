@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {TypAbonamentu} from "../../typ-abonamentu.model";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {map, Observable} from "rxjs";
 import {Rezerwacja} from "../../rezerwacja.model";
 
 @Injectable({
@@ -18,7 +17,12 @@ export class ReservationService {
   }
 
   getReservations() {
-    return this.http.get(this.baseUrl + 'reservations');
+    return this.http.get<Rezerwacja[]>(this.baseUrl + 'reservations');
+  }
+
+  getReservationsByDate(startDate: Date, endDate: Date) {
+    let params = new HttpParams().set("startDate", new Date(startDate).toLocaleDateString()).set("endDate", new Date(endDate).toLocaleDateString());
+    return this.http.get<Rezerwacja[]>(this.baseUrl + 'reservations/byDate', {params});
   }
 
   getReservationById(id: number) {

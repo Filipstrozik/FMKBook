@@ -10,11 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/rezerwacja")
+@RequestMapping("/reservations")
 public class RezerwacjaApi {
 
     private final RezerwacjaService rezerwacjaService;
@@ -27,6 +28,11 @@ public class RezerwacjaApi {
     @GetMapping
     public ResponseEntity<List<Rezerwacja>> findAll() {
         return new ResponseEntity<>(rezerwacjaService.getAllRezerwacjas(), HttpStatus.OK);
+    }
+
+    @GetMapping("/byDate")
+    public ResponseEntity<List<Rezerwacja>> findAllByDate(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+        return new ResponseEntity<>(rezerwacjaService.getReservationsByDate(startDate, endDate), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
