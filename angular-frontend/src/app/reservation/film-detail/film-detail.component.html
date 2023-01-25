@@ -15,29 +15,26 @@
       <div class="col-xs-1 col-xs-offset-1">
         <img [src]="film.imagePath" style="height: 200px">
       </div>
-      <div class="col-xs-3 col-xs-offset-3">
-        <p >{{film.tytul}}</p>
-        <p>{{film.gatunek}}</p>
-        <p>{{film.dlugosc}}</p>
+      <div class="col-xs-4 col-xs-offset-4" style="text-align: left;">
+        <h2  >{{film.tytul}}</h2>
+        <h4  >{{film.gatunek}}</h4>
+        <h5  >{{film.dlugosc}}</h5>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-1">
-        <p>{{film.opis}}</p>
+      <div class="col-xs-12">
+        <p class="name">{{film.opis}}</p>
       </div>
     </div>
-
-
-
   </li>
 </ul>
 
-<ul class="list-group flex-wrap">
-  <li *ngFor="let seans of seansList" class="list-group list-unstyled flex-column text-center" >
-    <button type="button" (click)="onSelect(seans.id)">
-      <p class="name" >{{seans.czas}}</p>
-      <p class="name">{{seans.cenaseansu}} zł</p>
-    </button>
+<ul class="flex-wrap">
+  <li *ngFor="let seans of seansList" class="list-unstyled flex-column" >
+      <span class="badge badge-info" style="font-size: 20px" (click)="onSelect(seans.id)">
+      <i class="fas fa-clock"></i>
+          {{seans.czas | date:'d MMM, hh:mm'}}
+      </span>
   </li>
 
 </ul>

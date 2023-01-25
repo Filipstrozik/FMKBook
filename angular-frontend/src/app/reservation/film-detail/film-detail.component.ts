@@ -4,6 +4,7 @@ import {FilmService} from "../../services/film/film.service";
 import {Film} from "../../film.model";
 import {Seans} from "../../seans.model";
 import {SeansService} from "../../services/seans/seans.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-film-detail',
@@ -18,7 +19,8 @@ export class FilmDetailComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private filmService: FilmService,
-              private seansService: SeansService) {
+              private seansService: SeansService,
+              private datePipe: DatePipe) {
     this.filmId = parseInt(<string>this.route.snapshot.paramMap.get('id'));
     this.filmService.getFilm(this.filmId).subscribe(data => {
       this.film = data;

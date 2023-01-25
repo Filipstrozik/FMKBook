@@ -81,6 +81,16 @@ public class RezerwacjaService {
         }
     }
 
+    public Rezerwacja updateRezerwacjaCena(Integer id, Double cena){
+        Rezerwacja currentRezerwacja = rezerwacjaRepository.findById(id).orElse(null);
+        if (currentRezerwacja != null) {
+            currentRezerwacja.setCenarezerwacji(cena);
+            return rezerwacjaRepository.save(currentRezerwacja);
+        } else {
+            return null;
+        }
+    }
+
     public void deleteRezerwacja(Integer id) {
         rezerwacjaRepository.deleteById(id);
     }

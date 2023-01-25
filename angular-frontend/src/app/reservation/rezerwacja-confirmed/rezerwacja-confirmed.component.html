@@ -1,0 +1,61 @@
+<h1 class="text-left view-title">potwierdzenie</h1>
+<h1 class="text-left view-title">rezerwacji</h1>
+<h3 class="text-center">potwierdzenie rezerwacji</h3>
+
+<div class="container" *ngIf="rezerwacja">
+<hr>
+  <div class="row">
+    <div class="col-xs-3">
+      <img [src]="rezerwacja.seansidseansu.filmidfilmu.imagePath" style="height: 100px">
+    </div>
+    <div class="col-xs-6">
+      <h3>tytuł: {{rezerwacja.seansidseansu.filmidfilmu.tytul}}</h3>
+      <h4>gatunek: {{rezerwacja.seansidseansu.filmidfilmu.gatunek}}</h4>
+      <h5>{{rezerwacja.seansidseansu.filmidfilmu.dlugosc}} minut</h5>
+    </div>
+  </div>
+  <hr>
+  <h3>Bilety:</h3>
+  <div *ngIf="bilety">
+    <table class="container table">
+      <thead>
+      <tr class="row">
+        <th >miejsce</th>
+        <th >typ biletu</th>
+        <th >typ miejsca</th>
+        <th >cena</th>
+      </tr>
+      </thead>
+      <tr class="row" *ngFor="let bilet of bilety; let i = index">
+        <td>{{bilet.miejsceidmiejsca.rzad}}, {{bilet.miejsceidmiejsca.kolumna}}</td>
+        <td>
+          <select>
+            <option value="normalny">normalny</option>
+            <option value="ulgowy">ulgowy</option>
+            <option value="grupowy">grupowy</option>
+          </select>
+        </td>
+        <td>
+          <select >
+            <option value="standard">standard</option>
+            <option value="VIP">VIP</option>
+          </select>
+        </td>
+        <td>{{bilet.cenabiletu}}</td>
+      </tr>
+    </table>
+    <hr>
+  </div>
+
+  <div class="row">
+    <p>{{rezerwacja.id}}</p>
+    <p>{{rezerwacja.cenarezerwacji}}</p>
+    <p>{{rezerwacja.uzytkownikiduzytkownika.tel}}</p>
+    <p>{{rezerwacja.uzytkownikiduzytkownika.email}}</p>
+  </div>
+  <hr>
+  <div class="row">
+
+  </div>
+</div>
+

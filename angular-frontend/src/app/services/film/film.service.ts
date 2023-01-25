@@ -2,17 +2,20 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Film} from "../../film.model";
 import {Observable} from "rxjs";
+import {IpServiceService} from "../../ip-service.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmService {
   selectedFilm: Film;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private ip: IpServiceService) { }
 
-  private baseUrl = 'http://localhost:8080/film';
+  private baseUrl = `http://${this.ip.ip}:8080/film`;
 
   getFilms(): Observable<Film[]> {
+    console.log('zapytanie w serwise!')
     return this.http.get<Film[]>(`${this.baseUrl}`);
   }
 

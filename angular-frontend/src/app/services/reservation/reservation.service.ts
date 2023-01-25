@@ -35,6 +35,11 @@ export class ReservationService {
     return this.http.put(this.baseUrl + 'rezerwacja/' + id, reservation);
   }
 
+  updateReservationCena(id: number, cena: number) {
+    const params = new HttpParams().set('cena', cena);
+    return this.http.put<Rezerwacja>(this.baseUrl + 'rezerwacja/cena/' + id, {}, {params});
+  }
+
   deleteReservation(id: number) {
     return this.http.delete(this.baseUrl + 'rezerwacja/' + id);
   }

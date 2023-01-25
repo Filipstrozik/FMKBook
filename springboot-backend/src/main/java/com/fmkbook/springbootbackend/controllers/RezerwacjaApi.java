@@ -58,6 +58,16 @@ public class RezerwacjaApi {
         return new ResponseEntity<>(rezerwacjaService.updateRezerwacja(id,rezerwacja), HttpStatus.OK);
     }
 
+    @PutMapping("cena/{id}")
+    public ResponseEntity<Rezerwacja> update(@PathVariable Integer id ,@RequestParam("cena") Double cena) {
+        Optional<Rezerwacja> currentRezerwacja = rezerwacjaService.getRezerwacjaById(id);
+        if (currentRezerwacja.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(rezerwacjaService.updateRezerwacjaCena(id,cena), HttpStatus.OK);
+    }
+
     @PutMapping()
     public ResponseEntity<Rezerwacja> setRabatToReservation(@RequestParam("idRez") Integer idRez, @RequestParam("idRabatu") String idRabatu) {
         Optional<Rezerwacja> currentRezerwacja = rezerwacjaService.getRezerwacjaById(idRez);

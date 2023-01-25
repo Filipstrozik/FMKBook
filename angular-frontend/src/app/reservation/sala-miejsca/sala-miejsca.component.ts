@@ -1,8 +1,8 @@
-import {Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MiejsceService} from "../../services/miejsce/miejsce.service";
 import {SeansService} from "../../services/seans/seans.service";
 import {Miejsce} from "../../miejsce.model";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UserIdService} from "../../services/userId/user-id.service";
 import {Rezerwacja} from "../../rezerwacja.model";
 import {ReservationService} from "../../services/reservation/reservation.service";
@@ -10,7 +10,7 @@ import {Film} from "../../film.model";
 import {FilmService} from "../../services/film/film.service";
 import {BiletService} from "../../services/bilet/bilet.service";
 import {Bilet} from "../../bilet.model";
-import {debounceTime, delay} from "rxjs";
+import {delay} from "rxjs";
 
 @Component({
   selector: 'app-sala-miejsca',
@@ -24,6 +24,7 @@ export class SalaMiejscaComponent implements OnInit {
   rezerwacja!: Rezerwacja;
   rows!: Miejsce[][];
   displayMap = true;
+  isConfirmed = false;
   film!: Film;
   bilety: Bilet[] = [];
   sumaRezerwacji: number;
@@ -35,7 +36,8 @@ export class SalaMiejscaComponent implements OnInit {
               private userService: UserIdService,
               private rezerwacjaService: ReservationService,
               private filmService: FilmService,
-              private biletService: BiletService) { }
+              private biletService: BiletService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.seansId = parseInt(<string>this.route.snapshot.paramMap.get('id'));
@@ -56,6 +58,8 @@ export class SalaMiejscaComponent implements OnInit {
         this.rezerwacja = data;
         console.log('rezerwacja 1');
         console.log(this.rezerwacja);
+        this.sumaRezerwacji = data.cenarezerwacji;
+        console.log(this.sumaRezerwacji);
       }
     );
     this.selectedMiejsca = [];
@@ -83,19 +87,16 @@ export class SalaMiejscaComponent implements OnInit {
     for (const miejsce of this.selectedMiejsca) {
 
       this.biletService.createBiletForMiejsceAndRezerwacja(miejsce.id, this.rezerwacja.id)
-        .pipe(delay(5000))
+        .pipe(delay(100))
         .subscribe(data => {
           this.bilety.push(data);
+          this.sumaRezerwacji+=data.cenabiletu;
         });
     }
 
-    this.rezerwacjaService.getReservationById(this.rezerwacja.id)
-      .subscribe(data => {
-        this.rezerwacja = data;
-        console.log(this.rezerwacja);
-      });
 
     this.displayMap = false;
+    this.isConfirmed = true;
   }
 
 
@@ -107,11 +108,11 @@ export class SalaMiejscaComponent implements OnInit {
         let index = this.bilety.findIndex(b => b.id === bilet.id);
         if(index > -1){
           this.bilety[index].cenabiletu = data.cenabiletu;
-          console.log(data);
+          this.updateCenaRezerwacji();
         }
       }
     );
-    await this.updateRezerwacja()
+    this.updateCenaRezerwacji();
   }
 
   async setMiejsceTyp(bilet: Bilet, event: any) {
@@ -122,21 +123,23 @@ export class SalaMiejscaComponent implements OnInit {
         let index = this.bilety.findIndex(b => b.id === bilet.id);
         if(index > -1){
           this.bilety[index].cenabiletu = data.cenabiletu;
-          console.log(data);
+          this.updateCenaRezerwacji();
         }
       }
     );
-    await this.updateRezerwacja();
   }
 
-  async updateRezerwacja(){
-    const res = await this.rezerwacjaService.getReservationById(this.rezerwacja.id).subscribe(
+  updateCenaRezerwacji(){
+    this.sumaRezerwacji = this.bilety.reduce((acc, ticket) => acc + ticket.cenabiletu, 0.0);
+  }
+
+  confirmReservation(){
+    this.rezerwacjaService.updateReservationCena(this.rezerwacja.id, this.sumaRezerwacji).subscribe(
       data => {
-        console.log(data);
         this.rezerwacja = data;
-        this.sumaRezerwacji = this.rezerwacja.cenarezerwacji;
       }
     );
+    this.router.navigate(['rezerwacjaConfirmed', this.rezerwacja.id]);
   }
 
 }

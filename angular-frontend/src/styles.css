@@ -87,7 +87,9 @@ p {
 }
 
 .name {
-  align-self: center;
+  text-align: start;
+  align-self: start;
+  font-size: 10px;
 }
 
 

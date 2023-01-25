@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Seans} from "../../seans.model";
+import {IpServiceService} from "../../ip-service.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeansService {
 
-  private apiURL = 'http://localhost:8080/seans';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private ip: IpServiceService) { }
+
+  private apiURL = `http://${this.ip.ip}:8080/seans`;
+
 
   getSeans(): Observable<Seans[]> {
     return this.http.get<Seans[]>(this.apiURL);

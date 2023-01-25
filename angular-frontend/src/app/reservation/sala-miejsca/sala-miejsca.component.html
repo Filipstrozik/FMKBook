@@ -6,6 +6,7 @@
 <h3 class="text-center">wybór miejsc</h3>
 <div *ngIf="displayMap">
   <h5 class="text-center">Ekran</h5>
+  <hr>
   <ul class="list-group">
     <li *ngFor="let seat of miejscaList" class="list-group list-unstyled flex-column text-center" (click)="toggleColor($event)" >
       <button (click)="onSelectSeat(seat.id)">
@@ -27,13 +28,17 @@
   </table>
 </div>
 <table class="container">
-  <div class="list-group row">
-    <div class="col-3">
-      <h4>{{film.tytul}}</h4>
+  <div class="row">
+    <div class="col-xs-3">
+      <img [src]="film.imagePath" style="height: 100px">
+    </div>
+    <div class="col-xs-6">
+      <h3>{{film.tytul}}</h3>
+      <h5>{{film.gatunek}}</h5>
       <h6>{{film.dlugosc}}</h6>
     </div>
 </div>
-
+<hr>
 <div *ngIf="!displayMap">
   <table  class="container table">
     <thead>
@@ -62,14 +67,18 @@
       <td>{{bilet.cenabiletu}}</td>
     </tr>
   </table>
-  <button >Log Selected Options</button>
-  <h3 *ngIf="rezerwacja">{{rezerwacja.id}}</h3>
-  <h3 *ngIf="sumaRezerwacji">Suma: {{sumaRezerwacji}}</h3>
+  <hr>
+  <h3 *ngIf="sumaRezerwacji">Suma rezerwacji: {{sumaRezerwacji}}</h3>
+  <h5 *ngIf="rezerwacja">Numer rezerwacji: {{rezerwacja.id}}</h5>
 </div>
 
 <footer class="text-center" >
     <button (click)="confirm()"
-            type="submit" class="choose btn btn-primary ">
+            type="submit" class="choose btn btn-primary " *ngIf="displayMap">
       <p>zatwiedź</p>
     </button>
+  <button (click)="confirmReservation()"
+          type="submit" class="choose btn btn-primary " *ngIf="isConfirmed">
+    <p>potwierdź</p>
+  </button>
 </footer>

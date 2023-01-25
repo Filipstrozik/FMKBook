@@ -52,8 +52,8 @@ public class BiletService {
         }
         //update sum
 //
-//        foundRezerwacja.setCenarezerwacji(foundRezerwacja.getCenarezerwacji() + bilet.getCenabiletu());
-//        this.rezerwacjaRepository.save(foundRezerwacja);
+        foundRezerwacja.setCenarezerwacji(foundRezerwacja.getCenarezerwacji() + bilet.getCenabiletu());
+        this.rezerwacjaRepository.save(foundRezerwacja);
 
         bilet.setRezerwacjaidrezerwacji(foundRezerwacja);
         bilet.setMiejsceidmiejsca(foundMiejsce.get());

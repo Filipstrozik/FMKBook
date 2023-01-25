@@ -7,6 +7,7 @@ import org.hibernate.mapping.Join;
 import javax.persistence.*;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -23,7 +24,7 @@ public class Seans {
     //private LocalDate data;
     //godzina
     @Column(name = "CZAS", nullable = false)
-    private LocalTime czas;
+    private LocalDateTime czas;
 
 //    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @ManyToOne(optional = true)
@@ -74,11 +75,11 @@ public class Seans {
         this.kinoidkina = kinoidkina;
     }
 
-    public LocalTime getCzas() {
+    public LocalDateTime getCzas() {
         return czas;
     }
 
-    public void setCzas(LocalTime czas) {
+    public void setCzas(LocalDateTime czas) {
         this.czas = czas;
     }
 
