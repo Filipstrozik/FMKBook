@@ -7,8 +7,8 @@
 <div *ngIf="displayMap">
   <h5 class="text-center">Ekran</h5>
   <hr>
-  <ul class="list-group">
-    <li *ngFor="let seat of miejscaList" class="list-group list-unstyled flex-column text-center" (click)="toggleColor($event)" >
+  <ul class="list-group" style="flex-basis: 15%">
+    <li *ngFor="let seat of miejscaList" class="list-unstyled flex-column text-center"   (click)="toggleColor($event)" >
       <button (click)="onSelectSeat(seat.id)">
         <h5>{{seat.rzad}}</h5>
         <h5>{{seat.kolumna}}</h5>
@@ -19,7 +19,7 @@
   <table>
     <tr *ngFor="let row of rows">
       <p>{{row}}</p>
-      <td *ngFor="let seat of row">
+      <td *ngFor="let seat of row" style="flex-basis: 31%;">
         <button type="button" (click)="onSelectSeat(seat.id)">
           <p>{{seat.kolumna}}</p>
         </button>
@@ -29,10 +29,10 @@
 </div>
 <table class="container">
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col">
       <img [src]="film.imagePath" style="height: 100px">
     </div>
-    <div class="col-xs-6">
+    <div class="col">
       <h3>{{film.tytul}}</h3>
       <h5>{{film.gatunek}}</h5>
       <h6>{{film.dlugosc}}</h6>

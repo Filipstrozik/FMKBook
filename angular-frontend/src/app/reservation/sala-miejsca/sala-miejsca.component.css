@@ -19,3 +19,13 @@
 .text-center {
   text-align: center;
 }
+
+button {
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+td{
+  text-align: center;
+}
+

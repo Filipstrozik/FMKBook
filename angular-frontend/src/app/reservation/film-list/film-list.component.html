@@ -5,21 +5,24 @@
 </span>
 <h3 class="text-center">repertuar</h3>
 <body>
-<ul class="list-group">
-  <li *ngFor="let film of films" class="list-group list-unstyled flex-column text-center" >
-    <button type="button" class="list-group-item row" (click)="onSelect(film.id)">
-      <div class="col-xs-3">
-        <img [src]="film.imagePath" style="height: 100px">
-      </div>
-      <div class="col-xs-6">
-        <p class="name">{{film.tytul}}</p>
-        <p class="name">{{film.gatunek}}</p>
-        <p class="name">{{film.dlugosc}}</p>
-      </div>
-    </button>
-  </li>
+<div class="container">
+  <ul class="list-group">
+    <li *ngFor="let film of films" class="list-group list-unstyled flex-column text-center" >
+      <button type="button" class="list-group-item" (click)="onSelect(film.id)" style="border-radius: 20px; background-color: #634CF3; color: white">
+        <div class="col-xs-3">
+          <img [src]="film.imagePath" style="height: 150px; border-radius: 10px">
+        </div>
+        <div class="col-xs-6 col-xs-offset-2">
+          <h3>{{film.tytul}}</h3>
+          <h5>{{film.gatunek}}</h5>
+          <h6>{{film.dlugosc}} minut</h6>
+        </div>
+      </button>
+    </li>
 
-</ul>
+  </ul>
+</div>
+
 
 <!--<div *ngIf="selectedType">-->
 <!--  <p> selected: {{selectedType.cena}} </p>-->

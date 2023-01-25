@@ -71,6 +71,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.choose-round {
+  border-radius: 20px;
+  width: auto;
+  height: 50px;
+  background-color: dodgerblue;
+  bottom: 10px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 /*this below make it more responsive*/
 p {
   font-size: 3rem;

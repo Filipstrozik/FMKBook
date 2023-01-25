@@ -1,61 +1,84 @@
 <h1 class="text-left view-title">potwierdzenie</h1>
 <h1 class="text-left view-title">rezerwacji</h1>
-<h3 class="text-center">potwierdzenie rezerwacji</h3>
-
-<div class="container" *ngIf="rezerwacja">
-<hr>
+<div class="container" *ngIf="rezerwacja" style="background-color: #634CF3; border-radius: 20px">
   <div class="row">
     <div class="col-xs-3">
       <img [src]="rezerwacja.seansidseansu.filmidfilmu.imagePath" style="height: 100px">
     </div>
     <div class="col-xs-6">
-      <h3>tytuł: {{rezerwacja.seansidseansu.filmidfilmu.tytul}}</h3>
-      <h4>gatunek: {{rezerwacja.seansidseansu.filmidfilmu.gatunek}}</h4>
-      <h5>{{rezerwacja.seansidseansu.filmidfilmu.dlugosc}} minut</h5>
+      <h3 style="color:white;">{{rezerwacja.seansidseansu.filmidfilmu.tytul}}</h3>
+      <h4 style="color: white">{{rezerwacja.seansidseansu.filmidfilmu.gatunek}}</h4>
+      <h5 style="color: black;">{{rezerwacja.seansidseansu.filmidfilmu.dlugosc}} minut</h5>
     </div>
   </div>
-  <hr>
-  <h3>Bilety:</h3>
+  <h4 style="color: white">Bilety:</h4>
   <div *ngIf="bilety">
-    <table class="container table">
+    <table class="container table" style="background-color: #634CF3;" >
       <thead>
-      <tr class="row">
+      <tr class="row" style="color: white">
         <th >miejsce</th>
         <th >typ biletu</th>
         <th >typ miejsca</th>
         <th >cena</th>
       </tr>
       </thead>
-      <tr class="row" *ngFor="let bilet of bilety; let i = index">
-        <td>{{bilet.miejsceidmiejsca.rzad}}, {{bilet.miejsceidmiejsca.kolumna}}</td>
+      <tr class="row" *ngFor="let bilet of bilety; let i = index" style="background-color: whitesmoke;">
+        <td style="text-align: center">{{bilet.miejsceidmiejsca.rzad}}, {{bilet.miejsceidmiejsca.kolumna}}</td>
         <td>
-          <select>
-            <option value="normalny">normalny</option>
-            <option value="ulgowy">ulgowy</option>
-            <option value="grupowy">grupowy</option>
-          </select>
+          {{bilet.typbiletunazwatypubiletu}}
         </td>
-        <td>
-          <select >
-            <option value="standard">standard</option>
-            <option value="VIP">VIP</option>
-          </select>
+        <td style="text-align: center">
+          {{bilet.typmiejsca}}
         </td>
         <td>{{bilet.cenabiletu}}</td>
       </tr>
     </table>
     <hr>
-  </div>
+    <div >
+      <div class="col-xs-8">
+        <h4 style="color: white">Suma rezerwacji:</h4>
+      </div>
+      <div class="col-xs-1">
+        <h4 style="color: white">{{rezerwacja.cenarezerwacji}} zł</h4>
+      </div>
+    </div>
 
-  <div class="row">
-    <p>{{rezerwacja.id}}</p>
-    <p>{{rezerwacja.cenarezerwacji}}</p>
-    <p>{{rezerwacja.uzytkownikiduzytkownika.tel}}</p>
-    <p>{{rezerwacja.uzytkownikiduzytkownika.email}}</p>
-  </div>
-  <hr>
-  <div class="row">
+    <div>
+      <div class="col-xs-7">
+        <h5 style="color: white">Numer rezerwacji:</h5>
+      </div>
+      <div class="col-xs-2 col-xs-offset-1">
+        <h5 style="color: white">{{rezerwacja.id}}</h5>
+      </div>
+    </div>
+    <div>
+      <div class="col-xs-7">
+        <h5 style="color: white">Numer telefonu użytkownika:</h5>
+      </div>
+      <div class="col-xs-2 col-xs-offset-1">
+        <h5 style="color: white">{{rezerwacja.uzytkownikiduzytkownika.tel}}</h5>
+      </div>
+    </div>
+
+    <div>
+      <div class="col-xs-7">
+        <h5 style="color: white">Adres email użytkownika:</h5>
+      </div>
+      <div class="col-xs-2 col-xs-offset-1">
+        <h5 style="color: white">{{rezerwacja.uzytkownikiduzytkownika.email}}</h5>
+      </div>
+    </div>
+
 
   </div>
+  <footer class="row">
+    <div class="col-xs-3">
+      <button
+        type="submit" class="btn btn-primary choose-round">
+        <p style="font-size: 25px">potwierdź</p>
+      </button>
+    </div>
+  </footer>
+
 </div>
 

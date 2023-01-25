@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Rezerwacja} from "../../rezerwacja.model";
 import {Bilet} from "../../bilet.model";
+import {IpServiceService} from "../../ip-service.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,9 @@ import {Bilet} from "../../bilet.model";
 export class BiletService {
 
 
-  private baseUrl = 'http://localhost:8080/bilet';
+  private baseUrl = `http://${this.ip.ip}:8080/bilet`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private ip: IpServiceService) { }
 
   getBilet(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);

@@ -3,15 +3,19 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {TypAbonamentu} from "../../typ-abonamentu.model";
 import {Rezerwacja} from "../../rezerwacja.model";
+import {IpServiceService} from "../../ip-service.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private ip: IpServiceService) { }
 
-  private baseUrl = 'http://localhost:8080/';
+  // private baseUrl = 'http://localhost:8080/';
+
+  private baseUrl = `http://${this.ip.ip}:8080/`;
+
 
   createReservation(reservation: Rezerwacja) {
     return this.http.post(this.baseUrl + 'rezerwacja', reservation);

@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Sala} from "../../sala.model";
+import {IpServiceService} from "../../ip-service.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SalaService {
 
-  private baseUrl = 'http://localhost:8080/sala';
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient,
+              private ip: IpServiceService) { }
+
+  private baseUrl = `http://${this.ip.ip}:8080/sala`;
+
 
   getAll() {
     return this.http.get<Sala[]>(`${this.baseUrl}`);
