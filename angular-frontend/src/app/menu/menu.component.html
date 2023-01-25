@@ -1,4 +1,18 @@
-<p>MENU</p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">FMKBook</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a [routerLink]="['/abonamentList']">zakupienie abonamentu</a></li>
+      <li><a [routerLink]="['/reservationFilms']">rezerwacja</a></li>
+      <li><a [routerLink]="['/addCode']">add discount code</a></li>
+      <li><a [routerLink]="['/inviteUser']">Invite Friend</a></li>
+      <li><a [routerLink]="['/info']">Info</a></li>
+    </ul>
+  </div>
+</nav>
+
 <button (click)="user1()"  >
   <p>User1</p>
 </button>
@@ -11,27 +25,27 @@
 <button (click)="user4()"  >
   <p>User4</p>
 </button>
-<div class="menu">
+<!--<div class="menu">-->
 
-  <button class="menu-button" (click)="discountCode()"  >
-    <p>Add discount code</p>
-  </button>
+<!--  <button class="menu-button" (click)="discountCode()"  >-->
+<!--    <p>Add discount code</p>-->
+<!--  </button>-->
 
-  <button class="menu-button" (click)="inviteFriend()"  >
-    <p>Invite Friend</p>
-  </button>
+<!--  <button class="menu-button" (click)="inviteFriend()"  >-->
+<!--    <p>Invite Friend</p>-->
+<!--  </button>-->
 
-  <button class="menu-button" (click)="info()"  >
-    <p>Info</p>
-  </button>
+<!--  <button class="menu-button" (click)="info()"  >-->
+<!--    <p>Info</p>-->
+<!--  </button>-->
 
-  <button class="menu-button" (click)="buyAbonament()">
-    <a><p>Buy Abonament</p></a>
-  </button>
+<!--  <button class="menu-button">-->
+<!--    <a><p>Buy Abonament</p></a>-->
+<!--  </button>-->
 
-  <button class="menu-button" (click)="makeReservation()">
-    <a><p>reservation</p></a>
-  </button>
+<!--  <button class="menu-button" (click)="makeReservation()">-->
+<!--    <a><p>reservation</p></a>-->
+<!--  </button>-->
 
-</div>
+<!--</div>-->
 
