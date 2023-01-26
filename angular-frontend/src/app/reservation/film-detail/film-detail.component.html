@@ -18,7 +18,7 @@
       <div class="col-xs-4 col-xs-offset-4" style="text-align: left;">
         <h2  >{{film.tytul}}</h2>
         <h4  >{{film.gatunek}}</h4>
-        <h5  >{{film.dlugosc}}</h5>
+        <h5  >{{film.dlugosc}} minut</h5>
       </div>
     </div>
     <div class="row">
@@ -29,15 +29,21 @@
   </li>
 </ul>
 
-<ul class="flex-wrap">
+<ul class="flex-wrap" *ngIf="seansList">
   <li *ngFor="let seans of seansList" class="list-unstyled flex-column" >
-      <span class="badge badge-info" style="font-size: 20px; background-color: grey; margin: 2px;" (click)="onSelect(seans.id)">
+      <span class="badge badge-info"
+            style="font-size: 20px; background-color: grey; margin: 2px;"
+            (click)="onSelect(seans.id)"
+            [ngStyle]="{'background-color': isBefore(seans.czas) ? 'grey' : 'purple' }">
       <i class="fas fa-clock"></i>
           {{seans.czas | date:'d MMM, HH : mm'}}
       </span>
   </li>
-
 </ul>
+
+<div class="col-xs-12" *ngIf="seansList?.length === 0" style="color: black">
+  <h4>Brak aktualnych seansów dla tego filmu</h4>
+</div>
 
 </body>
 

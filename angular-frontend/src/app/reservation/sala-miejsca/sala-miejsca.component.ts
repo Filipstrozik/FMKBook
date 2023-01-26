@@ -143,7 +143,8 @@ export class SalaMiejscaComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/buyAbonamentCancelled']);
+    this.rezerwacjaService.deleteReservation(this.rezerwacja.id).subscribe();
+    this.router.navigate(['/rezerwacjaCancelled']);
   }
 
 }

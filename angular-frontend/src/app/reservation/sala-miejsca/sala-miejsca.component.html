@@ -8,38 +8,27 @@
   <h5 class="text-center">Ekran</h5>
   <hr>
   <ul class="list-group" style="flex-basis: 10%; flex-wrap: wrap">
-    <li *ngFor="let seat of miejscaList" class="list-unstyled flex-column text-center"   (click)="toggleColor($event)" >
-      <button (click)="onSelectSeat(seat.id)">
-        <h5>{{seat.rzad}}</h5>
-        <h5>{{seat.kolumna}}</h5>
+    <li *ngFor="let seat of miejscaList" class="list-unstyled flex-column text-center">
+      <button (click)="onSelectSeat(seat.id); toggleColor($event)">
+        {{seat.rzad}}, {{seat.kolumna}}
       </button>
     </li>
   </ul>
 
-<!--  <table>-->
-<!--    <tr *ngFor="let row of rows">-->
-<!--      <p>{{row}}</p>-->
-<!--      <td *ngFor="let seat of row" style="flex-basis: 15%;">-->
-<!--        <button type="button" (click)="onSelectSeat(seat.id)">-->
-<!--          <p>{{seat.kolumna}}</p>-->
-<!--        </button>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--  </table>-->
 </div>
 <div class="container" style="background-color: #634CF3; border-radius: 20px">
   <div class="row">
     <div class="col-xs-4">
       <img [src]="film.imagePath" style="height: 100px">
     </div>
-    <div class="col-xs-5 col-xs-offset-1">
+    <div class="col-xs-5 col-xs-offset-1" style="color: white">
       <h3>{{film.tytul}}</h3>
       <h5>{{film.gatunek}}</h5>
-      <h6>{{film.dlugosc}} minut</h6>
+      <h6 style="color: black">{{film.dlugosc}} minut</h6>
     </div>
 </div>
 <hr>
-<div *ngIf="!displayMap">
+<div *ngIf="!displayMap" style="color: white;">
   <table  class="container table">
     <thead>
     <tr class="row">
@@ -49,7 +38,7 @@
       <th >cena</th>
     </tr>
     </thead>
-    <tr class="row" *ngFor="let bilet of bilety; let i = index">
+    <tr class="row" *ngFor="let bilet of bilety; let i = index" style="background-color: whitesmoke; border-radius: 20px; color: black">
       <td>{{bilet.miejsceidmiejsca.rzad}}, {{bilet.miejsceidmiejsca.kolumna}}</td>
       <td>
         <select (change)="setBiletTyp(bilet, $event)">

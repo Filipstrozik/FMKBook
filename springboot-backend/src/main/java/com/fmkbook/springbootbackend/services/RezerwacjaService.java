@@ -92,6 +92,8 @@ public class RezerwacjaService {
     }
 
     public void deleteRezerwacja(Integer id) {
+        List<Bilet> biletListToDelete = this.biletRepository.findAllByRezerwacjaidrezerwacjiId(id);
+        this.biletRepository.deleteAll(biletListToDelete);
         rezerwacjaRepository.deleteById(id);
     }
 

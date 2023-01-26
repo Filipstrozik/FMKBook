@@ -26,6 +26,8 @@ import { FilmDetailComponent } from './reservation/film-detail/film-detail.compo
 import { SalaMiejscaComponent } from './reservation/sala-miejsca/sala-miejsca.component';
 import {DatePipe, SlicePipe} from "@angular/common";
 import { RezerwacjaConfirmedComponent } from './reservation/rezerwacja-confirmed/rezerwacja-confirmed.component';
+import { RezerwacjaCancelledComponent } from './reservation/rezerwacja-cancelled/rezerwacja-cancelled.component';
+import {DropdownDirective} from "./shared/dropdown.directive";
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -44,6 +46,7 @@ const routes: Routes = [
   { path: 'reservationFilms/:id', component: FilmDetailComponent},
   { path: 'seansMiejsca/:id', component: SalaMiejscaComponent},
   { path: 'rezerwacjaConfirmed/:id', component: RezerwacjaConfirmedComponent},
+  { path: 'rezerwacjaCancelled', component: RezerwacjaCancelledComponent},
 ];
 
 @NgModule({
@@ -67,7 +70,9 @@ const routes: Routes = [
     FilmListComponent,
     FilmDetailComponent,
     SalaMiejscaComponent,
-    RezerwacjaConfirmedComponent
+    RezerwacjaConfirmedComponent,
+    RezerwacjaCancelledComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
