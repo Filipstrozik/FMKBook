@@ -18,36 +18,36 @@ export class ReservationService {
 
   getReservationsByDate(startDate: Date, endDate: Date) {
     let params = new HttpParams().set("startDate", new Date(startDate).toLocaleDateString()).set("endDate", new Date(endDate).toLocaleDateString());
-    return this.http.get<Rezerwacja[]>(this.baseUrl + 'rezerwacja/byDate', {params});
+    return this.http.get<Rezerwacja[]>(this.baseUrl + 'reservations/byDate', {params});
   }
   createReservation(reservation: Rezerwacja) {
-    return this.http.post(this.baseUrl + 'rezerwacja', reservation);
+    return this.http.post(`${this.baseUrl}reservations`, reservation);
   }
 
   createReservationForUserAndSeans(userid: number, seansid: number) {
     const emptyRezerwacja: Rezerwacja = Object.create(null);
     const params = new HttpParams().set('user', userid).set('seans', seansid);
-    return this.http.post<Rezerwacja>(this.baseUrl + 'rezerwacja/param', emptyRezerwacja, {params});
+    return this.http.post<Rezerwacja>(this.baseUrl + 'reservations/param', emptyRezerwacja, {params});
   }
 
   getReservations() {
-    return this.http.get(this.baseUrl + 'rezerwacja');
+    return this.http.get(this.baseUrl + 'reservations');
   }
 
   getReservationById(id: number) {
-    return this.http.get<Rezerwacja>(this.baseUrl + 'rezerwacja/' + id);
+    return this.http.get<Rezerwacja>(this.baseUrl + 'reservations/' + id);
   }
 
   updateReservation(id: number, reservation: Rezerwacja) {
-    return this.http.put(this.baseUrl + 'rezerwacja/' + id, reservation);
+    return this.http.put(this.baseUrl + 'reservations/' + id, reservation);
   }
 
   updateReservationCena(id: number, cena: number) {
     const params = new HttpParams().set('cena', cena);
-    return this.http.put<Rezerwacja>(this.baseUrl + 'rezerwacja/cena/' + id, {}, {params});
+    return this.http.put<Rezerwacja>(this.baseUrl + 'reservations/cena/' + id, {}, {params});
   }
 
   deleteReservation(id: number) {
-    return this.http.delete(this.baseUrl + 'rezerwacja/' + id);
+    return this.http.delete(this.baseUrl + 'reservations/' + id);
   }
 }

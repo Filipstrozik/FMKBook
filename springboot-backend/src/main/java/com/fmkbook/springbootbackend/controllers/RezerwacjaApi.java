@@ -49,6 +49,7 @@ public class RezerwacjaApi {
     public ResponseEntity<Rezerwacja> create(@RequestBody Rezerwacja rezerwacja) {
         return ResponseEntity.ok(rezerwacjaService.createRezerwacja(rezerwacja));
     }
+
     @CrossOrigin
     @PostMapping("/param")
     public ResponseEntity<Rezerwacja> create(
@@ -57,6 +58,8 @@ public class RezerwacjaApi {
             @RequestParam("seans") Integer seansId) {
         return ResponseEntity.ok(rezerwacjaService.createRezerwacjaWithUser(rezerwacja, userId, seansId));
     }
+
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Rezerwacja> update(@PathVariable Integer id ,@RequestBody Rezerwacja rezerwacja) {

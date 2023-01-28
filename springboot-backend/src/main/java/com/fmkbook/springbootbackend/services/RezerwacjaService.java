@@ -142,17 +142,17 @@ public class RezerwacjaService {
     private void init() {
 //        Uzytkownik uzytkownik1 = new Uzytkownik(1, "sdadsdas", "saddssdasdasd", "hghgfgfg");
 //        Rabat rabat1 = new Rabat("1", 2.00);
-        Seans seans1 = new Seans(LocalDateTime.of(2023, 1, 25,15,22), 39.23, LocalTime.of(1,2,30));
-        Seans seans2 = new Seans(LocalDateTime.of(2023, 1, 27,15,2), 39.23, LocalTime.of(1,2,30));
-        Seans seans3 = new Seans(LocalDateTime.of(2023, 1, 28,15,2), 39.23, LocalTime.of(1,2,30));
-        Seans seans4 = new Seans(LocalDateTime.of(2023, 1, 29,15,2), 39.23, LocalTime.of(1,2,30));
-        Seans seans5 = new Seans(LocalDateTime.of(2023, 1, 30,15,2), 39.23, LocalTime.of(1,2,30));
+//        Seans seans1 = new Seans(LocalDateTime.of(2023, 1, 25,15,22), 39.23, LocalTime.of(1,2,30));
+//        Seans seans2 = new Seans(LocalDateTime.of(2023, 1, 27,15,2), 39.23, LocalTime.of(1,2,30));
+//        Seans seans3 = new Seans(LocalDateTime.of(2023, 1, 28,15,2), 39.23, LocalTime.of(1,2,30));
+//        Seans seans4 = new Seans(LocalDateTime.of(2023, 1, 29,15,2), 39.23, LocalTime.of(1,2,30));
+//        Seans seans5 = new Seans(LocalDateTime.of(2023, 1, 30,15,2), 39.23, LocalTime.of(1,2,30));
 
-        seansRepository.save(seans1);
-        seansRepository.save(seans2);
-        seansRepository.save(seans3);
-        seansRepository.save(seans4);
-        seansRepository.save(seans5);
+//        seansRepository.save(seans1);
+//        seansRepository.save(seans2);
+//        seansRepository.save(seans3);
+//        seansRepository.save(seans4);
+//        seansRepository.save(seans5);
 
 //        Sposobplatnosci sposobplatnosci1 = new Sposobplatnosci("blik");
 //        Sposobplatnosci sposobplatnosci2 = new Sposobplatnosci("google pay");

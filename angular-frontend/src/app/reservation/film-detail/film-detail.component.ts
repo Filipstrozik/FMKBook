@@ -28,7 +28,7 @@ export class FilmDetailComponent implements OnInit {
     });
     this.seansService.getSeansByFilmId(this.filmId).subscribe( data => {
       this.seansList = data;
-      console.log(new Date(this.seansList[0].czas));
+      console.log(new Date(this.seansList[1].data));
       console.log(this.data);
     })
 

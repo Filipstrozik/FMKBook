@@ -34,9 +34,9 @@
       <span class="badge badge-info"
             style="font-size: 20px; background-color: grey; margin: 2px;"
             (click)="onSelect(seans.id)"
-            [ngStyle]="{'background-color': isBefore(seans.czas) ? 'grey' : 'purple' }">
+            [ngStyle]="{'background-color': isBefore(seans.data) ? 'grey' : 'purple' }">
       <i class="fas fa-clock"></i>
-          {{seans.czas | date:'d MMM, HH : mm'}}
+          {{seans.data | date:'d MMM, HH : mm'}}
       </span>
   </li>
 </ul>
