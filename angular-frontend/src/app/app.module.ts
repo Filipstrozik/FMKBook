@@ -28,6 +28,8 @@ import {DatePipe, SlicePipe} from "@angular/common";
 import { RezerwacjaConfirmedComponent } from './reservation/rezerwacja-confirmed/rezerwacja-confirmed.component';
 import { RezerwacjaCancelledComponent } from './reservation/rezerwacja-cancelled/rezerwacja-cancelled.component';
 import {DropdownDirective} from "./shared/dropdown.directive";
+import { ShowMetricsComponent } from './generate-metrics/show-metrics/show-metrics.component';
+import { FilterMetricsComponent } from './generate-metrics/filter-metrics/filter-metrics.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent},
@@ -47,6 +49,9 @@ const routes: Routes = [
   { path: 'seansMiejsca/:id', component: SalaMiejscaComponent},
   { path: 'rezerwacjaConfirmed/:id', component: RezerwacjaConfirmedComponent},
   { path: 'rezerwacjaCancelled', component: RezerwacjaCancelledComponent},
+  { path: 'seansMiejsca/:id', component: SalaMiejscaComponent},
+  { path: 'generateMetrics' , component: FilterMetricsComponent},
+  { path: 'results' , component: ShowMetricsComponent},
 ];
 
 @NgModule({
@@ -72,7 +77,11 @@ const routes: Routes = [
     SalaMiejscaComponent,
     RezerwacjaConfirmedComponent,
     RezerwacjaCancelledComponent,
-    DropdownDirective
+    DropdownDirective,
+    FilmDetailComponent,
+    SalaMiejscaComponent,
+    FilterMetricsComponent,
+    ShowMetricsComponent
   ],
   imports: [
     BrowserModule,

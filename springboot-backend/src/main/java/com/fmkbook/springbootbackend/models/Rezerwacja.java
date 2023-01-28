@@ -1,5 +1,6 @@
 package com.fmkbook.springbootbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -10,6 +11,16 @@ import java.util.Set;
 @Table(name = "REZERWACJA")
 @JsonIgnoreProperties(value = {"bilets"})
 public class Rezerwacja {
+
+    public Rezerwacja() {
+    }
+
+    public Rezerwacja(Integer id, Sposobplatnosci sposobplatnoscinazwametody, Seans seans) {
+        this.seansidseansu = seans;
+        this.id = id;
+        this.sposobplatnoscinazwametody = sposobplatnoscinazwametody;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "IDREZERWACJI", nullable = false)
@@ -30,7 +41,7 @@ public class Rezerwacja {
     @JoinColumn(name = "SEANSIDSEANSU", nullable = true)
     private Seans seansidseansu;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "SPOSOBPLATNOSCINAZWAMETODY", nullable = true)
     private Sposobplatnosci sposobplatnoscinazwametody;
 

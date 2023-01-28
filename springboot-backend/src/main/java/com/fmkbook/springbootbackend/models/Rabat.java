@@ -14,6 +14,15 @@ import java.util.Set;
 @Entity
 @Table(name = "RABAT")
 public class Rabat {
+
+    public Rabat() {
+    }
+
+    public Rabat(String id, Double wysokoscrabatu) {
+        this.id = id;
+        this.wysokoscrabatu = wysokoscrabatu;
+    }
+
     @Id
     @Column(name = "KODRABATOWY", nullable = false, length = 20)
     private String id;

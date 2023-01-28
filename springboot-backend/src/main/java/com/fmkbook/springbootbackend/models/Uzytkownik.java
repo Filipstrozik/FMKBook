@@ -15,6 +15,17 @@ import java.util.Set;
 @Table(name = "UZYTKOWNIK")
 @JsonIgnoreProperties(value = {"rabats", "rezerwacjas"})
 public class Uzytkownik {
+
+    public Uzytkownik() {
+    }
+
+    public Uzytkownik(Integer id, String tel, String haslo, String email) {
+        this.id = id;
+        this.tel = tel;
+        this.haslo = haslo;
+        this.email = email;
+    }
+
     @Id
     @Column(name = "IDUZYTKOWNIKA", nullable = false)
     private Integer id;
