@@ -20,11 +20,12 @@ li > button {
 
 button {
   border-radius: 20px;
+  background-color: #634CF3;
 }
 
 button.selected {
   background-color: #634CF3;
-  color: white;
+  border: black 4px solid;
 }
 
 

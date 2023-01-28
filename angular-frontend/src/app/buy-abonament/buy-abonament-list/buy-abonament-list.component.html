@@ -4,29 +4,39 @@
   <p><</p>
 </span>
 <h3 class="text-center">wybierz plan czasowy</h3>
-<body>
+<body class="container">
   <ul class="list-group">
-    <li *ngFor="let typ of typyAbonamentu" class="list-group list-unstyled flex-column text-center" >
+    <li *ngFor="let typ of typyAbonamentu" class="list-unstyled flex-column text-center" >
       <button [class.selected]="typ === selectedType"
-        type="button" class="list-group-item"
+        type="button" class="list-group-item" style="color: white"
       (click)="onSelect(typ)">
-        <p class="name">{{typ.opis}}</p>
-        <p class="name">{{typ.cena}}</p>
+        <div class="col">
+          <h3>{{typ.tytul}}</h3>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-8">
+            <h4>Płatność realizowana co {{typ.tytul}}.</h4>
+          </div>
+          <div class="col-xs-3">
+            <h4>{{typ.cena}} zł</h4>
+          </div>
+        </div>
+
       </button>
     </li>
   </ul>
 
-  <div *ngIf="selectedType">
-    <p> selected: {{selectedType.cena}} </p>
-    <div>id: {{selectedType.id}}</div>
-  </div>
-
 </body>
 
+
+
 <footer class="text-center" >
-  <button (click)="navigateToDetails()"
-    type="submit" class="choose btn btn-primary ">
-    <p>wybierz</p>
-  </button>
+  <div class="col-xs-12">
+    <button (click)="navigateToDetails()"
+            type="submit" class="btn btn-primary ">
+      <p style="font-size: 20px">wybierz</p>
+    </button>
+  </div>
 </footer>
 

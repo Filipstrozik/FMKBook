@@ -25,10 +25,6 @@ public class Miejsce {
     @JoinColumn(name = "SALAIDSALI", nullable = true)
     private Sala salaidsali;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "TYPMIEJSCANAZWATYPUMIEJSCA", nullable = true)
-    private Typmiejsca typmiejscanazwatypumiejsca;
-
     @OneToMany(mappedBy = "miejsceidmiejsca")
     private Set<Bilet> bilets = new LinkedHashSet<>();
 
@@ -38,14 +34,6 @@ public class Miejsce {
 
     public void setBilets(Set<Bilet> bilets) {
         this.bilets = bilets;
-    }
-
-    public Typmiejsca getTypmiejscanazwatypumiejsca() {
-        return typmiejscanazwatypumiejsca;
-    }
-
-    public void setTypmiejscanazwatypumiejsca(Typmiejsca typmiejscanazwatypumiejsca) {
-        this.typmiejscanazwatypumiejsca = typmiejscanazwatypumiejsca;
     }
 
     public Sala getSalaidsali() {

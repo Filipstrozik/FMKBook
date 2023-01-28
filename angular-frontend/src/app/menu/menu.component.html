@@ -1,41 +1,99 @@
-<p>MENU</p>
-<button (click)="user1()"  >
-  <p>User1</p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">FMKBook</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a [routerLink]="['/abonamentList']">zakupienie abonamentu</a></li>
+      <li><a [routerLink]="['/reservationFilms']">rezerwacja</a></li>
+      <li><a [routerLink]="['/addCode']">add discount code</a></li>
+      <li><a [routerLink]="['/inviteUser']">Invite Friend</a></li>
+      <li><a [routerLink]="['/info']">Info</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown" appDropdown>
+        <a style="cursor: pointer;" class="dropdown-toggle" role="button">Set User<span
+          class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a style="cursor: pointer;" (click)="user1()">User 1</a></li>
+          <li><a style="cursor: pointer;" (click)="user2()">User 2</a></li>
+          <li><a style="cursor: pointer;" (click)="user3()">User 3</a></li>
+          <li><a style="cursor: pointer;" (click)="user4()">User 4</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<button class="menu-button" (click)="generateMetrics()">
+  <p>Generate Metrics</p>
 </button>
-<button (click)="user2()"  >
-  <p>User2</p>
-</button>
-<button (click)="user3()"  >
-  <p>User3</p>
-</button>
-<button (click)="user4()"  >
-  <p>User4</p>
-</button>
-<div class="menu">
 
-  <button class="menu-button" (click)="discountCode()"  >
-    <p>Add discount code</p>
-  </button>
+<!--<nav class="navbar navbar-default">-->
+<!--  <div class="container-fluid">-->
+<!--    <div class="navbar-header">-->
+<!--      <a href="#" class="navbar-brand">Recipe Book</a>-->
+<!--    </div>-->
 
-  <button class="menu-button" (click)="inviteFriend()"  >
-    <p>Invite Friend</p>
-  </button>
+<!--    <div class="collaps navbar-collapse">-->
+<!--      <ul class="nav navbar-nav">-->
+<!--        <li>-->
+<!--          <a>Recipes</a>-->
+<!--        </li>-->
+<!--        <li routerLinkActive="active">-->
+<!--          <a routerLink="/shopping-list" >Shopping List</a>-->
+<!--        </li>-->
 
-  <button class="menu-button" (click)="info()"  >
-    <p>Info</p>
-  </button>
+<!--        <li routerLinkActive="active" >-->
+<!--          <a routerLink="/auth">Login-->
+<!--          </a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--      <ul class="nav navbar-nav navbar-right">-->
+<!--        <li class="dropdown" appDropdown>-->
+<!--          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span-->
+<!--            class="caret"></span></a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            <li><a style="cursor: pointer;" >Save Data</a></li>-->
+<!--            <li><a style="cursor: pointer;" >Fetch Data</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+<!--<button (click)="user1()"  >-->
+<!--  <p>User1</p>-->
+<!--</button>-->
+<!--<button (click)="user2()"  >-->
+<!--  <p>User2</p>-->
+<!--</button>-->
+<!--<button (click)="user3()"  >-->
+<!--  <p>User3</p>-->
+<!--</button>-->
+<!--<button (click)="user4()"  >-->
+<!--  <p>User4</p>-->
+<!--</button>-->
+<!--<div class="menu">-->
 
-  <button class="menu-button" (click)="buyAbonament()">
-    <a routerLink="/abonamentList"><p>Buy Abonament</p></a>
-  </button>
+<!--  <button class="menu-button" (click)="discountCode()"  >-->
+<!--    <p>Add discount code</p>-->
+<!--  </button>-->
 
-  <button class="menu-button" (click)="makeReservation()">
-    <a routerLink="/reservation"><p>reservation</p></a>
-  </button>
+<!--  <button class="menu-button" (click)="inviteFriend()"  >-->
+<!--    <p>Invite Friend</p>-->
+<!--  </button>-->
 
-  <button class="menu-button" (click)="generateMetrics()">
-    <p>Generate Metrics</p>
-  </button>
+<!--  <button class="menu-button" (click)="info()"  >-->
+<!--    <p>Info</p>-->
+<!--  </button>-->
 
-</div>
+<!--  <button class="menu-button">-->
+<!--    <a><p>Buy Abonament</p></a>-->
+<!--  </button>-->
+
+<!--  <button class="menu-button" (click)="makeReservation()">-->
+<!--    <a><p>reservation</p></a>-->
+<!--  </button>-->
+
+<!--</div>-->
 

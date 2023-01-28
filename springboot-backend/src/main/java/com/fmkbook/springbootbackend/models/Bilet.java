@@ -21,9 +21,11 @@ public class Bilet {
     @JoinColumn(name = "MIEJSCEIDMIEJSCA", nullable = true)
     private Miejsce miejsceidmiejsca;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "TYPBILETUNAZWATYPUBILETU", nullable = true)
-    private Typbiletu typbiletunazwatypubiletu;
+    @Enumerated(EnumType.STRING)
+    private Typbiletu typbiletunazwatypubiletu = Typbiletu.normalny;
+
+    @Enumerated(EnumType.STRING)
+    private Typmiejsca typmiejsca = Typmiejsca.standard;
 
     public Typbiletu getTypbiletunazwatypubiletu() {
         return typbiletunazwatypubiletu;
@@ -63,5 +65,13 @@ public class Bilet {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Typmiejsca getTypmiejsca() {
+        return typmiejsca;
+    }
+
+    public void setTypmiejsca(Typmiejsca typmiejsca) {
+        this.typmiejsca = typmiejsca;
     }
 }

@@ -43,7 +43,7 @@
 }
 
 .title {
-  color: dodgerblue;
+  color: #634CF3;
   font-family: "SansSerif", sans-serif;
   padding-left: 2rem;
 }
@@ -65,8 +65,20 @@
   border-radius: 20px;
   width: auto;
   height: 50px;
-  background-color: dodgerblue;
+  background-color: #634CF3;
+  color: white;
   bottom: 50px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.choose-round {
+  border-radius: 20px;
+  width: auto;
+  height: 50px;
+  background-color: #634CF3;
+  bottom: 10px;
   position: fixed;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -87,7 +99,9 @@ p {
 }
 
 .name {
-  align-self: center;
+  text-align: start;
+  align-self: start;
+  font-size: 10px;
 }
 
 

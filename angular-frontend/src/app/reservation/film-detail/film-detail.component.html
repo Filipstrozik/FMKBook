@@ -1,31 +1,49 @@
 <h1 class="text-left view-title">wybór</h1>
 <h1 class="text-left view-title">seansu</h1>
 <span routerLink="../" class="back-btn">
-  <p><</p>
+  <h4><</h4>
 </span>
 <h3 class="text-center">szczegóły filmu</h3>
 
-<body>
+<body class="container" style="background-color: #634CF3; border-radius: 20px; color: white" >
 
 
 
 <ul class="list-group">
   <li *ngIf="film" class="list-group list-unstyled flex-column text-center" >
-    <p >{{film.tytul}} </p>
-    <p>{{film.gatunek}}</p>
-    <p>{{film.dlugosc}}</p>
+    <div class="row">
+      <div class="col-xs-1 col-xs-offset-1">
+        <img [src]="film.imagePath" style="height: 200px; border-radius: 10px; margin-top: 10px">
+      </div>
+      <div class="col-xs-4 col-xs-offset-4" style="text-align: left;">
+        <h2  >{{film.tytul}}</h2>
+        <h4  >{{film.gatunek}}</h4>
+        <h5  >{{film.dlugosc}} minut</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <p class="name">{{film.opis}}</p>
+      </div>
+    </div>
   </li>
 </ul>
 
-<ul class="list-group">
-  <li *ngFor="let seans of seansList" class="list-group list-group-item-info flex-column text-center" >
-    <button type="button" class="list-group-item"  (click)="onSelect(seans.id)">
-      <p class="name" >{{seans.czas}}</p>
-      <p class="name">{{seans.cenaseansu}}</p>
-    </button>
+<ul class="flex-wrap" *ngIf="seansList">
+  <li *ngFor="let seans of seansList" class="list-unstyled flex-column" >
+      <span class="badge badge-info"
+            style="font-size: 20px; background-color: grey; margin: 2px;"
+            (click)="onSelect(seans.id)"
+            [ngStyle]="{'background-color': isBefore(seans.data) ? 'grey' : 'purple' }">
+      <i class="fas fa-clock"></i>
+          {{seans.data | date:'d MMM, HH : mm'}}
+      </span>
   </li>
-
 </ul>
+
+<div class="col-xs-12" *ngIf="seansList?.length === 0" style="color: black">
+  <h4>Brak aktualnych seansów dla tego filmu</h4>
+</div>
 
 </body>
 

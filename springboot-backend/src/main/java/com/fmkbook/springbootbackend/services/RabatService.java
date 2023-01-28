@@ -16,7 +16,6 @@ import java.util.UUID;
 
 
 @Service
-@Transactional
 public class RabatService {
     private final RabatRepository rabatRepository;
     private final UzytkownikRepository uzytkownikRepository;

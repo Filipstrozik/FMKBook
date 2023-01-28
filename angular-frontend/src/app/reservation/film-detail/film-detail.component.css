@@ -1,0 +1,13 @@
+p {
+  font-size: 15px;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+button {
+  border-radius: 20px;
+  font-size: 20px;
+}

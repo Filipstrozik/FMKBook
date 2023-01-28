@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class AgentService {
     private final AgentRepository agentRepository;
 

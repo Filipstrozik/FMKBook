@@ -6,4 +6,6 @@ export interface Film{
   gatunek: string;
   dlugosc: number;
   seans?: Set<Seans>;
+  opis: string;
+  imagePath: string;
 }

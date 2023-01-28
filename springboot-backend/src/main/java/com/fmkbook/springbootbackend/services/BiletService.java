@@ -8,6 +8,7 @@ import com.fmkbook.springbootbackend.repositories.MiejsceRepository;
 import com.fmkbook.springbootbackend.repositories.RezerwacjaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,13 +38,12 @@ public class BiletService {
         if (rezerwacja.isEmpty()) {
             return null;
         }
-
-        return biletRepository.findAll();
+        return biletRepository.findAllByRezerwacjaidrezerwacjiId(rezerwacja.get().getId());
     }
 
     public Bilet addBiletWithRezerwacjaAndMiejsce(Bilet bilet, Integer miejsceId, Integer rezererwacjaId) {
-        Optional<Rezerwacja> foundRezerwacja = this.rezerwacjaRepository.findById(rezererwacjaId);
-        if (foundRezerwacja.isEmpty()) {
+        Rezerwacja foundRezerwacja = rezerwacjaRepository.findById(rezererwacjaId).orElse(null);
+        if (foundRezerwacja == null) {
             return null;
         }
         Optional<Miejsce> foundMiejsce = this.miejsceRepository.findById(miejsceId);
@@ -51,16 +51,14 @@ public class BiletService {
             return null;
         }
         //update sum
-        System.out.println(bilet.getCenabiletu());
-        System.out.println(foundRezerwacja.get().getCenarezerwacji());
-        foundRezerwacja.get().setCenarezerwacji(foundRezerwacja.get().getCenarezerwacji() + bilet.getCenabiletu());
-        System.out.println(foundRezerwacja.get().getCenarezerwacji());
-        this.rezerwacjaRepository.save(foundRezerwacja.get());
+//
+        foundRezerwacja.setCenarezerwacji(foundRezerwacja.getCenarezerwacji() + bilet.getCenabiletu());
+        this.rezerwacjaRepository.save(foundRezerwacja);
 
-        bilet.setRezerwacjaidrezerwacji(foundRezerwacja.get());
+        bilet.setRezerwacjaidrezerwacji(foundRezerwacja);
         bilet.setMiejsceidmiejsca(foundMiejsce.get());
-        return this.biletRepository.save(bilet);
 
+        return this.biletRepository.save(bilet);
     }
 
     public Optional<Bilet> getBiletById(Integer id) {
