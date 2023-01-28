@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,7 @@ public class RezerwacjaApi {
     }
 
     @GetMapping("/byDate")
-    public ResponseEntity<List<Rezerwacja>> findAllByDate(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+    public ResponseEntity<List<Rezerwacja>> findAllByDate(@RequestParam LocalDateTime startDate, @RequestParam LocalDateTime endDate) {
         return new ResponseEntity<>(rezerwacjaService.getReservationsByDate(startDate, endDate), HttpStatus.OK);
     }
 

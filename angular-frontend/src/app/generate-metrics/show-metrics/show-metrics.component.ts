@@ -34,7 +34,7 @@ export class ShowMetricsComponent implements OnInit {
       this.reservations = reservations;
 
       for (let reservation of this.reservations) {
-        this.data.push(reservation.sposobplatnoscinazwametody.id)
+        this.data.push(reservation.sposobplatnoscinazwametody)
       }
 
       console.log(this.data)

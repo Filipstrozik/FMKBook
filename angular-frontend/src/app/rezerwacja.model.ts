@@ -10,7 +10,6 @@ export interface Rezerwacja {
   rabatkodrabatowy: Rabat;
   cenarezerwacji: number;
   seansidseansu: Seans;
-  sposobplatnoscinazwametodyStr: string;
-  sposobplatnoscinazwametody: SposobPlatnosci;
+  sposobplatnoscinazwametody: string;
   bilets?: Bilet[];
 }

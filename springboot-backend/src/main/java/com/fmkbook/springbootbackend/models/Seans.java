@@ -33,11 +33,11 @@ public class Seans {
     //godzina
     @Column(name = "CZAS", nullable = true)
     @JsonIgnore
-    private LocalDateTime czas;
+    private LocalTime czas;
 
     //godzina
     @Column(name = "DATA", nullable = true)
-    private LocalDate data;
+    private LocalDateTime data;
 
 //    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @ManyToOne(optional = true)
@@ -88,19 +88,19 @@ public class Seans {
         this.kinoidkina = kinoidkina;
     }
 
-    public LocalDateTime getCzas() {
+    public LocalTime getCzas() {
         return czas;
     }
 
-    public void setCzas(LocalDateTime czas) {
+    public void setCzas(LocalTime czas) {
         this.czas = czas;
     }
 
-    public LocalDate getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 

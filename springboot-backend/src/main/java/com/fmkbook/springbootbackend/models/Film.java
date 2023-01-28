@@ -21,7 +21,7 @@ public class Film {
     @Column(name = "GATUNEK", length = 50)
     private String gatunek;
 
-    @Column(name = "OPIS", columnDefinition = "LONGTEXT")
+    @Column(name = "OPIS", length = 200)
     private String opis;
 
     @Column(name = "IMAGEPATH")

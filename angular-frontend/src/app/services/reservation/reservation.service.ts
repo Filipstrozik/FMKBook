@@ -16,7 +16,10 @@ export class ReservationService {
 
   private baseUrl = `http://${this.ip.ip}:8080/`;
 
-
+  getReservationsByDate(startDate: Date, endDate: Date) {
+    let params = new HttpParams().set("startDate", new Date(startDate).toLocaleDateString()).set("endDate", new Date(endDate).toLocaleDateString());
+    return this.http.get<Rezerwacja[]>(this.baseUrl + 'rezerwacja/byDate', {params});
+  }
   createReservation(reservation: Rezerwacja) {
     return this.http.post(this.baseUrl + 'rezerwacja', reservation);
   }
