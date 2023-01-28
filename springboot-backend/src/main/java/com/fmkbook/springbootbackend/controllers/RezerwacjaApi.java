@@ -32,7 +32,7 @@ public class RezerwacjaApi {
     }
 
     @GetMapping("/byDate")
-    public ResponseEntity<List<Rezerwacja>> findAllByDate(@RequestParam LocalDateTime startDate, @RequestParam LocalDateTime endDate) {
+    public ResponseEntity<List<Rezerwacja>> findAllByDate(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
         return new ResponseEntity<>(rezerwacjaService.getReservationsByDate(startDate, endDate), HttpStatus.OK);
     }
 
