@@ -21,8 +21,6 @@ public class Bilet {
     @JoinColumn(name = "MIEJSCEIDMIEJSCA", nullable = true)
     private Miejsce miejsceidmiejsca;
 
-//    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-//    @JoinColumn(name = "TYPBILETUNAZWATYPUBILETU", nullable = true)
     @Enumerated(EnumType.STRING)
     private Typbiletu typbiletunazwatypubiletu = Typbiletu.normalny;
 
