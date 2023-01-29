@@ -22,7 +22,7 @@ public class SpringbootBackendApplication {
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(List.of("http://192.168.0.80:4200", "http://localhost:4200"));
+        corsConfiguration.setAllowedOrigins(List.of("http://192.168.0.80:4200", "http://localhost:4200", "http://10.108.42.165:4200"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
                 "Accept", "Authorization", "Origin, Accept", "X-Requested-With",
                 "Access-Control-Request-Method", "Access-Control-Request-Headers"));

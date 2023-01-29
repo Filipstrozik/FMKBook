@@ -140,8 +140,7 @@ public class RezerwacjaService {
 
     @EventListener(ApplicationReadyEvent.class)
     private void init() {
-//        Uzytkownik uzytkownik1 = new Uzytkownik(1, "sdadsdas", "saddssdasdasd", "hghgfgfg");
-//        Rabat rabat1 = new Rabat("1", 2.00);
+        Rabat rabat1 = new Rabat("1", 2.00);
         Seans seans1 = new Seans(LocalDateTime.of(2023, 1, 25,15,22), 39.23, LocalTime.of(1,2,30));
         Seans seans2 = new Seans(LocalDateTime.of(2023, 1, 27,15,2), 39.23, LocalTime.of(1,2,30));
         Seans seans3 = new Seans(LocalDateTime.of(2023, 1, 28,15,2), 39.23, LocalTime.of(1,2,30));
@@ -159,6 +158,9 @@ public class RezerwacjaService {
         Sposobplatnosci sposobplatnosci3 = new Sposobplatnosci("apple pay");
         Sposobplatnosci sposobplatnosci4 = new Sposobplatnosci("karta");
         Sposobplatnosci sposobplatnosci5 = new Sposobplatnosci("paypal");
+
+
+
         Rezerwacja rezerwacja1 = new Rezerwacja(1, sposobplatnosci1, seans1);
         Rezerwacja rezerwacja2 = new Rezerwacja(2, sposobplatnosci3, seans1);
         Rezerwacja rezerwacja3 = new Rezerwacja(3, sposobplatnosci1, seans1);

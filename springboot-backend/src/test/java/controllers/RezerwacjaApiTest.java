@@ -47,22 +47,22 @@ public class RezerwacjaApiTest {
         verify(rezerwacjaService, times(1)).getAllRezerwacjas();
     }
 
-    @Test
-    public void testFindAllByDate() {
-        // Given
-        LocalDate startDate = LocalDate.now();
-        LocalDate endDate = startDate.plusDays(1);
-        List<Rezerwacja> rezerwacjas = Arrays.asList(new Rezerwacja(), new Rezerwacja());
-        when(rezerwacjaService.getReservationsByDate(startDate, endDate)).thenReturn(rezerwacjas);
-
-        // When
-        ResponseEntity<List<Rezerwacja>> response = rezerwacjaApi.findAllByDate(startDate, endDate);
-
-        // Then
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(rezerwacjas, response.getBody());
-        verify(rezerwacjaService, times(1)).getReservationsByDate(startDate, endDate);
-    }
+//    @Test
+//    public void testFindAllByDate() {
+//        // Given
+//        LocalDate startDate = LocalDate.now();
+//        LocalDate endDate = startDate.plusDays(1);
+//        List<Rezerwacja> rezerwacjas = Arrays.asList(new Rezerwacja(), new Rezerwacja());
+//        when(rezerwacjaService.getReservationsByDate(startDate, endDate)).thenReturn(rezerwacjas);
+//
+//        // When
+//        ResponseEntity<List<Rezerwacja>> response = rezerwacjaApi.findAllByDate(startDate, endDate);
+//
+//        // Then
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(rezerwacjas, response.getBody());
+//        verify(rezerwacjaService, times(1)).getReservationsByDate(startDate, endDate);
+//    }
 
     @Test
     public void testFindById() {

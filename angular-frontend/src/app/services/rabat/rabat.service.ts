@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {IpServiceService} from "../../ip-service.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RabatService {
-  private url: string;
-  constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8080/rabat';
-  }
+  constructor(private http: HttpClient,private ip: IpServiceService) { }
+
+  // private baseUrl = 'http://localhost:8080/';
+
+  private url = `http://${this.ip.ip}:8080/rabat`;
+
+
   updateRabat(idUser:number, idRabatu: string):Observable<any>{
     const params = new HttpParams()
       .set('idUser', idUser)

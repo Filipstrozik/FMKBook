@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,9 @@ public class RezerwacjaApi {
 
     @GetMapping("/byDate")
     public ResponseEntity<List<Rezerwacja>> findAllByDate(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+//        LocalDate startDate2 = LocalDate.parse(startDate, formatter);
+//        LocalDate endDate2 = LocalDate.parse(endDate, formatter);
         return new ResponseEntity<>(rezerwacjaService.getReservationsByDate(startDate, endDate), HttpStatus.OK);
     }
 
