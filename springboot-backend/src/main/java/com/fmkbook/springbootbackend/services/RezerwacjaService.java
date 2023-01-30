@@ -138,59 +138,59 @@ public class RezerwacjaService {
         return currentRezerwacja;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    private void init() {
-        Rabat rabat1 = new Rabat("1", 2.00);
-        Seans seans1 = new Seans(LocalDateTime.of(2023, 1, 25,15,22), 39.23, LocalTime.of(1,2,30));
-        Seans seans2 = new Seans(LocalDateTime.of(2023, 1, 27,15,2), 39.23, LocalTime.of(1,2,30));
-        Seans seans3 = new Seans(LocalDateTime.of(2023, 1, 28,15,2), 39.23, LocalTime.of(1,2,30));
-        Seans seans4 = new Seans(LocalDateTime.of(2023, 1, 29,15,2), 39.23, LocalTime.of(1,2,30));
-        Seans seans5 = new Seans(LocalDateTime.of(2023, 1, 30,15,2), 39.23, LocalTime.of(1,2,30));
-
-        seansRepository.save(seans1);
-        seansRepository.save(seans2);
-        seansRepository.save(seans3);
-        seansRepository.save(seans4);
-        seansRepository.save(seans5);
-
-        Sposobplatnosci sposobplatnosci1 = new Sposobplatnosci("blik");
-        Sposobplatnosci sposobplatnosci2 = new Sposobplatnosci("google pay");
-        Sposobplatnosci sposobplatnosci3 = new Sposobplatnosci("apple pay");
-        Sposobplatnosci sposobplatnosci4 = new Sposobplatnosci("karta");
-        Sposobplatnosci sposobplatnosci5 = new Sposobplatnosci("paypal");
-
-
-
-        Rezerwacja rezerwacja1 = new Rezerwacja(1, sposobplatnosci1, seans1);
-        Rezerwacja rezerwacja2 = new Rezerwacja(2, sposobplatnosci3, seans1);
-        Rezerwacja rezerwacja3 = new Rezerwacja(3, sposobplatnosci1, seans1);
-        Rezerwacja rezerwacja4 = new Rezerwacja(4, sposobplatnosci2, seans2);
-        Rezerwacja rezerwacja5 = new Rezerwacja(5, sposobplatnosci1, seans3);
-        Rezerwacja rezerwacja6 = new Rezerwacja(6, sposobplatnosci1, seans4);
-        Rezerwacja rezerwacja7 = new Rezerwacja(7, sposobplatnosci2, seans4);
-        Rezerwacja rezerwacja8 = new Rezerwacja(8, sposobplatnosci1, seans4);
-        Rezerwacja rezerwacja9 = new Rezerwacja(9, sposobplatnosci1, seans5);
-        Rezerwacja rezerwacja10 = new Rezerwacja(10, sposobplatnosci1, seans3);
-        Rezerwacja rezerwacja11 = new Rezerwacja(11, sposobplatnosci4, seans2);
-        Rezerwacja rezerwacja12 = new Rezerwacja(12, sposobplatnosci5, seans5);
-        Rezerwacja rezerwacja13 = new Rezerwacja(13, sposobplatnosci2, seans4);
-        Rezerwacja rezerwacja14 = new Rezerwacja(14, sposobplatnosci5, seans3);
-        Rezerwacja rezerwacja15 = new Rezerwacja(15, sposobplatnosci3, seans2);
-
-        createRezerwacja(rezerwacja1);
-        createRezerwacja(rezerwacja2);
-        createRezerwacja(rezerwacja3);
-        createRezerwacja(rezerwacja4);
-        createRezerwacja(rezerwacja5);
-        createRezerwacja(rezerwacja6);
-        createRezerwacja(rezerwacja7);
-        createRezerwacja(rezerwacja8);
-        createRezerwacja(rezerwacja9);
-        createRezerwacja(rezerwacja10);
-        createRezerwacja(rezerwacja11);
-        createRezerwacja(rezerwacja12);
-        createRezerwacja(rezerwacja13);
-        createRezerwacja(rezerwacja14);
-        createRezerwacja(rezerwacja15);
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    private void init() {
+//        Rabat rabat1 = new Rabat("1", 2.00);
+//        Seans seans1 = new Seans(LocalDateTime.of(2023, 1, 25,15,22), 39.23, LocalTime.of(1,2,30));
+//        Seans seans2 = new Seans(LocalDateTime.of(2023, 1, 27,15,2), 39.23, LocalTime.of(1,2,30));
+//        Seans seans3 = new Seans(LocalDateTime.of(2023, 1, 28,15,2), 39.23, LocalTime.of(1,2,30));
+//        Seans seans4 = new Seans(LocalDateTime.of(2023, 1, 29,15,2), 39.23, LocalTime.of(1,2,30));
+//        Seans seans5 = new Seans(LocalDateTime.of(2023, 1, 30,15,2), 39.23, LocalTime.of(1,2,30));
+//
+//        seansRepository.save(seans1);
+//        seansRepository.save(seans2);
+//        seansRepository.save(seans3);
+//        seansRepository.save(seans4);
+//        seansRepository.save(seans5);
+//
+//        Sposobplatnosci sposobplatnosci1 = new Sposobplatnosci("blik");
+//        Sposobplatnosci sposobplatnosci2 = new Sposobplatnosci("google pay");
+//        Sposobplatnosci sposobplatnosci3 = new Sposobplatnosci("apple pay");
+//        Sposobplatnosci sposobplatnosci4 = new Sposobplatnosci("karta");
+//        Sposobplatnosci sposobplatnosci5 = new Sposobplatnosci("paypal");
+//
+//
+//
+//        Rezerwacja rezerwacja1 = new Rezerwacja(1, sposobplatnosci1, seans1);
+//        Rezerwacja rezerwacja2 = new Rezerwacja(2, sposobplatnosci3, seans1);
+//        Rezerwacja rezerwacja3 = new Rezerwacja(3, sposobplatnosci1, seans1);
+//        Rezerwacja rezerwacja4 = new Rezerwacja(4, sposobplatnosci2, seans2);
+//        Rezerwacja rezerwacja5 = new Rezerwacja(5, sposobplatnosci1, seans3);
+//        Rezerwacja rezerwacja6 = new Rezerwacja(6, sposobplatnosci1, seans4);
+//        Rezerwacja rezerwacja7 = new Rezerwacja(7, sposobplatnosci2, seans4);
+//        Rezerwacja rezerwacja8 = new Rezerwacja(8, sposobplatnosci1, seans4);
+//        Rezerwacja rezerwacja9 = new Rezerwacja(9, sposobplatnosci1, seans5);
+//        Rezerwacja rezerwacja10 = new Rezerwacja(10, sposobplatnosci1, seans3);
+//        Rezerwacja rezerwacja11 = new Rezerwacja(11, sposobplatnosci4, seans2);
+//        Rezerwacja rezerwacja12 = new Rezerwacja(12, sposobplatnosci5, seans5);
+//        Rezerwacja rezerwacja13 = new Rezerwacja(13, sposobplatnosci2, seans4);
+//        Rezerwacja rezerwacja14 = new Rezerwacja(14, sposobplatnosci5, seans3);
+//        Rezerwacja rezerwacja15 = new Rezerwacja(15, sposobplatnosci3, seans2);
+//
+//        createRezerwacja(rezerwacja1);
+//        createRezerwacja(rezerwacja2);
+//        createRezerwacja(rezerwacja3);
+//        createRezerwacja(rezerwacja4);
+//        createRezerwacja(rezerwacja5);
+//        createRezerwacja(rezerwacja6);
+//        createRezerwacja(rezerwacja7);
+//        createRezerwacja(rezerwacja8);
+//        createRezerwacja(rezerwacja9);
+//        createRezerwacja(rezerwacja10);
+//        createRezerwacja(rezerwacja11);
+//        createRezerwacja(rezerwacja12);
+//        createRezerwacja(rezerwacja13);
+//        createRezerwacja(rezerwacja14);
+//        createRezerwacja(rezerwacja15);
+//    }
 }
