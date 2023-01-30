@@ -23,13 +23,13 @@ h3 {
 p{
   font-size: 2rem;
 }
-h2 {
+h4 {
   font-size: 20px;
   color: #634CF3;
   font-family: "SansSerif", sans-serif;
   position: fixed;
   left: 50%;
-  bottom: 25%;
+  bottom: 15%;
   transform: translate(-50%, -50%);
   color: mediumvioletred;
 }

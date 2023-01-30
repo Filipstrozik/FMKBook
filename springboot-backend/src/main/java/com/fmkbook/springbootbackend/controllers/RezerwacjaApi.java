@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +34,9 @@ public class RezerwacjaApi {
 
     @GetMapping("/byDate")
     public ResponseEntity<List<Rezerwacja>> findAllByDate(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+//        LocalDate startDate2 = LocalDate.parse(startDate, formatter);
+//        LocalDate endDate2 = LocalDate.parse(endDate, formatter);
         return new ResponseEntity<>(rezerwacjaService.getReservationsByDate(startDate, endDate), HttpStatus.OK);
     }
 
@@ -49,6 +54,17 @@ public class RezerwacjaApi {
         return ResponseEntity.ok(rezerwacjaService.createRezerwacja(rezerwacja));
     }
 
+    @CrossOrigin
+    @PostMapping("/param")
+    public ResponseEntity<Rezerwacja> create(
+            @RequestBody Rezerwacja rezerwacja,
+            @RequestParam("user") Integer userId,
+            @RequestParam("seans") Integer seansId) {
+        return ResponseEntity.ok(rezerwacjaService.createRezerwacjaWithUser(rezerwacja, userId, seansId));
+    }
+
+
+
     @PutMapping("/{id}")
     public ResponseEntity<Rezerwacja> update(@PathVariable Integer id ,@RequestBody Rezerwacja rezerwacja) {
         Optional<Rezerwacja> currentRezerwacja = rezerwacjaService.getRezerwacjaById(id);
@@ -56,6 +72,16 @@ public class RezerwacjaApi {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(rezerwacjaService.updateRezerwacja(id,rezerwacja), HttpStatus.OK);
+    }
+
+    @PutMapping("cena/{id}")
+    public ResponseEntity<Rezerwacja> update(@PathVariable Integer id ,@RequestParam("cena") Double cena) {
+        Optional<Rezerwacja> currentRezerwacja = rezerwacjaService.getRezerwacjaById(id);
+        if (currentRezerwacja.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(rezerwacjaService.updateRezerwacjaCena(id,cena), HttpStatus.OK);
     }
 
     @PutMapping()

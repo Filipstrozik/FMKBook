@@ -21,6 +21,12 @@ public class Film {
     @Column(name = "GATUNEK", length = 50)
     private String gatunek;
 
+    @Column(name = "OPIS", length = 200)
+    private String opis;
+
+    @Column(name = "IMAGEPATH")
+    private String imagePath;
+
     @Column(name = "DLUGOSC")
     private Integer dlugosc;
 
@@ -65,5 +71,21 @@ public class Film {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getOpis() {
+        return opis;
+    }
+
+    public void setOpis(String opis) {
+        this.opis = opis;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

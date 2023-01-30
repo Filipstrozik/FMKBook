@@ -6,5 +6,6 @@ export interface Bilet {
   cenabiletu: number;
   rezerwacjaidrezerwacji?: Rezerwacja;
   miejsceidmiejsca?: Miejsce;
-  // typbiletunazwatypubiletu?: Typbiletu;
+  typbiletunazwatypubiletu?: string;
+  typmiejsca?: string
 }

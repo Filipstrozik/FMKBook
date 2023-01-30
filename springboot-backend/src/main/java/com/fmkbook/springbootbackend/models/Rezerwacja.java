@@ -35,7 +35,7 @@ public class Rezerwacja {
     private Rabat rabatkodrabatowy;
 
     @Column(name = "CENAREZERWACJI")
-    private Double cenarezerwacji;
+    private Double cenarezerwacji = 0.0;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "SEANSIDSEANSU", nullable = true)
@@ -43,7 +43,7 @@ public class Rezerwacja {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "SPOSOBPLATNOSCINAZWAMETODY", nullable = true)
-    private Sposobplatnosci sposobplatnoscinazwametody;
+    private Sposobplatnosci sposobplatnoscinazwametody = new Sposobplatnosci("blik");
 
     @OneToMany(mappedBy = "rezerwacjaidrezerwacji")
     private Set<Bilet> bilets = new LinkedHashSet<>();

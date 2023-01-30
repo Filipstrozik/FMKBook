@@ -17,13 +17,22 @@ export class FilmListComponent implements OnInit {
               private filmService: FilmService) { }
 
   ngOnInit(): void {
+    console.log('zapytanie o filmy!')
     this.filmService.getFilms().subscribe(data => {
       this.films = data;
     })
   }
 
   onSelect(index: number) {
+    const foundFilm = this.films.find(f => f.id === index);
+    if(foundFilm){
+      this.filmService.setSelectedFilm(foundFilm);
+    }
     this.router.navigate(['reservationFilms', index]);
+  }
+
+  cancel() {
+    this.router.navigate(['']);
   }
 
 }

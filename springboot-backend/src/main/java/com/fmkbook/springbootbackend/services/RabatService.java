@@ -16,7 +16,6 @@ import java.util.UUID;
 
 
 @Service
-@Transactional
 public class RabatService {
     private final RabatRepository rabatRepository;
     private final UzytkownikRepository uzytkownikRepository;
@@ -31,6 +30,7 @@ public class RabatService {
         Rabat rabat = new Rabat();
         rabat.setWysokoscrabatu(discount);
         rabat.setId(UUID.randomUUID().toString().replaceAll("-", "").substring(0,10));
+        System.out.println(idUser);
         if(idUser.isPresent()){
             Optional<Uzytkownik> uzytkownik = uzytkownikRepository.findUzytkownikById(idUser.get());
             uzytkownik.ifPresent(rabat::setUzytkownikiduzytkownika);

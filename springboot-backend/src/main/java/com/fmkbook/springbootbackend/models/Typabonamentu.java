@@ -20,6 +20,9 @@ public class Typabonamentu {
     @Column(name = "OPIS")
     private String opis;
 
+    @Column(name = "TYTYUL")
+    private String tytul;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "typabonamentucolumn")
     private Set<Abonament> abonaments = new LinkedHashSet<>();
 
@@ -53,5 +56,13 @@ public class Typabonamentu {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTytul() {
+        return tytul;
+    }
+
+    public void setTytul(String tytul) {
+        this.tytul = tytul;
     }
 }

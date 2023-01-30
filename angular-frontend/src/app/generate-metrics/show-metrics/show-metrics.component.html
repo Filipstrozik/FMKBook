@@ -1,5 +1,12 @@
-<canvas id="chart">{{ chart }}</canvas>
+<div class="container" *ngIf="statsAvailable">
+  <canvas id="chart" width="400" height="300">{{ chart }}</canvas>
 
-<button (click)="downloadPdf()">Download PDF</button>
-<button (click)="downloadPng()">Download PNG</button>
-<button (click)="downloadJpeg()">Download JPEG</button>
+  <button (click)="downloadPdf()">Download PDF</button>
+  <button (click)="downloadPng()">Download PNG</button>
+  <button (click)="downloadJpeg()">Download JPEG</button>
+</div>
+
+<div class="container" *ngIf="!statsAvailable">
+  <p>Niestety, ale wybrane filtry uniemożliwiają wyświetlenie statystyk :C</p><br><br>
+  <p>Spróbuj ponownie aplikując mniej restrykcyjne filtry</p>
+</div>

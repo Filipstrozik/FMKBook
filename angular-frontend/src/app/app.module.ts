@@ -2,7 +2,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { AppComponent } from './app.component';
 import { BuyAbonamentListComponent } from './buy-abonament/buy-abonament-list/buy-abonament-list.component';
 import { AddCodeUserComponent } from './discount-code-user/add-code-user/add-code-user.component';
@@ -25,6 +24,10 @@ import { ReflinkComponent } from './reflink/reflink/reflink.component';
 import { FilmListComponent } from './reservation/film-list/film-list.component';
 import { FilmDetailComponent } from './reservation/film-detail/film-detail.component';
 import { SalaMiejscaComponent } from './reservation/sala-miejsca/sala-miejsca.component';
+import {DatePipe, SlicePipe} from "@angular/common";
+import { RezerwacjaConfirmedComponent } from './reservation/rezerwacja-confirmed/rezerwacja-confirmed.component';
+import { RezerwacjaCancelledComponent } from './reservation/rezerwacja-cancelled/rezerwacja-cancelled.component';
+import {DropdownDirective} from "./shared/dropdown.directive";
 import { ShowMetricsComponent } from './generate-metrics/show-metrics/show-metrics.component';
 import { FilterMetricsComponent } from './generate-metrics/filter-metrics/filter-metrics.component';
 
@@ -43,6 +46,9 @@ const routes: Routes = [
   { path: 'reflink' , component: ReflinkComponent},
   { path: 'reservationFilms', component: FilmListComponent},
   { path: 'reservationFilms/:id', component: FilmDetailComponent},
+  { path: 'seansMiejsca/:id', component: SalaMiejscaComponent},
+  { path: 'rezerwacjaConfirmed/:id', component: RezerwacjaConfirmedComponent},
+  { path: 'rezerwacjaCancelled', component: RezerwacjaCancelledComponent},
   { path: 'seansMiejsca/:id', component: SalaMiejscaComponent},
   { path: 'generateMetrics' , component: FilterMetricsComponent},
   { path: 'results' , component: ShowMetricsComponent},
@@ -69,6 +75,11 @@ const routes: Routes = [
     FilmListComponent,
     FilmDetailComponent,
     SalaMiejscaComponent,
+    RezerwacjaConfirmedComponent,
+    RezerwacjaCancelledComponent,
+    DropdownDirective,
+    FilmDetailComponent,
+    SalaMiejscaComponent,
     FilterMetricsComponent,
     ShowMetricsComponent
   ],
@@ -80,7 +91,7 @@ const routes: Routes = [
   ],
   exports:
     [RouterModule],
-  providers: [TypAbonamentuService, UserIdService, NotificationService],
+  providers: [TypAbonamentuService, UserIdService, NotificationService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,11 +1,73 @@
-<p>sala-miejsca works!</p>
-<div *ngIf="miejscaList">
-  <h3>Seat Map</h3>
-  <table class="table table-bordered">
-    <tr *ngFor="let row of rows">
-      <td *ngFor="let seat of miejscaList" [class.reserved]="seat.bilets?.size > 0">
-        {{ seat.rzad + seat.kolumna }}
+<h1 class="text-left view-title">składanie</h1>
+<h1 class="text-left view-title">rezerwacji</h1>
+<span class="back-btn" (click)="cancel()">
+  <p><</p>
+</span>
+<h3 class="text-center">wybór miejsc</h3>
+<div *ngIf="displayMap">
+  <h5 class="text-center">Ekran</h5>
+  <hr>
+  <ul class="list-group" style="flex-basis: 10%; flex-wrap: wrap">
+    <li *ngFor="let seat of miejscaList" class="list-unstyled flex-column text-center">
+      <button (click)="onSelectSeat(seat.id); toggleColor($event)">
+        {{seat.rzad}}, {{seat.kolumna}}
+      </button>
+    </li>
+  </ul>
+
+</div>
+<div class="container" style="background-color: #634CF3; border-radius: 20px">
+  <div class="row">
+    <div class="col-xs-4">
+      <img [src]="film.imagePath" style="height: 100px">
+    </div>
+    <div class="col-xs-5 col-xs-offset-1" style="color: white">
+      <h3>{{film.tytul}}</h3>
+      <h5>{{film.gatunek}}</h5>
+      <h6 style="color: black">{{film.dlugosc}} minut</h6>
+    </div>
+</div>
+<hr>
+<div *ngIf="!displayMap" style="color: white;">
+  <table  class="container table">
+    <thead>
+    <tr class="row">
+      <th >miejsce</th>
+      <th >typ biletu</th>
+      <th >typ miejsca</th>
+      <th >cena</th>
+    </tr>
+    </thead>
+    <tr class="row" *ngFor="let bilet of bilety; let i = index" style="background-color: whitesmoke; border-radius: 20px; color: black">
+      <td>{{bilet.miejsceidmiejsca.rzad}}, {{bilet.miejsceidmiejsca.kolumna}}</td>
+      <td>
+        <select (change)="setBiletTyp(bilet, $event)">
+          <option value="normalny">normalny</option>
+          <option value="ulgowy">ulgowy</option>
+          <option value="grupowy">grupowy</option>
+        </select>
       </td>
+      <td>
+        <select (change)="setMiejsceTyp(bilet, $event)">
+          <option value="standard">standard</option>
+          <option value="VIP">VIP</option>
+        </select>
+      </td>
+      <td>{{bilet.cenabiletu}}</td>
     </tr>
   </table>
+  <hr>
+  <h3 *ngIf="sumaRezerwacji">Suma rezerwacji: {{sumaRezerwacji}}</h3>
+  <h5 *ngIf="rezerwacja">Numer rezerwacji: {{rezerwacja.id}}</h5>
 </div>
+
+<footer class="text-center" >
+    <button (click)="confirm()"
+            type="submit" class="choose btn" *ngIf="displayMap">
+      <p>zatwiedź</p>
+    </button>
+  <button (click)="confirmReservation()"
+          type="submit" class="choose btn" *ngIf="isConfirmed">
+    <p>potwierdź</p>
+  </button>
+</footer>

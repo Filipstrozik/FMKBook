@@ -5,15 +5,21 @@
 </span>
 <h3 class="text-center">szczegóły abonamentu</h3>
 
-<body>
-
-
-
-<ul class="list-group">
+<body class="container">
+<ul class="list-group" style="background-color: #634CF3; color: black; border-radius: 20px">
   <li *ngIf="selectedType" class="list-group list-unstyled flex-column text-center" >
-      <p>{{selectedType.opis}} </p>
-      <p>{{selectedType.id}}</p>
-      <p>{{selectedType.cena}}</p>
+    <div class="row">
+      <div class="col-xs-5 col-xs-offset-1">
+        <h3>{{selectedType.tytul}}</h3>
+      </div>
+      <div class="col-xs-3 col-xs-offset-2">
+        <h3>{{selectedType.cena}} zł</h3>
+      </div>
+    </div>
+    <hr>
+      <h5>Płatność realizowana co {{selectedType.tytul}}.</h5>
+      <h4>Abonament obejmuje: </h4>
+    <p style="font-size: 20px; color: white">{{selectedType.opis}} </p>
   </li>
 </ul>
 
@@ -21,7 +27,7 @@
 </body>
 
 <footer class="text-center" >
-  <button (click)="confirm()" type="submit" class="choose btn btn-primary">
+  <button (click)="confirm()" type="submit" class="choose btn">
     <p>dokonaj zakupu</p>
   </button>
 </footer>
